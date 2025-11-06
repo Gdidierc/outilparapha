@@ -6,6 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Strategie &amp; Catalogus Paracorner Dierenarts</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
         /* Configuratie van het lettertype Inter */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght%40100..900&display=swap');
@@ -20,9 +21,9 @@
             color: #E56A54; /* Warm Red/Orange Accent */
         }
         .text-log-teal { color: #00594E; }
-        .bg-log-teal { background-color: #E56A54; }
+        .bg-log-teal { background-color: #00594E; }
         .text-log-orange { color: #E56A54; }
-        .bg-log-orange { background-color: #fef4f2; }
+        .bg-log-orange { background-color: #E56A54; }
         
         .section-card {
             background-color: white;
@@ -583,7 +584,7 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/babel" data-presets="env">
         const STORAGE_KEYS = {
             products: 'paracorner.backoffice.products',
             translations: 'paracorner.backoffice.translations',
@@ -3134,7 +3135,7 @@
         }
 
         // Vul de catalogi bij het laden van de pagina en activeer de taalselector
-        document.addEventListener('DOMContentLoaded', () => {
+        function initializeInterface() {
             document.querySelectorAll('[data-language-btn]').forEach(button => {
                 button.addEventListener('click', () => setLanguage(button.getAttribute('data-language-btn')));
             });
@@ -3191,7 +3192,13 @@
             });
 
             setLanguage(currentLanguage);
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeInterface);
+        } else {
+            initializeInterface();
+        }
 
     </script>
 </body>
