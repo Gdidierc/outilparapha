@@ -438,6 +438,15 @@
             <p class="text-lg font-light opacity-90" data-i18n="headerSubtitle">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
         </div>
     </div>
+<div class="flex justify-end mb-4">
+  <div class="language-toggle" role="group" aria-label="Language selector">
+    <button type="button" class="active" data-language-btn="nl">NL</button>
+    <button type="button" data-language-btn="fr">FR</button>
+  </div>
+</div>
+<header class="header-color text-white p-6 rounded-t-xl rounded-b-xl mb-8 shadow-lg">
+<h1 class="text-3xl font-extrabold mb-1" data-i18n="headerTitle">Strategie &amp; Catalogus Paracorner Dierenarts</h1>
+<p class="text-lg font-light opacity-90" data-i18n="headerSubtitle">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
 </header>
 <main class="space-y-12">
 <section class="section-card p-0">
@@ -461,12 +470,20 @@
         <label class="block text-sm font-medium text-gray-700 mb-2" for="species" data-i18n="speciesLabel">A. Soort</label>
         <select id="species" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
           <option value="" selected disabled>•••</option>
+          <option value="" selected disabled data-i18n="speciesPlaceholder">Soort kiezen</option>
+          <option value="hond" data-i18n="speciesOptionDog">🐶 Hond</option>
+          <option value="kat" data-i18n="speciesOptionCat">🐱 Kat</option>
+          <option value="rongeur" data-i18n="speciesOptionRodent">🐰 Knaagdier / Klein Zoogdier</option>
         </select>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="age" data-i18n="ageLabel">B. Leeftijdscategorie</label>
         <select id="age" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
           <option value="" selected disabled>•••</option>
+          <option value="" selected disabled data-i18n="agePlaceholder">Leeftijd kiezen</option>
+          <option value="jeune" data-i18n="ageOptionYoung">Jong (Groei / Puppy / Kitten)</option>
+          <option value="adulte" data-i18n="ageOptionAdult">Volwassen (Volledige maturiteit)</option>
+          <option value="senior" data-i18n="ageOptionSenior">Senior (Gevorderde leeftijd)</option>
         </select>
       </div>
     </div>
@@ -475,12 +492,29 @@
         <label class="block text-sm font-medium text-gray-700 mb-2" for="need" data-i18n="needLabel">C. Wat is de hoofdbehoefte?</label>
         <select id="need" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
           <option value="" selected disabled>•••</option>
+          <option value="" selected disabled data-i18n="needPlaceholder">Categorie kiezen</option>
+          <option value="articulations" data-i18n="needOptionArticulations">🦴 Gewrichten</option>
+          <option value="digestion" data-i18n="needOptionDigestion">🦠 Spijsvertering &amp; Anaalklieren</option>
+          <option value="skin_care" data-i18n="needOptionSkinCare">🧼 Huid &amp; Vacht (Verzorging)</option>
+          <option value="skin_supplement" data-i18n="needOptionSkinSupplement">✨ Huid &amp; Vacht (Supplement)</option>
+          <option value="anxiety" data-i18n="needOptionAnxiety">🧘 Angst &amp; Stress</option>
+          <option value="hygiene_dental" data-i18n="needOptionDental">🦷 Mondhygiëne</option>
+          <option value="hygiene_eyes" data-i18n="needOptionEyes">👁️ Ooghygiëne</option>
+          <option value="hygiene_ears" data-i18n="needOptionEars">👂 Oorhygiëne</option>
+          <option value="wounds" data-i18n="needOptionWounds">🩹 Wonden &amp; Pootjes</option>
+          <option value="urinary" data-i18n="needOptionUrinary">💧 Urinaire Weg</option>
+          <option value="liver" data-i18n="needOptionLiver">🧡 Lever</option>
+          <option value="recovery" data-i18n="needOptionRecovery">⏳ Herstel &amp; Vitaminen</option>
+          <option value="puppy_kitten" data-i18n="needOptionPuppyKitten">🐾 Puppy &amp; Kitten</option>
         </select>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="level" data-i18n="levelLabel">D. Wat is de ernst van het probleem?</label>
         <select id="level" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
           <option value="" selected disabled>•••</option>
+          <option value="" selected disabled data-i18n="levelPlaceholder">Ernst kiezen</option>
+          <option value="prevention" data-i18n="levelOptionPrevention">Licht / Preventie / Onderhoud</option>
+          <option value="advanced" data-i18n="levelOptionAdvanced">Gevorderd / Duidelijke symptomen / Intensief</option>
         </select>
       </div>
     </div>
@@ -1360,6 +1394,7 @@
         // --- VERTALINGEN EN TAALINSTELLINGEN ---
 
         const DEFAULT_PRODUCT_TRANSLATIONS = {
+        const PRODUCT_TRANSLATIONS = {
             fr: {
                 vetoquinol_calculs: {
                     objective: "Complément alimentaire pour chiens et chats sujets à la formation de calculs/cristaux urinaires. Aide à dissoudre les calculs urinaires (struvite).",
@@ -2871,6 +2906,8 @@
             const truncatedObjective = objectiveText.length > 100 ? `${objectiveText.substring(0, 100)}...` : objectiveText;
             const needLabel = getCriteriaLabel('need', product.need[0]) || langData.tagLabels[product.need[0]] || product.need[0];
             const levelLabel = getCriteriaLabel('level', product.level[0]) || langData.tagLabels[product.level[0]] || product.level[0];
+            const needLabel = langData.tagLabels[product.need[0]] || product.need[0];
+            const levelLabel = langData.tagLabels[product.level[0]] || product.level[0];
 
             return `
                 <div class="product-item p-4 mt-3 rounded-lg shadow-sm bg-white cursor-pointer hover:bg-gray-50 transition duration-150" onclick="openProductModal(MASTER_PRODUCT_DATABASE.find(p => p.id === '${product.id}'))">
@@ -2915,6 +2952,7 @@
                 if (productsForNeed.length === 0) return;
 
                 const needTitle = getCriteriaLabel('need', needKey) || langData.tagLabels[needKey] || needKey;
+                const needTitle = langData.tagLabels[needKey] || needKey;
                 const needId = `${category}-${needKey}`;
 
                 let productList = productsForNeed.map(p => {
