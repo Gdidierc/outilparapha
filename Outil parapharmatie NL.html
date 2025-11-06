@@ -171,6 +171,236 @@
         .modal-body-content strong {
             color: #00594E; /* Teal */
         }
+
+        /* Back-office styles */
+        .backoffice-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .backoffice-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .backoffice-card {
+            width: min(1100px, 96vw);
+            max-height: 92vh;
+            background: #ffffff;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .backoffice-header {
+            background-color: #00594E;
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .backoffice-tabs {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem 2rem 0.5rem;
+            background-color: #f3f4f6;
+            flex-wrap: wrap;
+        }
+
+        .backoffice-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            background-color: transparent;
+            border: 1px solid transparent;
+            font-weight: 600;
+            color: #374151;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .backoffice-tab.active {
+            background-color: #00594E;
+            color: #ffffff;
+            border-color: #00594E;
+        }
+
+        .backoffice-content {
+            padding: 1.5rem 2rem 2rem;
+            overflow-y: auto;
+        }
+
+        .backoffice-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .backoffice-grid.two-columns {
+                grid-template-columns: 320px 1fr;
+            }
+        }
+
+        .backoffice-panel {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .backoffice-panel h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00594E;
+            margin-bottom: 0.75rem;
+        }
+
+        .backoffice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+
+        .backoffice-list button {
+            width: 100%;
+            text-align: left;
+            padding: 0.65rem 0.85rem;
+            border-radius: 0.75rem;
+            border: 1px solid transparent;
+            background-color: #ffffff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .backoffice-list button:hover,
+        .backoffice-list button.active {
+            border-color: #00594E;
+            box-shadow: 0 0 0 2px rgba(0, 89, 78, 0.12);
+        }
+
+        .backoffice-form label {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .backoffice-form input,
+        .backoffice-form textarea,
+        .backoffice-form select {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .backoffice-form textarea {
+            min-height: 120px;
+        }
+
+        .backoffice-chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .backoffice-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #d1d5db;
+            border-radius: 999px;
+            padding: 0.3rem 0.75rem;
+            background-color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .backoffice-chip input {
+            width: auto;
+        }
+
+        .backoffice-chip.missing-criteria {
+            border-style: dashed;
+            border-color: #f59e0b;
+            background-color: #fef3c7;
+        }
+
+        .backoffice-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .backoffice-actions button {
+            border-radius: 999px;
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #00594E;
+            color: #ffffff;
+        }
+
+        .btn-danger {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
+        .backoffice-login-card {
+            background: #ffffff;
+            width: min(420px, 92vw);
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .criteria-row {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            align-items: flex-start;
+        }
+
+        .criteria-row input {
+            width: 100%;
+        }
+
+        .criteria-row button {
+            margin-top: 0.35rem;
+        }
+
+        .backoffice-hint {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .input-error {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+        }
     </style>
 <style>
   /* De zoekbalk dwingen om 100% van de box in te nemen */
@@ -189,6 +419,25 @@
 </style>
 </head>
 <body class="p-4 md:p-8">
+<header class="header-color text-white py-16 rounded-b-3xl shadow-lg mb-8">
+    <div class="max-w-5xl mx-auto flex flex-col gap-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="language-toggle" role="group" aria-label="Taalselectie">
+                <button class="active" data-language-btn="nl" aria-pressed="true">NL</button>
+                <button data-language-btn="fr" aria-pressed="false">FR</button>
+            </div>
+            <button id="open-backoffice" class="self-start md:self-auto inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-2 rounded-full shadow transition" type="button">
+                <span>Back Office</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 12H8m8 0-3-3m3 3-3 3"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="text-center space-y-3">
+            <h1 class="text-4xl font-extrabold tracking-tight" data-i18n="headerTitle">Strategie &amp; Catalogus Paracorner Dierenarts</h1>
+            <p class="text-lg font-light opacity-90" data-i18n="headerSubtitle">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
+        </div>
+    </div>
 <div class="flex justify-end mb-4">
   <div class="language-toggle" role="group" aria-label="Language selector">
     <button type="button" class="active" data-language-btn="nl">NL</button>
@@ -220,6 +469,7 @@
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="species" data-i18n="speciesLabel">A. Soort</label>
         <select id="species" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>•••</option>
           <option value="" selected disabled data-i18n="speciesPlaceholder">Soort kiezen</option>
           <option value="hond" data-i18n="speciesOptionDog">🐶 Hond</option>
           <option value="kat" data-i18n="speciesOptionCat">🐱 Kat</option>
@@ -229,6 +479,7 @@
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="age" data-i18n="ageLabel">B. Leeftijdscategorie</label>
         <select id="age" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>•••</option>
           <option value="" selected disabled data-i18n="agePlaceholder">Leeftijd kiezen</option>
           <option value="jeune" data-i18n="ageOptionYoung">Jong (Groei / Puppy / Kitten)</option>
           <option value="adulte" data-i18n="ageOptionAdult">Volwassen (Volledige maturiteit)</option>
@@ -240,6 +491,7 @@
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="need" data-i18n="needLabel">C. Wat is de hoofdbehoefte?</label>
         <select id="need" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>•••</option>
           <option value="" selected disabled data-i18n="needPlaceholder">Categorie kiezen</option>
           <option value="articulations" data-i18n="needOptionArticulations">🦴 Gewrichten</option>
           <option value="digestion" data-i18n="needOptionDigestion">🦠 Spijsvertering &amp; Anaalklieren</option>
@@ -259,6 +511,7 @@
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2" for="level" data-i18n="levelLabel">D. Wat is de ernst van het probleem?</label>
         <select id="level" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>•••</option>
           <option value="" selected disabled data-i18n="levelPlaceholder">Ernst kiezen</option>
           <option value="prevention" data-i18n="levelOptionPrevention">Licht / Preventie / Onderhoud</option>
           <option value="advanced" data-i18n="levelOptionAdvanced">Gevorderd / Duidelijke symptomen / Intensief</option>
@@ -325,10 +578,127 @@
 </div>
 </div>
 </div>
+
+<div class="backoffice-overlay" id="backoffice-login">
+    <div class="backoffice-login-card">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Connexion back office</h2>
+            <p class="text-sm text-gray-600">Entrez le code d’accès pour gérer les contenus du programme.</p>
+        </div>
+        <label class="flex flex-col gap-2 text-sm font-semibold text-gray-700">
+            Code d’accès
+            <input type="password" id="backoffice-code" placeholder="••••••" class="rounded-lg border border-gray-300 px-3 py-2" />
+        </label>
+        <p id="backoffice-login-error" class="text-sm text-red-600 hidden">Code incorrect, veuillez réessayer.</p>
+        <div class="flex justify-end gap-3">
+            <button type="button" class="btn-secondary" onclick="closeBackOfficeLogin()">Annuler</button>
+            <button type="button" class="btn-primary" id="backoffice-auth-btn">Se connecter</button>
+        </div>
+        <p class="text-xs text-gray-400">Code requis : Welc0me</p>
+    </div>
+</div>
+
+<div class="backoffice-overlay" id="backoffice-panel">
+    <div class="backoffice-card">
+        <div class="backoffice-header">
+            <div>
+                <h2 class="text-2xl font-bold">Back Office</h2>
+                <p class="text-sm text-white/80">Gérez les produits, traductions et critères de recherche.</p>
+            </div>
+            <button type="button" class="btn-secondary" onclick="closeBackOfficePanel()">Fermer</button>
+        </div>
+        <div class="backoffice-tabs">
+            <button type="button" class="backoffice-tab active" data-tab="products">Produits</button>
+            <button type="button" class="backoffice-tab" data-tab="criteria">Critères</button>
+            <button type="button" class="backoffice-tab" data-tab="settings">Paramètres</button>
+        </div>
+        <div class="backoffice-content" id="backoffice-content">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+</div>
 <script>
+        const STORAGE_KEYS = {
+            products: 'paracorner.backoffice.products',
+            translations: 'paracorner.backoffice.translations',
+            criteria: 'paracorner.backoffice.criteria'
+        };
+
+        const ACCESS_CODE = 'Welc0me';
+
+        function deepClone(value) {
+            return JSON.parse(JSON.stringify(value));
+        }
+
+        function loadFromStorage(key, fallback) {
+            try {
+                if (typeof window === 'undefined' || !window.localStorage) {
+                    return deepClone(fallback);
+                }
+                const raw = window.localStorage.getItem(key);
+                if (!raw) {
+                    return deepClone(fallback);
+                }
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(fallback)) {
+                    return Array.isArray(parsed) ? parsed : deepClone(fallback);
+                }
+                if (fallback && typeof fallback === 'object') {
+                    return parsed && typeof parsed === 'object' ? parsed : deepClone(fallback);
+                }
+                return parsed;
+            } catch (error) {
+                console.warn('Unable to load data from storage', error);
+                return deepClone(fallback);
+            }
+        }
+
+        function saveToStorage(key, value) {
+            try {
+                if (typeof window === 'undefined' || !window.localStorage) {
+                    return;
+                }
+                window.localStorage.setItem(key, JSON.stringify(value));
+            } catch (error) {
+                console.warn('Unable to save data in storage', error);
+            }
+        }
+
+        const DEFAULT_SEARCH_CRITERIA = {
+            species: [
+                { value: 'hond', labels: { nl: '🐶 Hond', fr: '🐶 Chien' } },
+                { value: 'kat', labels: { nl: '🐱 Kat', fr: '🐱 Chat' } },
+                { value: 'rongeur', labels: { nl: '🐰 Knaagdier / Klein Zoogdier', fr: '🐰 Rongeur / Petit mammifère' } }
+            ],
+            age: [
+                { value: 'jeune', labels: { nl: 'Jong (Groei / Puppy / Kitten)', fr: 'Jeune (Croissance / Chiot / Chaton)' } },
+                { value: 'adulte', labels: { nl: 'Volwassen (Volledige maturiteit)', fr: 'Adulte (Pleine maturité)' } },
+                { value: 'senior', labels: { nl: 'Senior (Gevorderde leeftijd)', fr: 'Senior (Âge avancé)' } }
+            ],
+            need: [
+                { value: 'articulations', labels: { nl: '🦴 Gewrichten', fr: '🦴 Articulations' } },
+                { value: 'digestion', labels: { nl: '🦠 Spijsvertering & Anaalklieren', fr: '🦠 Digestion & Glandes anales' } },
+                { value: 'skin_care', labels: { nl: '🧼 Huid & Vacht (Verzorging)', fr: '🧼 Peau & Pelage (Soin)' } },
+                { value: 'skin_supplement', labels: { nl: '✨ Huid & Vacht (Supplement)', fr: '✨ Peau & Pelage (Complément)' } },
+                { value: 'anxiety', labels: { nl: '🧘 Angst & Stress', fr: '🧘 Anxiété & Stress' } },
+                { value: 'hygiene_dental', labels: { nl: '🦷 Mondhygiëne', fr: '🦷 Hygiène bucco-dentaire' } },
+                { value: 'hygiene_eyes', labels: { nl: '👁️ Ooghygiëne', fr: '👁️ Hygiène oculaire' } },
+                { value: 'hygiene_ears', labels: { nl: '👂 Oorhygiëne', fr: '👂 Hygiène auriculaire' } },
+                { value: 'wounds', labels: { nl: '🩹 Wonden & Pootjes', fr: '🩹 Plaies & Coussinets' } },
+                { value: 'urinary', labels: { nl: '💧 Urinaire Weg', fr: '💧 Voie urinaire' } },
+                { value: 'liver', labels: { nl: '🧡 Lever', fr: '🧡 Foie' } },
+                { value: 'recovery', labels: { nl: '⏳ Herstel & Vitaminen', fr: '⏳ Récupération & Vitamines' } },
+                { value: 'puppy_kitten', labels: { nl: '🐾 Puppy & Kitten', fr: '🐾 Chiot & Chaton' } }
+            ],
+            level: [
+                { value: 'prevention', labels: { nl: 'Licht / Preventie / Onderhoud', fr: 'Léger / Prévention / Entretien' } },
+                { value: 'advanced', labels: { nl: 'Gevorderd / Duidelijke symptomen / Intensief', fr: 'Avancé / Symptômes marqués / Intensif' } }
+            ]
+        };
+
         // --- NIEUWE CENTRALE DATABASE (vervangt ALLE oude gegevens) ---
-        
-        const MASTER_PRODUCT_DATABASE = [
+
+        const DEFAULT_PRODUCT_DATABASE = [
             // --- SUPPLEMENTEN ---
             // Urinaire Weg
             {
@@ -1023,6 +1393,7 @@
 
         // --- VERTALINGEN EN TAALINSTELLINGEN ---
 
+        const DEFAULT_PRODUCT_TRANSLATIONS = {
         const PRODUCT_TRANSLATIONS = {
             fr: {
                 vetoquinol_calculs: {
@@ -1253,6 +1624,21 @@
             }
         };
 
+        let MASTER_PRODUCT_DATABASE = [];
+        let PRODUCT_TRANSLATIONS = {};
+        let SEARCH_CRITERIA = {};
+
+        function initializeDataStores() {
+            MASTER_PRODUCT_DATABASE = loadFromStorage(STORAGE_KEYS.products, DEFAULT_PRODUCT_DATABASE);
+            PRODUCT_TRANSLATIONS = loadFromStorage(STORAGE_KEYS.translations, DEFAULT_PRODUCT_TRANSLATIONS);
+            SEARCH_CRITERIA = loadFromStorage(STORAGE_KEYS.criteria, DEFAULT_SEARCH_CRITERIA);
+            if (!PRODUCT_TRANSLATIONS.fr) {
+                PRODUCT_TRANSLATIONS.fr = {};
+            }
+        }
+
+        initializeDataStores();
+
         const LANGUAGE_DATA = {
             nl: {
                 htmlLang: 'nl',
@@ -1471,6 +1857,868 @@
             return baseValue;
         }
 
+        function getCriteriaList(type) {
+            const list = SEARCH_CRITERIA[type];
+            return Array.isArray(list) ? list : [];
+        }
+
+        function getCriteriaLabel(type, value) {
+            const option = getCriteriaList(type).find(item => item.value === value);
+            if (!option) return null;
+            return option.labels?.[currentLanguage] || option.labels?.nl || value;
+        }
+
+        function configureSelect(selectId, type, placeholderKey) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            const previousValue = select.value;
+            const langData = getLangData();
+            const placeholderText = langData?.texts?.[placeholderKey] || '';
+
+            select.innerHTML = '';
+
+            const placeholderOption = document.createElement('option');
+            placeholderOption.value = '';
+            placeholderOption.disabled = true;
+            placeholderOption.selected = true;
+            placeholderOption.textContent = placeholderText;
+            select.appendChild(placeholderOption);
+
+            getCriteriaList(type).forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option.value;
+                opt.textContent = option.labels?.[currentLanguage] || option.labels?.nl || option.value;
+                select.appendChild(opt);
+            });
+
+            if (previousValue) {
+                select.value = previousValue;
+                if (select.value !== previousValue) {
+                    select.selectedIndex = 0;
+                }
+            }
+        }
+
+        function renderSearchCriteria() {
+            configureSelect('species', 'species', 'speciesPlaceholder');
+            configureSelect('age', 'age', 'agePlaceholder');
+            configureSelect('need', 'need', 'needPlaceholder');
+            configureSelect('level', 'level', 'levelPlaceholder');
+        }
+
+        function refreshPublicViews() {
+            fillCatalog('full-supplements-accordion', 'Supplements');
+            fillCatalog('full-care-accordion', 'Soins');
+            renderSearchCriteria();
+
+            const messageDiv = document.getElementById('message');
+            if (messageDiv && !messageDiv.classList.contains('hidden') && messageDiv.innerHTML.trim() !== '') {
+                findProduct();
+            }
+        }
+
+        let isBackOfficeAuthenticated = false;
+        let activeBackOfficeTab = 'products';
+        let selectedProductId = null;
+        let productFeedbackTimer = null;
+        let criteriaFeedbackTimer = null;
+        let settingsFeedbackTimer = null;
+
+        function openBackOfficeLogin() {
+            const overlay = document.getElementById('backoffice-login');
+            if (!overlay) return;
+            overlay.classList.add('open');
+
+            const input = document.getElementById('backoffice-code');
+            const errorLabel = document.getElementById('backoffice-login-error');
+            if (input) {
+                input.classList.remove('input-error');
+                input.value = '';
+                setTimeout(() => input.focus(), 50);
+            }
+            if (errorLabel) {
+                errorLabel.classList.add('hidden');
+            }
+        }
+
+        function closeBackOfficeLogin() {
+            const overlay = document.getElementById('backoffice-login');
+            if (!overlay) return;
+            overlay.classList.remove('open');
+        }
+
+        function handleBackOfficeAuth() {
+            const input = document.getElementById('backoffice-code');
+            const errorLabel = document.getElementById('backoffice-login-error');
+            if (!input) return;
+
+            const value = (input.value || '').trim();
+            if (value === ACCESS_CODE) {
+                isBackOfficeAuthenticated = true;
+                input.value = '';
+                input.classList.remove('input-error');
+                if (errorLabel) {
+                    errorLabel.classList.add('hidden');
+                }
+                closeBackOfficeLogin();
+                openBackOfficePanel(activeBackOfficeTab);
+            } else {
+                input.value = '';
+                input.classList.add('input-error');
+                if (errorLabel) {
+                    errorLabel.classList.remove('hidden');
+                }
+            }
+        }
+
+        function openBackOfficePanel(tab = 'products') {
+            activeBackOfficeTab = tab;
+            const overlay = document.getElementById('backoffice-panel');
+            if (!overlay) return;
+            overlay.classList.add('open');
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+        }
+
+        function closeBackOfficePanel() {
+            const overlay = document.getElementById('backoffice-panel');
+            if (!overlay) return;
+            overlay.classList.remove('open');
+        }
+
+        function updateBackOfficeTabs() {
+            document.querySelectorAll('#backoffice-panel .backoffice-tab').forEach(button => {
+                const tab = button.getAttribute('data-tab');
+                button.classList.toggle('active', tab === activeBackOfficeTab);
+            });
+        }
+
+        function switchBackOfficeTab(tab) {
+            if (activeBackOfficeTab === tab) return;
+            activeBackOfficeTab = tab;
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+        }
+
+        function renderBackOfficeContent() {
+            const container = document.getElementById('backoffice-content');
+            if (!container) return;
+
+            if (activeBackOfficeTab === 'criteria') {
+                renderCriteriaTab(container);
+            } else if (activeBackOfficeTab === 'settings') {
+                renderSettingsTab(container);
+            } else {
+                renderProductsTab(container);
+            }
+        }
+
+        function renderProductsTab(container) {
+            container.innerHTML = `
+                <div class="backoffice-grid two-columns">
+                    <div class="backoffice-panel" id="bo-product-list-panel">
+                        <h3>Catalogue produits</h3>
+                        <input type="search" id="bo-product-search" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Rechercher par nom, marque ou besoin..." />
+                        <p class="backoffice-hint mt-2">Astuce : tapez un mot-clé pour filtrer la liste.</p>
+                        <div class="backoffice-list mt-4" id="bo-product-list"></div>
+                        <button type="button" class="btn-secondary w-full mt-4" id="bo-new-product">Nouveau produit</button>
+                    </div>
+                    <div class="backoffice-panel backoffice-form" id="bo-product-form-panel">
+                        <h3>Détails produit</h3>
+                        <div class="grid gap-4 md:grid-cols-2">
+                            <label>Identifiant unique
+                                <input type="text" id="bo-product-id" placeholder="ex : purviso_vitality" />
+                            </label>
+                            <label>Nom (NL)
+                                <input type="text" id="bo-product-name" placeholder="Nom NL affiché" />
+                            </label>
+                        </div>
+                        <div class="grid gap-4 md:grid-cols-3 mt-4">
+                            <label>Marque
+                                <input type="text" id="bo-product-brand" placeholder="Purviso, Virbac..." />
+                            </label>
+                            <label>Catégorie
+                                <select id="bo-product-category">
+                                    <option value="Supplements">Supplements</option>
+                                    <option value="Soins">Soins</option>
+                                </select>
+                            </label>
+                            <label>Lien Tom&Co (optionnel)
+                                <input type="text" id="bo-product-link" placeholder="URL produit" />
+                            </label>
+                        </div>
+                        <label class="inline-flex items-center gap-2 mt-4">
+                            <input type="checkbox" id="bo-product-purviso" />
+                            <span>Produit Purviso (prioritaire)</span>
+                        </label>
+                        <div class="grid gap-4 md:grid-cols-2 mt-4">
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Espèces concernées</p>
+                                <div class="backoffice-chip-group" id="bo-species-options"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Tranches d’âge</p>
+                                <div class="backoffice-chip-group" id="bo-age-options"></div>
+                            </div>
+                        </div>
+                        <div class="grid gap-4 md:grid-cols-2 mt-4">
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Besoins ciblés</p>
+                                <div class="backoffice-chip-group" id="bo-need-options"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Niveaux / gravité</p>
+                                <div class="backoffice-chip-group" id="bo-level-options"></div>
+                            </div>
+                        </div>
+                        <div class="grid gap-4 lg:grid-cols-2 mt-6">
+                            <div class="space-y-3">
+                                <p class="font-semibold text-sm text-gray-700 uppercase tracking-wide">Contenu NL</p>
+                                <label>Objectif (NL)
+                                    <textarea id="bo-nl-objective" placeholder="Objectif en néerlandais"></textarea>
+                                </label>
+                                <label>Utilisation / Posologie (NL)
+                                    <textarea id="bo-nl-admin" placeholder="Instructions NL"></textarea>
+                                </label>
+                                <label>Avertissement (NL)
+                                    <textarea id="bo-nl-warning" placeholder="Avertissement NL (optionnel)"></textarea>
+                                </label>
+                            </div>
+                            <div class="space-y-3">
+                                <p class="font-semibold text-sm text-gray-700 uppercase tracking-wide">Contenu FR</p>
+                                <label>Objectif (FR)
+                                    <textarea id="bo-fr-objective" placeholder="Objectif en français"></textarea>
+                                </label>
+                                <label>Utilisation / Posologie (FR)
+                                    <textarea id="bo-fr-admin" placeholder="Instructions FR"></textarea>
+                                </label>
+                                <label>Avertissement (FR)
+                                    <textarea id="bo-fr-warning" placeholder="Avertissement FR (optionnel)"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="bo-product-feedback" class="mt-4 text-sm"></div>
+                        <div class="backoffice-actions">
+                            <button type="button" class="btn-danger hidden" id="bo-delete-product">Supprimer</button>
+                            <button type="button" class="btn-primary" id="bo-save-product">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const searchInput = document.getElementById('bo-product-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => renderBackOfficeProductList());
+            }
+
+            const newButton = document.getElementById('bo-new-product');
+            if (newButton) {
+                newButton.addEventListener('click', () => {
+                    selectedProductId = null;
+                    renderBackOfficeProductList();
+                    clearProductForm();
+                    const idInput = document.getElementById('bo-product-id');
+                    if (idInput) {
+                        idInput.focus();
+                    }
+                });
+            }
+
+            const saveButton = document.getElementById('bo-save-product');
+            if (saveButton) {
+                saveButton.addEventListener('click', saveBackOfficeProduct);
+            }
+
+            const deleteButton = document.getElementById('bo-delete-product');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', deleteBackOfficeProduct);
+            }
+
+            renderBackOfficeProductList();
+
+            if (selectedProductId && MASTER_PRODUCT_DATABASE.some(p => p.id === selectedProductId)) {
+                const product = MASTER_PRODUCT_DATABASE.find(p => p.id === selectedProductId);
+                populateProductForm(product);
+            } else if (MASTER_PRODUCT_DATABASE.length > 0) {
+                selectedProductId = MASTER_PRODUCT_DATABASE[0].id;
+                populateProductForm(MASTER_PRODUCT_DATABASE[0]);
+                renderBackOfficeProductList();
+            } else {
+                clearProductForm();
+            }
+        }
+
+        function renderBackOfficeProductList(filter) {
+            const listEl = document.getElementById('bo-product-list');
+            if (!listEl) return;
+            const searchInput = document.getElementById('bo-product-search');
+            const searchValue = typeof filter === 'string' ? filter : (searchInput ? searchInput.value : '');
+            const normalized = searchValue.trim().toLowerCase();
+
+            let products = [...MASTER_PRODUCT_DATABASE];
+            products.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'fr'));
+
+            if (normalized) {
+                products = products.filter(product => {
+                    const haystack = [product.name, product.brand, ...(product.need || []), ...(product.species || [])];
+                    return haystack.some(value => (value || '').toLowerCase().includes(normalized));
+                });
+            }
+
+            if (products.length === 0) {
+                listEl.innerHTML = '<p class="text-sm text-gray-500">Aucun produit ne correspond à la recherche.</p>';
+                return;
+            }
+
+            listEl.innerHTML = '';
+            products.forEach(product => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.setAttribute('data-product-id', product.id);
+                button.innerHTML = `<p class="font-semibold text-gray-900">${product.name}</p><p class="text-xs text-gray-500">${product.brand || '—'} • ${product.id}</p>`;
+                if (product.id === selectedProductId) {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    selectedProductId = product.id;
+                    populateProductForm(product);
+                    renderBackOfficeProductList();
+                });
+                listEl.appendChild(button);
+            });
+        }
+
+        function buildChipGroup(containerId, type, selectedValues = []) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const selectedSet = new Set(selectedValues);
+            getCriteriaList(type).forEach(option => {
+                const label = document.createElement('label');
+                label.className = 'backoffice-chip';
+                if (option.labels?.fr) {
+                    label.title = `${option.labels?.nl || option.value} / ${option.labels.fr}`;
+                }
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.value = option.value;
+                input.checked = selectedSet.has(option.value);
+                label.appendChild(input);
+
+                const text = document.createElement('span');
+                text.textContent = option.labels?.nl || option.value;
+                label.appendChild(text);
+
+                container.appendChild(label);
+            });
+
+            selectedValues.forEach(value => {
+                if (!getCriteriaList(type).some(option => option.value === value)) {
+                    const label = document.createElement('label');
+                    label.className = 'backoffice-chip missing-criteria';
+
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.value = value;
+                    input.checked = true;
+                    label.appendChild(input);
+
+                    const text = document.createElement('span');
+                    text.textContent = `${value} (hors critères)`;
+                    label.appendChild(text);
+
+                    container.appendChild(label);
+                }
+            });
+        }
+
+        function getCheckedValues(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return [];
+            return Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map(input => input.value);
+        }
+
+        function populateProductForm(product) {
+            const idInput = document.getElementById('bo-product-id');
+            if (!idInput) return;
+
+            idInput.value = product?.id || '';
+            const nameInput = document.getElementById('bo-product-name');
+            if (nameInput) nameInput.value = product?.name || '';
+
+            const brandInput = document.getElementById('bo-product-brand');
+            if (brandInput) brandInput.value = product?.brand || '';
+
+            const categorySelect = document.getElementById('bo-product-category');
+            if (categorySelect) categorySelect.value = product?.category || 'Supplements';
+
+            const linkInput = document.getElementById('bo-product-link');
+            if (linkInput) linkInput.value = product?.tomCoUrl || '';
+
+            const purvisoCheckbox = document.getElementById('bo-product-purviso');
+            if (purvisoCheckbox) purvisoCheckbox.checked = Boolean(product?.isPurviso);
+
+            buildChipGroup('bo-species-options', 'species', product?.species || []);
+            buildChipGroup('bo-age-options', 'age', product?.age || []);
+            buildChipGroup('bo-need-options', 'need', product?.need || []);
+            buildChipGroup('bo-level-options', 'level', product?.level || []);
+
+            const nlObjective = document.getElementById('bo-nl-objective');
+            if (nlObjective) nlObjective.value = product?.objective || '';
+            const nlAdmin = document.getElementById('bo-nl-admin');
+            if (nlAdmin) nlAdmin.value = product?.admin || '';
+            const nlWarning = document.getElementById('bo-nl-warning');
+            if (nlWarning) nlWarning.value = product?.warning || '';
+
+            const translations = PRODUCT_TRANSLATIONS.fr || {};
+            const frData = product ? (translations[product.id] || {}) : {};
+
+            const frObjective = document.getElementById('bo-fr-objective');
+            if (frObjective) frObjective.value = frData.objective || '';
+            const frAdmin = document.getElementById('bo-fr-admin');
+            if (frAdmin) frAdmin.value = frData.admin || '';
+            const frWarning = document.getElementById('bo-fr-warning');
+            if (frWarning) frWarning.value = frData.warning || '';
+
+            const deleteButton = document.getElementById('bo-delete-product');
+            if (deleteButton) {
+                const canDelete = Boolean(product && product.id && MASTER_PRODUCT_DATABASE.some(p => p.id === product.id));
+                deleteButton.classList.toggle('hidden', !canDelete);
+            }
+        }
+
+        function clearProductForm() {
+            populateProductForm(null);
+        }
+
+        function showProductFeedback(message, isError = false) {
+            const feedback = document.getElementById('bo-product-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `mt-4 text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (productFeedbackTimer) {
+                clearTimeout(productFeedbackTimer);
+            }
+            productFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'mt-4 text-sm';
+            }, 3500);
+        }
+
+        function saveBackOfficeProduct() {
+            const id = (document.getElementById('bo-product-id')?.value || '').trim();
+            const name = (document.getElementById('bo-product-name')?.value || '').trim();
+            const brand = (document.getElementById('bo-product-brand')?.value || '').trim();
+            const category = document.getElementById('bo-product-category')?.value || 'Supplements';
+            const link = (document.getElementById('bo-product-link')?.value || '').trim();
+            const objective = (document.getElementById('bo-nl-objective')?.value || '').trim();
+            const admin = (document.getElementById('bo-nl-admin')?.value || '').trim();
+            const warning = (document.getElementById('bo-nl-warning')?.value || '').trim();
+            const isPurviso = Boolean(document.getElementById('bo-product-purviso')?.checked);
+            const species = getCheckedValues('bo-species-options');
+            const age = getCheckedValues('bo-age-options');
+            const need = getCheckedValues('bo-need-options');
+            const level = getCheckedValues('bo-level-options');
+
+            if (!id) {
+                showProductFeedback('L’identifiant est obligatoire.', true);
+                return;
+            }
+
+            if (!name) {
+                showProductFeedback('Le nom du produit est obligatoire.', true);
+                return;
+            }
+
+            const idExists = MASTER_PRODUCT_DATABASE.some(p => p.id === id && p.id !== selectedProductId);
+            if (idExists) {
+                showProductFeedback('Cet identifiant est déjà utilisé par un autre produit.', true);
+                return;
+            }
+
+            const productData = {
+                id,
+                name,
+                brand,
+                category,
+                isPurviso,
+                species,
+                age,
+                need,
+                level,
+                objective,
+                admin,
+                warning: warning || null,
+                tomCoUrl: link || null
+            };
+
+            const existingIndex = MASTER_PRODUCT_DATABASE.findIndex(p => p.id === selectedProductId);
+
+            if (existingIndex !== -1) {
+                MASTER_PRODUCT_DATABASE.splice(existingIndex, 1, productData);
+                if (selectedProductId && selectedProductId !== id) {
+                    const frEntries = PRODUCT_TRANSLATIONS.fr || {};
+                    if (frEntries[selectedProductId]) {
+                        frEntries[id] = frEntries[selectedProductId];
+                        delete frEntries[selectedProductId];
+                    }
+                }
+            } else {
+                MASTER_PRODUCT_DATABASE.push(productData);
+            }
+
+            selectedProductId = id;
+
+            const frObjective = (document.getElementById('bo-fr-objective')?.value || '').trim();
+            const frAdmin = (document.getElementById('bo-fr-admin')?.value || '').trim();
+            const frWarning = (document.getElementById('bo-fr-warning')?.value || '').trim();
+
+            const translationPayload = {};
+            if (frObjective) translationPayload.objective = frObjective;
+            if (frAdmin) translationPayload.admin = frAdmin;
+            if (frWarning) translationPayload.warning = frWarning;
+
+            if (Object.keys(translationPayload).length > 0) {
+                PRODUCT_TRANSLATIONS.fr[id] = translationPayload;
+            } else {
+                delete PRODUCT_TRANSLATIONS.fr[id];
+            }
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+
+            refreshPublicViews();
+            renderBackOfficeProductList();
+            populateProductForm(productData);
+            showProductFeedback('Produit enregistré avec succès.', false);
+        }
+
+        function deleteBackOfficeProduct() {
+            if (!selectedProductId) {
+                showProductFeedback('Aucun produit sélectionné.', true);
+                return;
+            }
+
+            const confirmed = window.confirm('Supprimer ce produit du catalogue ?');
+            if (!confirmed) return;
+
+            MASTER_PRODUCT_DATABASE = MASTER_PRODUCT_DATABASE.filter(p => p.id !== selectedProductId);
+            if (PRODUCT_TRANSLATIONS.fr) {
+                delete PRODUCT_TRANSLATIONS.fr[selectedProductId];
+            }
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+
+            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+            refreshPublicViews();
+            renderBackOfficeProductList();
+
+            if (selectedProductId) {
+                populateProductForm(MASTER_PRODUCT_DATABASE.find(p => p.id === selectedProductId));
+            } else {
+                clearProductForm();
+            }
+
+            showProductFeedback('Produit supprimé.', false);
+        }
+
+        function renderCriteriaTab(container) {
+            const sections = [
+                { type: 'species', title: 'Espèces disponibles', hint: 'Valeurs proposées dans le sélecteur principal.' },
+                { type: 'age', title: 'Tranches d’âge', hint: 'Ordre affiché dans la liste déroulante.' },
+                { type: 'need', title: 'Besoins principaux', hint: 'Détermine également l’ordre des sections de catalogue.' },
+                { type: 'level', title: 'Niveaux / Gravité', hint: 'Utilisé pour filtrer les recommandations.' }
+            ];
+
+            container.innerHTML = `
+                <div class="backoffice-grid">
+                    ${sections.map(section => `
+                        <div class="backoffice-panel" data-criteria="${section.type}">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h3>${section.title}</h3>
+                                <button type="button" class="btn-secondary text-sm px-3 py-2" data-add-criteria="${section.type}">Ajouter</button>
+                            </div>
+                            <div class="space-y-3" id="criteria-list-${section.type}"></div>
+                            <p class="backoffice-hint mt-2">${section.hint}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div id="criteria-feedback" class="mt-4 text-sm"></div>
+                <div class="backoffice-actions">
+                    <button type="button" class="btn-secondary" id="criteria-reset">Réinitialiser</button>
+                    <button type="button" class="btn-primary" id="criteria-save">Enregistrer</button>
+                </div>
+            `;
+
+            sections.forEach(section => renderCriteriaRows(section.type));
+
+            container.querySelectorAll('[data-add-criteria]').forEach(button => {
+                const type = button.getAttribute('data-add-criteria');
+                button.addEventListener('click', () => addCriteriaRow(type));
+            });
+
+            const saveButton = document.getElementById('criteria-save');
+            if (saveButton) {
+                saveButton.addEventListener('click', saveCriteriaChanges);
+            }
+
+            const resetButton = document.getElementById('criteria-reset');
+            if (resetButton) {
+                resetButton.addEventListener('click', resetCriteriaDefaults);
+            }
+        }
+
+        function renderCriteriaRows(type) {
+            const container = document.getElementById(`criteria-list-${type}`);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const entries = getCriteriaList(type);
+            if (!entries.length) {
+                addCriteriaRow(type);
+                return;
+            }
+
+            entries.forEach(entry => addCriteriaRow(type, entry.value, entry.labels || {}));
+        }
+
+        function addCriteriaRow(type, value = '', labels = {}) {
+            const container = document.getElementById(`criteria-list-${type}`);
+            if (!container) return;
+
+            const row = document.createElement('div');
+            row.className = 'criteria-row';
+
+            const valueLabel = document.createElement('label');
+            valueLabel.textContent = 'Valeur technique';
+            const valueInput = document.createElement('input');
+            valueInput.type = 'text';
+            valueInput.setAttribute('data-field', 'value');
+            valueInput.value = value;
+            valueInput.placeholder = 'ex : hond';
+            valueLabel.appendChild(valueInput);
+
+            const nlLabel = document.createElement('label');
+            nlLabel.textContent = 'Libellé NL';
+            const nlInput = document.createElement('input');
+            nlInput.type = 'text';
+            nlInput.setAttribute('data-field', 'label-nl');
+            nlInput.value = labels.nl || '';
+            nlInput.placeholder = 'Texte NL';
+            nlLabel.appendChild(nlInput);
+
+            const frLabel = document.createElement('label');
+            frLabel.textContent = 'Libellé FR';
+            const frInput = document.createElement('input');
+            frInput.type = 'text';
+            frInput.setAttribute('data-field', 'label-fr');
+            frInput.value = labels.fr || '';
+            frInput.placeholder = 'Texte FR';
+            frLabel.appendChild(frInput);
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.className = 'btn-danger text-sm px-3 py-2';
+            removeButton.textContent = 'Supprimer';
+            removeButton.addEventListener('click', () => {
+                row.remove();
+            });
+
+            row.appendChild(valueLabel);
+            row.appendChild(nlLabel);
+            row.appendChild(frLabel);
+            row.appendChild(removeButton);
+
+            container.appendChild(row);
+        }
+
+        function showCriteriaFeedback(message, isError = false) {
+            const feedback = document.getElementById('criteria-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `mt-4 text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (criteriaFeedbackTimer) {
+                clearTimeout(criteriaFeedbackTimer);
+            }
+            criteriaFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'mt-4 text-sm';
+            }, 3500);
+        }
+
+        function saveCriteriaChanges() {
+            const types = ['species', 'age', 'need', 'level'];
+            const updated = {};
+
+            types.forEach(type => {
+                const container = document.getElementById(`criteria-list-${type}`);
+                if (!container) return;
+
+                const rows = Array.from(container.querySelectorAll('.criteria-row'));
+                const values = [];
+
+                rows.forEach(row => {
+                    const valueInput = row.querySelector('[data-field="value"]');
+                    const nlInput = row.querySelector('[data-field="label-nl"]');
+                    const frInput = row.querySelector('[data-field="label-fr"]');
+
+                    const value = (valueInput?.value || '').trim();
+                    const nl = (nlInput?.value || '').trim();
+                    const fr = (frInput?.value || '').trim();
+
+                    if (!value) return;
+
+                    const entry = { value, labels: {} };
+                    if (nl) entry.labels.nl = nl;
+                    if (fr) entry.labels.fr = fr;
+                    values.push(entry);
+                });
+
+                updated[type] = values;
+            });
+
+            SEARCH_CRITERIA = updated;
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+            types.forEach(renderCriteriaRows);
+            refreshPublicViews();
+
+            showCriteriaFeedback('Critères mis à jour.', false);
+        }
+
+        function resetCriteriaDefaults() {
+            SEARCH_CRITERIA = deepClone(DEFAULT_SEARCH_CRITERIA);
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+            ['species', 'age', 'need', 'level'].forEach(renderCriteriaRows);
+            refreshPublicViews();
+            showCriteriaFeedback('Critères réinitialisés aux valeurs par défaut.', false);
+        }
+
+        function renderSettingsTab(container) {
+            container.innerHTML = `
+                <div class="backoffice-panel space-y-4">
+                    <h3>Export &amp; import</h3>
+                    <p class="backoffice-hint">Générez un export JSON, importez une sauvegarde ou réinitialisez complètement la base.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button type="button" class="btn-secondary" id="settings-export">Exporter</button>
+                        <button type="button" class="btn-primary" id="settings-import">Importer</button>
+                        <button type="button" class="btn-danger" id="settings-reset">Réinitialiser</button>
+                    </div>
+                    <textarea id="settings-json" class="w-full border border-gray-300 rounded-lg p-3" rows="10" placeholder="Collez ici un JSON compatible puis cliquez sur “Importer”."></textarea>
+                    <div id="settings-feedback" class="text-sm"></div>
+                </div>
+            `;
+
+            const exportButton = document.getElementById('settings-export');
+            if (exportButton) {
+                exportButton.addEventListener('click', () => {
+                    const payload = {
+                        products: MASTER_PRODUCT_DATABASE,
+                        translations: PRODUCT_TRANSLATIONS,
+                        criteria: SEARCH_CRITERIA
+                    };
+                    const textarea = document.getElementById('settings-json');
+                    if (textarea) {
+                        textarea.value = JSON.stringify(payload, null, 2);
+                        textarea.focus();
+                        textarea.select();
+                    }
+                    showSettingsFeedback('Export généré. Copiez ou téléchargez le JSON affiché.', false);
+                });
+            }
+
+            const importButton = document.getElementById('settings-import');
+            if (importButton) {
+                importButton.addEventListener('click', importBackOfficeData);
+            }
+
+            const resetButton = document.getElementById('settings-reset');
+            if (resetButton) {
+                resetButton.addEventListener('click', resetAllBackOfficeData);
+            }
+        }
+
+        function showSettingsFeedback(message, isError = false) {
+            const feedback = document.getElementById('settings-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (settingsFeedbackTimer) {
+                clearTimeout(settingsFeedbackTimer);
+            }
+            settingsFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'text-sm';
+            }, 4000);
+        }
+
+        function importBackOfficeData() {
+            const textarea = document.getElementById('settings-json');
+            if (!textarea) return;
+
+            try {
+                const parsed = JSON.parse(textarea.value || '');
+                if (!parsed || typeof parsed !== 'object') {
+                    throw new Error('Invalid data');
+                }
+
+                if (Array.isArray(parsed.products)) {
+                    MASTER_PRODUCT_DATABASE = parsed.products;
+                }
+                if (parsed.translations && typeof parsed.translations === 'object') {
+                    PRODUCT_TRANSLATIONS = parsed.translations;
+                    if (!PRODUCT_TRANSLATIONS.fr) {
+                        PRODUCT_TRANSLATIONS.fr = {};
+                    }
+                }
+                if (parsed.criteria && typeof parsed.criteria === 'object') {
+                    SEARCH_CRITERIA = parsed.criteria;
+                }
+
+                saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+                saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+                saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+                selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+                refreshPublicViews();
+                updateBackOfficeTabs();
+                renderBackOfficeContent();
+
+                showSettingsFeedback('Import réalisé avec succès.', false);
+            } catch (error) {
+                console.error('Import error', error);
+                showSettingsFeedback('Import impossible : vérifiez le JSON fourni.', true);
+            }
+        }
+
+        function resetAllBackOfficeData() {
+            const confirmed = window.confirm('Réinitialiser toutes les données (produits, traductions, critères) ?');
+            if (!confirmed) return;
+
+            MASTER_PRODUCT_DATABASE = deepClone(DEFAULT_PRODUCT_DATABASE);
+            PRODUCT_TRANSLATIONS = deepClone(DEFAULT_PRODUCT_TRANSLATIONS);
+            if (!PRODUCT_TRANSLATIONS.fr) {
+                PRODUCT_TRANSLATIONS.fr = {};
+            }
+            SEARCH_CRITERIA = deepClone(DEFAULT_SEARCH_CRITERIA);
+
+            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+            refreshPublicViews();
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+
+            showSettingsFeedback('Toutes les données ont été réinitialisées.', false);
+        }
+
         function applyLanguage() {
             const langData = getLangData();
             document.title = langData.pageTitle;
@@ -1491,6 +2739,8 @@
                     element.setAttribute('placeholder', translation);
                 }
             });
+
+            renderSearchCriteria();
         }
 
         function setLanguage(lang) {
@@ -1654,6 +2904,8 @@
             const langData = getLangData();
             const objectiveText = getLocalizedField(product, 'objective') || '';
             const truncatedObjective = objectiveText.length > 100 ? `${objectiveText.substring(0, 100)}...` : objectiveText;
+            const needLabel = getCriteriaLabel('need', product.need[0]) || langData.tagLabels[product.need[0]] || product.need[0];
+            const levelLabel = getCriteriaLabel('level', product.level[0]) || langData.tagLabels[product.level[0]] || product.level[0];
             const needLabel = langData.tagLabels[product.need[0]] || product.need[0];
             const levelLabel = langData.tagLabels[product.level[0]] || product.level[0];
 
@@ -1683,13 +2935,11 @@
             // 2. Verzamel alle unieke 'need' tags en sorteer ze op basis van de volgorde in de selectielijst
             const allNeeds = [...new Set(filteredProducts.flatMap(p => p.need))];
             
-            const orderedNeedKeys = [
-                'articulations', 'digestion', 'skin_care', 'skin_supplement', 'anxiety', 
-                'hygiene_dental', 'hygiene_eyes', 'hygiene_ears', 'wounds', 'urinary', 
-                'liver', 'recovery', 'puppy_kitten'
-            ];
-            
-            const sortedNeeds = orderedNeedKeys.filter(key => allNeeds.includes(key));
+            const orderedNeedKeys = getCriteriaList('need').map(option => option.value);
+
+            const sortedNeeds = orderedNeedKeys.filter(key => allNeeds.includes(key)).concat(
+                allNeeds.filter(key => !orderedNeedKeys.includes(key))
+            );
 
 
             let html = '';
@@ -1701,6 +2951,7 @@
                 // Overslaan als er geen producten zijn (bijvoorbeeld, 'articulations' in Soins-lijst)
                 if (productsForNeed.length === 0) return;
 
+                const needTitle = getCriteriaLabel('need', needKey) || langData.tagLabels[needKey] || needKey;
                 const needTitle = langData.tagLabels[needKey] || needKey;
                 const needId = `${category}-${needKey}`;
 
@@ -1745,6 +2996,39 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('[data-language-btn]').forEach(button => {
                 button.addEventListener('click', () => setLanguage(button.getAttribute('data-language-btn')));
+            });
+
+            const openBackofficeButton = document.getElementById('open-backoffice');
+            if (openBackofficeButton) {
+                openBackofficeButton.addEventListener('click', () => {
+                    if (isBackOfficeAuthenticated) {
+                        openBackOfficePanel(activeBackOfficeTab);
+                    } else {
+                        openBackOfficeLogin();
+                    }
+                });
+            }
+
+            const authButton = document.getElementById('backoffice-auth-btn');
+            if (authButton) {
+                authButton.addEventListener('click', handleBackOfficeAuth);
+            }
+
+            const codeInput = document.getElementById('backoffice-code');
+            if (codeInput) {
+                codeInput.addEventListener('keydown', event => {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        handleBackOfficeAuth();
+                    }
+                });
+            }
+
+            document.querySelectorAll('#backoffice-panel .backoffice-tab').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.getAttribute('data-tab');
+                    switchBackOfficeTab(tab);
+                });
             });
 
             setLanguage(currentLanguage);
