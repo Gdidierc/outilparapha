@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strategie &amp; Catalogus Paracorner Dierenarts</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        /* Configuratie van het lettertype Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght%40100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Lichtgrijze achtergrond */
+        }
+        .header-color {
+            background-color: #00594E; /* Deep Teal Primary */
+        }
+        .accent-color {
+            color: #E56A54; /* Warm Red/Orange Accent */
+        }
+        .text-log-teal { color: #00594E; }
+        .bg-log-teal { background-color: #E56A54; }
+        .text-log-orange { color: #E56A54; }
+        .bg-log-orange { background-color: #fef4f2; }
+        
+        .section-card {
+            background-color: white;
+            border-left: 5px solid #E56A54; /* Accent color border */
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+        h2 {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Accordeon-stijlen */
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s;
+        }
+        .accordion-header:hover {
+            background-color: #fef4f2;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            background-color: #ffffff;
+        }
+        .accordion-content.open {
+            max-height: 8000px; /* Grote waarde */
+            padding: 1rem;
+            transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+        }
+        .product-item {
+            border: 1px solid #f3f4f6;
+        }
+        
+        /* Selector-stijlen */
+        .selector-bg { background-color: #f7f7f7; }
+        .selector-border { border-color: #cccccc; }
+        .selector-focus:focus { 
+            border-color: #00594E; 
+            box-shadow: 0 0 0 1px #00594E; 
+        }
+        .alert-error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .alert-warning {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+
+        /* Modal-stijlen (Nieuw) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+        .modal-close-btn {
+            background-color: #f3f4f6;
+            border: none;
+            border-radius: 9999px;
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close-btn:hover {
+            background-color: #e5e7eb;
+        }
+        .modal-body-content p {
+            margin-bottom: 0.75rem;
+        }
+        .modal-body-content strong {
+            color: #00594E; /* Teal */
+        }
+    </style>
+<style>
+  /* De zoekbalk dwingen om 100% van de box in te nemen */
+  #search-modal #modal-free-text { width: 100%; display: block; }
+  #search-modal select { width: 100%; display: block; }
+</style>
+<style>
+/* Hide any compare-related UI completely */
+#modal-results-list [data-action="compare-toggle"],
+#modal-results-list input[data-action="compare-toggle"],
+#modal-results-list label:has([data-action="compare-toggle"]),
+#modal-open-compare,
+#compare-fab,
+#compare-drawer,
+.compare-toggle { display: none !important; }
+</style>
+</head>
+<body class="p-4 md:p-8">
+<header class="header-color text-white p-6 rounded-t-xl rounded-b-xl mb-8 shadow-lg">
+<h1 class="text-3xl font-extrabold mb-1">Strategie &amp; Catalogus Paracorner Dierenarts</h1>
+<p class="text-lg font-light opacity-90">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
+</header>
+<main class="space-y-12">
+<section class="section-card p-0">
+  <div class="accordion-header flex justify-between items-center text-lg font-semibold text-gray-800 rounded-t-xl" onclick="toggleAccordion('selector-content')">
+    <span class="flex items-center">
+      <span class="text-2xl mr-3">🔎</span> Zoeken &amp; Aanbeveling (inklapbaar)
+    </span>
+    <svg class="w-5 h-5 transition-transform duration-300 text-log-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </div>
+  <div id="selector-content" class="accordion-content">
+    <div class="p-6">
+      
+  <p class="text-gray-700 mb-4">
+    Selecteer de specifieke criteria van het dier. De tool <strong>geeft voorrang aan Purviso‑producten</strong> en toont andere compatibele alternatieven.
+  </p>
+  <div class="space-y-6 p-4 rounded-lg selector-bg selector-border border" id="selector-form">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="species">A. Soort</label>
+        <select id="species" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>Soort kiezen</option>
+          <option value="hond">🐶 Hond</option>
+          <option value="kat">🐱 Kat</option>
+          <option value="rongeur">🐰 Knaagdier / Klein Zoogdier</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="age">B. Leeftijdscategorie</label>
+        <select id="age" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>Leeftijd kiezen</option>
+          <option value="jeune">Jong (Groei / Puppy / Kitten)</option>
+          <option value="adulte">Volwassen (Volledige maturiteit)</option>
+          <option value="senior">Senior (Gevorderde leeftijd)</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="need">C. Wat is de hoofdbehoefte?</label>
+        <select id="need" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>Categorie kiezen</option>
+          <option value="articulations">🦴 Gewrichten</option>
+          <option value="digestion">🦠 Spijsvertering &amp; Anaalklieren</option>
+          <option value="skin_care">🧼 Huid &amp; Vacht (Verzorging)</option>
+          <option value="skin_supplement">✨ Huid &amp; Vacht (Supplement)</option>
+          <option value="anxiety">🧘 Angst &amp; Stress</option>
+          <option value="hygiene_dental">🦷 Mondhygiëne</option>
+          <option value="hygiene_eyes">👁️ Ooghygiëne</option>
+          <option value="hygiene_ears">👂 Oorhygiëne</option>
+          <option value="wounds">🩹 Wonden &amp; Pootjes</option>
+          <option value="urinary">💧 Urinaire Weg</option>
+          <option value="liver">🧡 Lever</option>
+          <option value="recovery">⏳ Herstel &amp; Vitaminen</option>
+          <option value="puppy_kitten">🐾 Puppy &amp; Kitten</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="level">D. Wat is de ernst van het probleem?</label>
+        <select id="level" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
+          <option value="" selected disabled>Ernst kiezen</option>
+          <option value="prevention">Licht / Preventie / Onderhoud</option>
+          <option value="advanced">Gevorderd / Duidelijke symptomen / Intensief</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2" for="healthNotes">E. Gezondheidsnotities (optioneel)</label>
+      <input id="healthNotes" type="text" placeholder="Bijv.: Diabetes, bekende allergie..." class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out" />
+      <p class="text-xs text-gray-500 mt-1">Als het dier een andere ernstige gezondheidskwestie heeft, <strong>adviseer altijd een dierenartsconsult</strong> vóór de verkoop van een supplement.</p>
+    </div>
+    <div id="message" role="alert" class="hidden p-3 rounded-lg text-sm font-medium mt-4"></div>
+    <button onclick="findProduct()" class="w-full py-3 mt-4 bg-[#E56A54] hover:bg-[#d35543] text-white font-semibold rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-[#E56A54] focus:ring-opacity-50">
+      Analyse en aanbeveling genereren
+    </button>
+<div class="flex gap-3 mt-3">
+  <button type="button"
+          onclick="resetSelector()"
+          class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm transition duration-150 ease-in-out">
+    Criteria resetten
+  </button>
+</div>
+
+  </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="p-6 section-card">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+    <svg class="w-6 h-6 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M5 7h14"></path>
+    </svg>
+    1. Opleidingscatalogus (Alle Supplementen)
+  </h2>
+  <p class="text-gray-700 mb-4">Volledige lijst van alle supplementen in het planogram, gegroepeerd per behoefte.</p>
+  <div id="full-supplements-accordion" class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+    </div>
+</section>
+
+<section class="p-6 section-card">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+    <svg class="w-6 h-6 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4M18 5h-4M21 3v4M10 21v-4m0 4h4m-4 0H6m11-5a5 5 0 01-5-5V6a5 5 0 015-5m-5 5a5 5 0 00-5 5v5a5 5 0 005 5m0-10a5 5 0 015 5"></path>
+    </svg>
+    2. Opleidingscatalogus (Alle Verzorgingsproducten)
+  </h2>
+  <p class="text-gray-700 mb-4">Volledige lijst van alle verzorgingsproducten in het planogram, gegroepeerd per behoefte.</p>
+  <div id="full-care-accordion" class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+    </div>
+</section>
+
+
+</main>
+<footer class="mt-12 p-4 text-center bg-white rounded-xl text-gray-600 text-sm shadow-md">
+        Intern Strategisch Document - T&amp;C Parafarmacie
+    </footer>
+<div class="modal-overlay" id="product-modal" onclick="closeProductModal()">
+<div class="modal-content relative" onclick="event.stopPropagation()">
+<button class="modal-close-btn" onclick="closeProductModal()">×</button>
+<h3 class="text-2xl font-bold text-log-teal mb-4" id="modal-title"></h3>
+<div class="modal-body-content text-gray-700" id="modal-body">
+</div>
+</div>
+</div>
+<script>
+        // --- NIEUWE CENTRALE DATABASE (vervangt ALLE oude gegevens) ---
+        
+        const MASTER_PRODUCT_DATABASE = [
+            // --- SUPPLEMENTEN ---
+            // Urinaire Weg
+            {
+                id: 'vetoquinol_calculs',
+                name: "Vetoquinol Care Gel Calculs urinaires 120 g",
+                isPurviso: false,
+                brand: "Vetoquinol",
+                category: "Supplements",
+                need: ['urinary'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'],
+                objective: "Voedingssupplement voor katten en honden die de neiging hebben om blaasstenen/kristallen in de urinewegen te ontwikkelen. Helpt bij het oplossen van urinestenen (struviet).",
+                admin: "<strong>Honden en katten.</strong> Dagelijks toedienen. In de mond of op het voer/drinkwater. <br><strong>Katten:</strong> ½ à 1 theelepel (3 à 6 g) 2 à 3 keer per dag. <br><strong>Honden:</strong> ½ à 3 theelepels 2 à 3 keer/dag. <br><strong>Duur:</strong> maximaal 6 maanden.",
+                warning: "Het is aanbevolen vóór gebruik een dierenarts te raadplegen.",
+                tomCoUrl: null
+            },
+            {
+                id: 'dermoscent_uti_zen',
+                name: "Dermoscent Uti-Zen Hond en Kat 30 tabletten",
+                isPurviso: false,
+                brand: "Dermoscent",
+                category: "Supplements",
+                need: ['urinary'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Voedingssupplement ter ondersteuning van de urinewegen. Bevat cranberry-extract. Kan worden toegediend gedurende de behandeling en helpt bij het voorkomen van terugkerende infecties.",
+                admin: "<strong>Hond en kat.</strong> Eén keer per dag toedienen. <br><strong>0-10 kg:</strong> ½ tablet/dag. <br><strong>10-20 kg:</strong> 1 tablet/dag. <br><strong>20-40 kg:</strong> 2 tabletten/dag.",
+                warning: "Een regelmatige en continue toediening wordt aanbevolen voor een optimaal resultaat.",
+                tomCoUrl: null
+            },
+            // Lever
+            {
+                id: 'epato_pate',
+                name: "Epato Pasta 2 x 15 ml",
+                isPurviso: false,
+                brand: "Epato",
+                category: "Supplements",
+                need: ['liver'],
+                level: ['advanced'],
+                species: ['kat'],
+                age: ['adulte', 'senior'],
+                objective: "Beschermt de lever en herstelt de leverfunctie bij de kat. Voor katten die lijden aan een leveraandoening of een medicamenteuze behandeling volgen.",
+                admin: "<strong>Kat.</strong> één keer per dag, mengen met het voer of rechtstreeks in de bek. <br><strong>Dosering:</strong> 1 ml per 5 kg lichaamsgewicht.",
+                warning: "Raadpleeg uw dierenarts vóór gebruik. Wij bevelen dagelijkse toediening gedurende minimaal 30 dagen aan.",
+                tomCoUrl: null
+            },
+            // Herstel en Veroudering
+            {
+                id: 'vetoquinol_energie',
+                name: "Vetoquinol Care Gel Energie 120 g",
+                isPurviso: false,
+                brand: "Vetoquinol",
+                category: "Supplements",
+                need: ['recovery'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Extra energietoevoer. Ondersteunt gedurende het herstel/ziekte, intense fysieke inspanning en groei. Helpt bij verlies van eetlust.",
+                admin: "<strong>Honden en katten, alle leeftijden.</strong> Dagelijks. <br><strong>Honden (per 10 kg):</strong> 1 eetlepel (18 g)/dag. <br><strong>Katten (per 3-5 kg):</strong> 1 theelepel (6 g)/dag.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'lysine_mp',
+                name: "Lysine MP 100 capsules",
+                isPurviso: false,
+                brand: "MP Labo",
+                category: "Supplements",
+                need: ['recovery'],
+                level: ['prevention', 'advanced'],
+                species: ['kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Voedingssupplement voor katten waarvan het immuunsysteem verzwakt is. Ondersteunt in periode van stress, ziekte of inspanning. Geschikt in geval van herpesvirus.",
+                admin: "<strong>Kat.</strong> <br><strong>Kittens:</strong> 1 à 2 capsules/dag. <br><strong>Katten:</strong> 1 à 2 capsules 's ochtends en 's avonds.",
+                warning: "Rechtstreeks toedienen of over het voer strooien.",
+                tomCoUrl: null
+            },
+            {
+                id: 'dermoscent_senior',
+                name: "Dermoscent Senior Spot-On (Alle Groottes)",
+                isPurviso: false,
+                brand: "Dermoscent",
+                category: "Supplements",
+                need: ['recovery', 'skin_supplement'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['senior'],
+                objective: "Spot-on ter ondersteuning van de huid en vacht van oudere dieren. Bevat antioxidanten, hydrateert en geeft soepelheid terug. Geeft meer vitaliteit.",
+                admin: "<strong>Kat en Hond (volgens grootte).</strong> 1 pipet per week gedurende 2 maanden, daarna 1 pipet om de 2 weken (onderhoud).",
+                warning: "Duw de vacht opzij en breng aan tussen de schouderbladen. Het dier niet wassen gedurende 48 uur.",
+                tomCoUrl: null
+            },
+            // Angst en Stress
+            {
+                id: 'purviso_relax',
+                name: "Purviso Plus Relax 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['anxiety'],
+                level: ['prevention', 'advanced'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // PPT dit "vanaf 4 maanden" mais Purviso-only data disait "adulte"
+                objective: "Kalmte en Sereniteit. Geformuleerd met α-casozepine en L-Theanine. Helpt bij het beheersen van stress (reizen, geluiden, veranderingen).",
+                admin: "<strong>Volwassen kat en hond vanaf 4 maanden.</strong> <br><strong>Dosering:</strong> 1 brok per 10 kg lichaamsgewicht.",
+                warning: "Alternatief voor Zylkène, Sativavet.",
+                tomCoUrl: null
+            },
+            {
+                id: 'zylkene_chew',
+                name: "ZYLKENE CHEW DOG (S, M, M/L)",
+                isPurviso: false,
+                brand: "Zylkene",
+                category: "Supplements",
+                need: ['anxiety'],
+                level: ['prevention', 'advanced'],
+                species: ['hond'],
+                age: ['adulte', 'senior'],
+                objective: "Kauwtabletten voor honden om stress te verminderen (vuurwerk, reizen, dierenarts, verlatingsangst, enz.). Bevat α‑casozepine.",
+                admin: "<strong>Honden.</strong> Dosering varieert volgens het gewicht (zie verpakking). <br><strong><10 kg:</strong> <5kg=1/dag, 5-10kg=2/dag. <br><strong>10-30 kg:</strong> 10-15kg=1/dag, 15-30kg=2/dag. <br><strong>15-60 kg:</strong> 15-30kg=1/dag, 30-60kg=2/dag. <br><strong>Let op:</strong> De dosering van Zylkene is officieel gebaseerd op de verpakking van het product. Dit zijn algemene richtlijnen.",
+                warning: "Begin 1 à 2 dagen voor het stressvolle moment. Alternatief als huismerk = Purviso Plus Relax.",
+                tomCoUrl: null
+            },
+            {
+                id: 'anibidiol_nature',
+                name: "Anibidiol Nature 5 hond & kat 60 capsules",
+                isPurviso: false,
+                brand: "Anibidiol",
+                category: "Supplements",
+                need: ['anxiety', 'articulations'],
+                level: ['prevention', 'advanced'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // Impliqué par le dosage
+                objective: "Voedingssupplement op basis van hennepzaadolie en CBD. Bevordert het welzijn, het gedrag en de ontspanning. Ondersteunt het zenuwstelsel en de vitaliteit.",
+                admin: "<strong>Hond en kat.</strong> Oraal, dagelijks. <br><strong>5 kg:</strong> 1 à 4 capsules/dag. <br><strong>10 kg:</strong> 1 à 8 capsules/dag. <br><strong>15 kg:</strong> 1 à 12 capsules/dag. <br><strong>20 kg:</strong> 2 à 16 capsules/dag.",
+                warning: "Geef de hele capsule of de inhoud ervan. Moet gedurende minstens 5 weken worden toegediend. <0,2 % de THC.",
+                tomCoUrl: null
+            },
+            // Multivitaminen
+            {
+                id: 'purviso_vitality',
+                name: "Purviso Plus Vitality Boost 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['recovery'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Volledige Multivitaminen. Bevordert de algemene gezondheid en versterkt het immuunsysteem. Bevat meer dan 20 vitaminen en mineralen.",
+                admin: "<strong>Volwassen kat en hond vanaf 4 maanden.</strong> <br><strong>Dosering:</strong> 1 brok per 10 kg lichaamsgewicht.",
+                warning: "Alternatief voor Optiform, Viti5.",
+                tomCoUrl: null
+            },
+            // Gewrichten
+            {
+                id: 'purviso_mobility_forte',
+                name: "Purviso Plus Mobility Forte 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['advanced'],
+                species: ['hond'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Intensieve Reparatie. Richt zich op gevorderde artrose. Bevat niet-gedenatureerd type II collageen en Boswellia Serrata.",
+                admin: "<strong>Hond vanaf 4 maanden.</strong> <br><strong>< 20kg:</strong> 1 brok/dag. <br><strong>> 20kg:</strong> 2 kauwbrokjes/dag.",
+                warning: "Alternatief voor Flexadin Advance, Seraquin Omega.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_mobility_support',
+                name: "Purviso Plus Mobility Support 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Bescherming en Souplesse. Ideaal ter preventie of bij beginnende artrose. Glucosamine, MSM en Hyaluronzuur.",
+                admin: "<strong>Hond vanaf 4 maanden.</strong> <br><strong>< 30kg:</strong> 1 brok/dag. <br><strong>> 30kg:</strong> 2 kauwbrokjes/dag.",
+                warning: "Alternatief voor Flexadin Plus, Flexadin Adult.",
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_advanced_boswellia',
+                name: "Flexadin Advanced Boswellia 60 kauwbrokjes",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['advanced'],
+                species: ['hond'],
+                age: ['adulte', 'senior'],
+                objective: "Ondersteunt de gewrichtsfunctie bij honden die lijden aan artrose en osteoartritis. Bevat UC-II® (collageen type II).",
+                admin: "<strong>Volwassen hond.</strong> 1 kauwbrok per dag (ongeacht het gewicht).",
+                warning: "Alternatief als huismerk = Purviso Plus Mobility Forte.",
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_adult_dog',
+                name: "FLEXADIN ADULT DOG 70PC",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['adulte', 'senior'],
+                objective: "Voedingssupplement voor volwassen honden en senioren (vanaf 2 jaar) bedoeld om de gewrichten te ondersteunen (preventief).",
+                admin: "<strong>Volwassen en senior hond (vanaf 2 jaar).</strong> 1 kauwbrok per dag (ongeacht het gewicht).",
+                warning: "Alternatief als huismerk = Purviso Plus Mobility Support.",
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_young_maxi',
+                name: "FLEXADIN YOUNG DOG MAXI 60PC",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['jeune'], // "6 maanden à 2 ans"
+                objective: "Voedingssupplement voor puppy's en jonge honden (6 maanden tot 2 jaar) van GROTE omvang (>10kg) bedoeld om de gewrichten te ondersteunen.",
+                admin: "<strong>puppy's en jonge honden (6 maanden tot 2 jaar) > 10kg.</strong> <br><strong>10-30 kg:</strong> 1/dag. <br><strong>>30 kg:</strong> 2/dag.",
+                warning: "Alternatief als huismerk = Purviso Plus Mobility Support.",
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_young_mini',
+                name: "FLEXADIN YOUNG DOG MINI 60PC",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['jeune'], // "6 maanden à 2 ans"
+                objective: "Voedingssupplement voor puppy's en jonge honden (6 maanden tot 2 jaar) van KLEINE omvang (<10kg) bedoeld om de gewrichten te ondersteunen.",
+                admin: "<strong>puppy's en jonge honden (6 maanden tot 2 jaar) < 10kg.</strong> <br><strong><6 kg:</strong> 1/dag. <br><strong>6-10 kg:</strong> 2/dag.",
+                warning: "Alternatief als huismerk = Purviso Plus Mobility Support.",
+                tomCoUrl: null
+            },
+            {
+                id: 'seraquin_omega_chien',
+                name: "Seraquin Omega Hond 60 tabletten",
+                isPurviso: false,
+                brand: "Seraquin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention', 'advanced'],
+                species: ['hond'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Ondersteunt de gewrichten van honden (snelgroeiende jonge dieren, sporthonden, bewezen artrose). Verrijkt met kurkuma en omega-3.",
+                admin: "<strong>Hond.</strong> <br><strong><10 kg:</strong> 1/dag. <br><strong>10-20 kg:</strong> 2/dag. <br><strong>20-40 kg:</strong> 3/dag. <br><strong>>40 kg:</strong> 4/dag.",
+                warning: "Onderhoudsdosering = de helft van de startdosis na 4-6 weken. Alternatief als huismerk = Purviso Plus Mobility Forte.",
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_advanced_chat',
+                name: "Flexadin Advanced Kat 60 kauwbrokjes",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['advanced'],
+                species: ['kat'],
+                age: ['adulte', 'senior'],
+                objective: "Ondersteunt de gewrichtsfunctie bij katten die lijden aan artrose of gewrichtsslijtage. Bevat UC-II® collageen.",
+                admin: "<strong>Kat.</strong> 1 kauwbrok per dag, ongeacht het gewicht.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'flexadin_cat',
+                name: "FLEXADIN CAT 60PC",
+                isPurviso: false,
+                brand: "Flexadin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention'],
+                species: ['kat'],
+                age: ['adulte', 'senior'],
+                objective: "Voedingssupplement voor de gewrichtssoepelheid bij katten (preventief).",
+                admin: "<strong>Kat.</strong> <br><strong>< 6 kg:</strong> 1/dag. <br><strong>> 6 kg:</strong> 2/dag.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'seraquin_omega_chat',
+                name: "Seraquin Omega Kat 60 tabletten",
+                isPurviso: false,
+                brand: "Seraquin",
+                category: "Supplements",
+                need: ['articulations'],
+                level: ['prevention', 'advanced'],
+                species: ['kat'],
+                age: ['adulte', 'senior'],
+                objective: "Ondersteunt de gewrichten van katten (preventief of bewezen artrose). Verrijkt met kurkuma en omega-3.",
+                admin: "<strong>Kat.</strong> <br><strong>Tot 5 kg:</strong> 2/dag. <br><strong>5-7,5 kg:</strong> 3/dag. <br><strong>7,5-10 kg:</strong> 4/dag.",
+                warning: "Onderhoudsdosering = de helft van de startdosis na 4-6 weken.",
+                tomCoUrl: null
+            },
+            // Spijsvertering
+            {
+                id: 'purviso_digestive_comfort',
+                name: "Purviso Plus Digestive Comfort (poeder)",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['digestion'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Globaal Evenwicht van het Microbiota. Poeder (pre-, pro-, postbiotica). Helpt de transit te reguleren en vermindert haarballen bij de kat.",
+                admin: "<strong>Volwassen katten en honden vanaf 4 maanden.</strong> 1 maatlepel per 10 kg lichaamsgewicht. Minimaal 14 dagen geven.",
+                warning: "Alternatief voor Purina Fortiflora, Canikur Pro.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_pro_flora',
+                name: "Purviso Plus Pro Flora 60 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['digestion'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Aanvullend diervoeder voor honden dat de spijsvertering en de darmflora ondersteunt. Pro-, pro- en postbiotica herstellen de darmflora. Ondersteunt de spijsvertering. Geen kunstmatige kleuren of smaken. Alternatief voor Purina Fortiflora, Canikur Pro ",
+                admin: "<strong>Volwassen katten en honden vanaf 4 maanden.</strong> 1 brok per 10 kg lichaamsgewicht. Minimaal 5 dagen geven. Vereist geen water.",
+                warning: null, 
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_anal_glands',
+                name: "Purviso Plus Anal Glands 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['digestion'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Ondersteuning Anale Klieren. Pompoenvezels, spijsverteringsenzymen en prebiotica. Helpt de anale klieren op natuurlijke wijze te legen.",
+                admin: "<strong>Hond vanaf 4 maanden.</strong> <br><strong>< 10 kg:</strong> 1/dag. <br><strong>> 10 kg:</strong> 2/dag.",
+                warning: "Alternatief voor Glandex, Vet-Comfort Glandes Anal.",
+                tomCoUrl: null
+            },
+            {
+                id: 'fortiflora_chat',
+                name: "FortiFlora Kat (30 zakjes)",
+                isPurviso: false,
+                brand: "Purina",
+                category: "Supplements",
+                need: ['digestion'],
+                level: ['prevention', 'advanced'],
+                species: ['kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Probiotisch supplement voor katten. Helpt bij het beheersen van diarree en stress. Versterkt het immuunsysteem.",
+                admin: "<strong>Kat.</strong> 1 zakje per dag. Strooien over het voer.",
+                warning: "Alternatief als huismerk = Purviso Plus Digestive Comfort (poeder).",
+                tomCoUrl: null
+            },
+            {
+                id: 'fortiflora_chien',
+                name: "FortiFlora Hond (30 zakjes)",
+                isPurviso: false,
+                brand: "Purina",
+                category: "Supplements",
+                need: ['digestion'],
+                level: ['prevention', 'advanced'],
+                species: ['hond'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Probiotisch supplement voor honden. Helpt bij het beheersen van diarree en stress. Versterkt het immuunsysteem.",
+                admin: "<strong>Hond.</strong> 1 zakje per dag. Strooien over het voer.",
+                warning: "Alternatief als huismerk = Purviso Plus Digestive Comfort (poeder).",
+                tomCoUrl: null
+            },
+            // Huid en Vacht (Supplementen)
+            {
+                id: 'purviso_skin_hair',
+                name: "Purviso Plus Skin & Hair 90 kauwbrokjes",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Supplements",
+                need: ['skin_supplement'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['adulte', 'senior'], // "vanaf 4 maanden"
+                objective: "Glanzende Vacht en Vermindering van de Rul. Geconcentreerde Omega 3 & 6 (lijnzaad-, teunisbloemolie). Helpt bij een droge huid en jeuk.",
+                admin: "<strong>Volwassen kat en hond vanaf 4 maanden.</strong> <br><strong>Dosering:</strong> 1 brok per 10 kg lichaamsgewicht.",
+                warning: "Alternatief voor Megaderm, Dermoscent Essential 6.",
+                tomCoUrl: null
+            },
+            {
+                id: 'dermoscent_essential_6',
+                name: "Dermoscent Essential 6 Spot-On",
+                isPurviso: false,
+                brand: "Dermoscent",
+                category: "Supplements",
+                need: ['skin_supplement'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Wekelijkse Spot-on rijk aan essentiële vetzuren. Herstelt de barrièrefunctie van de huid, vermindert haaruitval en bestrijdt slechte geuren.",
+                admin: "<strong>Kat en Hond (volgens grootte).</strong> 1 pipet per week gedurende 2 maanden (start), daarna 1 pipet om de 2 weken (onderhoud).",
+                warning: "Het dier niet wassen gedurende 48 uur. Alternatief als huismerk = Purviso Plus Skin & Hair.",
+                tomCoUrl: null
+            },
+            {
+                id: 'epato_omega',
+                name: "Epato Plus Omega 3 & 6",
+                isPurviso: false,
+                brand: "Epato",
+                category: "Supplements",
+                need: ['skin_supplement'],
+                level: ['prevention', 'advanced'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Supplement van visoliën (Omega 3 & 6) ter ondersteuning van de huid, de vacht en het immuunsysteem.",
+                admin: "<strong>Kat en Hond (volgens gewicht).</strong> Zie de dosering op de verpakking.",
+                warning: null,
+                tomCoUrl: null
+            },
+            // Puppy en Kitten
+            {
+                id: 'kitty_stim',
+                name: "Kitty Stim 15 ml",
+                isPurviso: false,
+                brand: "Kitty Stim",
+                category: "Supplements",
+                need: ['puppy_kitten', 'recovery'],
+                level: ['advanced'],
+                species: ['kat'],
+                age: ['jeune'],
+                objective: "Groeipasta voor kittens (vanaf 2 dagen). Stimuleert de eetlust, vitaliteit en weerstand. Voor zwakke kittens of kittens in moeilijkheden.",
+                admin: "<strong>Kitten (vanaf 2 dagen).</strong> 0,1 ml per dag gedurende 5 dagen, daarna 0,1 ml per week tot 6 weken.",
+                warning: "Raadpleeg uw dierenarts in geval van langdurige zwakte.",
+                tomCoUrl: null
+            },
+            {
+                id: 'puppy_stim',
+                name: "Puppy Stim 15 ml",
+                isPurviso: false,
+                brand: "Puppy Stim",
+                category: "Supplements",
+                need: ['puppy_kitten', 'recovery'],
+                level: ['advanced'],
+                species: ['hond'],
+                age: ['jeune'],
+                objective: "Groeipasta voor puppy's (vanaf 2 dagen). Stimuleert de eetlust, vitaliteit en weerstand. Voor zwakke puppy's of puppy's in moeilijkheden.",
+                admin: "<strong>Puppy (vanaf 2 dagen).</strong> 0,1 ml per dag gedurende 5 dagen, daarna 0,1 ml per week tot 6 weken.",
+                warning: "Raadpleeg uw dierenarts in geval van langdurige zwakte.",
+                tomCoUrl: null
+            },
+            // --- VERZORGINGSPRODUCTEN ---
+            // Mondhygiëne
+            {
+                id: 'purviso_dental_spray',
+                name: "Purviso Care Dental Spray",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['hygiene_dental'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Frisse Adem en Anti-Plaque. Neutraliseert slechte adem en voorkomt tandsteen. Bevat munt en peterselie.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong>",
+                warning: "Alternatief voor Vet-Aquadent, Proden Plaque Off.",
+                tomCoUrl: null
+            },
+            {
+                id: 'virbac_logic',
+                name: "Virbac Logic Diétal (Klein en Groot)",
+                isPurviso: false,
+                brand: "Virbac",
+                category: "Soins",
+                need: ['hygiene_dental'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Dagelijks tandpoeder om door het voer te mengen. Vermindert tandsteen, bestrijdt tandplak en verfrist de adem.",
+                admin: "<strong>Hond en kat (volgens grootte).</strong> 1 à 4 maatlepels per dag.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'plaqtiv_wipes',
+                name: "Plaqtiv Wipes 50 stuks",
+                isPurviso: false,
+                brand: "Plaqtiv",
+                category: "Soins",
+                need: ['hygiene_dental'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Tanddoekjes voor een gemakkelijke reiniging van de tanden en het tandvlees. Helpt gingivitis te voorkomen. Verwijdert tandplak.",
+                admin: "<strong>Honden en katten.</strong> Wrijf dagelijks over de tanden en het tandvlees. Gebruik elke dag een nieuw doekje.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'plaqtiv_spray',
+                name: "Plaqtiv Spray buccal voor honden 60 ml",
+                isPurviso: false,
+                brand: "Plaqtiv",
+                category: "Soins",
+                need: ['hygiene_dental'],
+                level: ['prevention'],
+                species: ['hond'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Spray voor de mondhygiëne van honden. Vermindert tandplak en verfrist de adem. Goede aanvulling als poetsen onmogelijk is.",
+                admin: "<strong>Hond.</strong> Dagelijks verstuiven (2x aan elke kant) direct op de tanden en het tandvlees.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'orozyme_dentifrice',
+                name: "Orozyme Enzymatische tandpasta 70 g",
+                isPurviso: false,
+                brand: "Orozyme",
+                category: "Supplements", // Classification erronée, devrait être 'Soins' maar maintenu 'Supplements' voor ne pas rompre la structure 'category'
+                need: ['hygiene_dental'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Smakelijke tandpasta (hypoallergeen) voor gezonde tanden en tandvlees. Enzymatisch complex voorkomt tandplak, tandsteen en slechte adem.",
+                admin: "<strong>Honden en katten.</strong> Poets de tanden dagelijks. <br><strong><20 kg en katten:</strong> 1 cm pasta. <br><strong>> 20 kg:</strong> 2 cm pasta.",
+                warning: "Mag veilig worden ingeslikt. Niet naspoelen.",
+                tomCoUrl: null
+            },
+            // Oog
+            {
+                id: 'ocryl_oplossing',
+                name: "OCRYL OPLOSSING 135 ML",
+                isPurviso: false,
+                brand: "Ocryl",
+                category: "Soins",
+                need: ['hygiene_eyes'],
+                level: ['prevention'],
+                species: ['hond', 'kat', 'rongeur'], // + paarden, reptielen
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Zachte reinigingsoplossing (pH identiek aan tranen) voor de ogen en oogleden. Verwijdert stof, korstjes en sporen van tranen.",
+                admin: "<strong>Honden, katten, paarden, knaagdieren, reptielen.</strong> Rechtstreeks in het oog of op een kompres aanbrengen.",
+                warning: "Geschikt om het oog voor te bereiden vóór het aanbrengen van druppels.",
+                tomCoUrl: null
+            },
+            {
+                id: 'otostan_oplossing',
+                name: "Otostan Oplossing 100 ml",
+                isPurviso: false,
+                brand: "Otostan",
+                category: "Soins",
+                need: ['hygiene_ears'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Milde oplossing voor het regelmatig reinigen van de oren en het oplossen van oorsmeer. Helpt bij de preventie van oorontsteking.",
+                admin: "<strong>Hond en kat.</strong> Aanbrengen 1 à 2 keer per week. Masseer de basis van het oor. Kan de huid voorbereiden op een lokale behandeling.",
+                warning: null,
+                tomCoUrl: null
+            },
+            {
+                id: 'epi_otic_solution',
+                name: "Epi-Otic Solution 125 ml",
+                isPurviso: false,
+                brand: "Virbac",
+                category: "Soins",
+                need: ['hygiene_ears'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Krachtige oplossing voor het reinigen van de gehoorgang. Helpt bij de behandeling van oorontsteking. Verwijdert oorsmeer, korstjes, vuil en geuren.",
+                admin: "<strong>Hond en kat.</strong> Aanbrengen 1 à 2 keer per dag gedurende 2 weken. Onderhoudsdosis: 1 keer per week. Na 1 minuut inmasseren, verwijder de oplossing met een droge doek. Vermijd contact met de ogen.",
+                warning: null,
+                tomCoUrl: null
+            },
+            // Huid en Vacht (Verzorging)
+            {
+                id: 'purviso_ear_cleanser',
+                name: "Purviso Care Ear Cleanser 100 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['hygiene_ears'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Milde Oorreiniger. Oplossing voor het regelmatig reinigen van de oren en het oplossen van oorsmeer. Helpt bij de preventie van oorontsteking.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Aanbrengen 1 à 2 keer per week.",
+                warning: "Alternatief voor Otostan, Virbac Epi-Otic.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_eye_cleanser',
+                name: "Purviso Care Eye Cleanser 100 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['hygiene_eyes'],
+                level: ['prevention'],
+                species: ['hond', 'kat', 'rongeur'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Milde Oogreiniger. Reinigende oplossing voor de ogen en de oogleden. Verwijdert stof en sporen van tranen. Zachte formule (pH neutraal).",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Aanbrengen op een kompres. Kan dagelijks worden gebruikt.",
+                warning: "Alternatief voor Ocryl.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_calm_shampoo',
+                name: "Purviso Care Calm Shampoo 200 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['skin_care'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Milde Verzachtende Shampoo. Helpt bij droge huid, roodheid en irritatie. Bevat havermout en aloë vera. Hydrateert en kalmeert.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Masseer en laat 5 minuten inwerken. Spoel grondig.",
+                warning: "Alternatief voor Allermyl, Sebocalm.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_universal_shampoo',
+                name: "Purviso Care Universal Shampoo 200 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['skin_care'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Milde Dagelijkse Shampoo. Voor frequent wassen en glanzende vacht. Bevat arganolie en provitamine B5. Voor een zachte en glanzende vacht.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Masseer en spoel direct. Kan regelmatig gebruikt worden.",
+                warning: "Alternatief voor Virbac Allermyl, Dermoscent Atop 7.",
+                tomCoUrl: null
+            },
+            {
+                id: 'dermoscent_pipi_stop',
+                name: "Dermoscent Pipi Stop Spray 100 ml",
+                isPurviso: false,
+                brand: "Dermoscent",
+                category: "Soins",
+                need: ['hygiene_ears'], // Mismatch - this is Pipi Stop, not ears
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'],
+                objective: "Reinigings-/Ontgeuringsmiddel voor huisdierenurine. Elimineert geuren en voorkomt herhaaldelijk urineren op dezelfde plaats. (Niet op het dier gebruiken).",
+                admin: "<strong>Hond en kat.</strong> Verstuif op de te reinigen plek. Laat drogen. Veeg indien nodig af.",
+                warning: null,
+                tomCoUrl: null
+            },
+            // Wonden en Pootjes
+            {
+                id: 'purviso_wound_gel',
+                name: "Purviso Care Wound Gel 50 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['wounds'],
+                level: ['advanced'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Herstellende Wondgel. Helpt bij de genezing van oppervlakkige wonden. Beschermt tegen bacteriën. Bevat hyaluronzuur en zink.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Aanbrengen 2 keer per dag op de gereinigde wond.",
+                warning: "Alternatief voor Flamigel, Dermiel.",
+                tomCoUrl: null
+            },
+            {
+                id: 'purviso_paw_cream',
+                name: "Purviso Care Paw Cream 50 ml",
+                isPurviso: true,
+                brand: "Purviso",
+                category: "Soins",
+                need: ['wounds'],
+                level: ['prevention'],
+                species: ['hond', 'kat'],
+                age: ['jeune', 'adulte', 'senior'], // "vanaf 3 maanden"
+                objective: "Beschermende Pootjescrème. Hydrateert en beschermt kussentjes tegen hitte, ijs of zout. Helpt kloven te genezen.",
+                admin: "<strong>Hond en kat vanaf 3 maanden.</strong> Masseer op de kussentjes voor het wandelen of bij irritatie.",
+                warning: "Alternatief voor Dermoscent Podo-Care.",
+                tomCoUrl: null
+            },
+        ];
+
+        // --- FUNCITES IN HET NEDERLANDS ---
+
+        const PRODUCT_MESSAGES = {
+            error_species: "Selecteer eerst een <strong>Soort</strong> (A).",
+            error_age: "Selecteer de <strong>Leeftijdscategorie</strong> (B).",
+            error_need: "Selecteer de <strong>Hoofdbehoefte</strong> (C).",
+            error_level: "Selecteer de <strong>Ernst van het probleem</strong> (D).",
+            no_product: "Er is geen product gevonden dat perfect overeenkomt met de geselecteerde criteria.",
+            recommendation_intro: "Op basis van uw selectie wordt het volgende aanbevolen:",
+            alternative_intro: "Andere compatibele alternatieven:",
+            purviso_priority: "<strong>Purviso Huismerk (Prioriteit)</strong>",
+            other_alternative: "<strong>Ander Compatibel Product</strong>",
+            notes_warning: "Opmerking: Het veld 'Gezondheidsnotities' is niet verwerkt door de selector, maar is een herinnering om <strong>altijd een dierenarts te raadplegen</strong> in geval van ernstige klachten.",
+            admin: "<strong>Gebruik/Toediening:</strong>",
+            warning: "<strong>Waarschuwing:</strong>",
+            objective: "<strong>Doel:</strong>"
+        };
+        
+        // Vertalingen voor dropdowns
+        const TRANSLATIONS = {
+            'jeune': 'Jong (Groei / Puppy / Kitten)',
+            'adulte': 'Volwassen (Volledige maturiteit)',
+            'senior': 'Senior (Gevorderde leeftijd)',
+            'articulations': '🦴 Gewrichten',
+            'digestion': '🦠 Spijsvertering & Anaalklieren',
+            'skin_care': '🧼 Huid & Vacht (Verzorging)',
+            'skin_supplement': '✨ Huid & Vacht (Supplement)',
+            'anxiety': '🧘 Angst & Stress',
+            'hygiene_dental': '🦷 Mondhygiëne',
+            'hygiene_eyes': '👁️ Ooghygiëne',
+            'hygiene_ears': '👂 Oorhygiëne',
+            'wounds': '🩹 Wonden & Pootjes',
+            'urinary': '💧 Urinaire Weg',
+            'liver': '🧡 Lever',
+            'recovery': '⏳ Herstel & Vitaminen',
+            'puppy_kitten': '🐾 Puppy & Kitten',
+            'prevention': 'Licht / Preventie / Onderhoud',
+            'advanced': 'Gevorderd / Duidelijke symptomen / Intensief',
+            'hond': 'Hond',
+            'kat': 'Kat',
+            'rongeur': 'Knaagdier / Klein Zoogdier'
+        };
+
+        
+        // Functie voor de accordion
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('svg');
+
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('rotate-90');
+            } else {
+                content.classList.add('open');
+                icon.classList.add('rotate-90');
+            }
+        }
+        
+        // Functie om de selector te resetten
+        function resetSelector() {
+            document.getElementById('species').value = "";
+            document.getElementById('age').value = "";
+            document.getElementById('need').value = "";
+            document.getElementById('level').value = "";
+            document.getElementById('healthNotes').value = "";
+            document.getElementById('message').classList.add('hidden');
+            document.getElementById('message').innerHTML = "";
+        }
+        
+        // Functie om de popup te sluiten
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.remove('open');
+        }
+
+        // Functie om een product te tonen in de popup
+        function openProductModal(product) {
+            document.getElementById('modal-title').textContent = product.name;
+            const body = document.getElementById('modal-body');
+            body.innerHTML = ''; // Leeg de inhoud
+
+            // Doel
+            let objective = `<p><strong>${PRODUCT_MESSAGES.objective}</strong> ${product.objective}</p>`;
+            // Gebruik/Toediening
+            let admin = `<p><strong>${PRODUCT_MESSAGES.admin}</strong> ${product.admin}</p>`;
+            // Waarschuwing
+            let warning = product.warning ? `<p class="alert-warning p-2 rounded-lg mt-3"><strong>${PRODUCT_MESSAGES.warning}</strong> ${product.warning}</p>` : '';
+            // Merk/Status
+            let status = `<p class="mt-4 text-sm text-gray-500">Merk: <strong>${product.brand}</strong> | Categorie: ${product.category} | ${product.isPurviso ? 'Huismerk (Prioriteit)' : 'Extern Merk'}</p>`;
+            
+            body.innerHTML = objective + admin + warning + status;
+
+            document.getElementById('product-modal').classList.add('open');
+        }
+        
+        // Functie voor de selector (de kernlogica)
+        function findProduct() {
+            const species = document.getElementById('species').value;
+            const age = document.getElementById('age').value;
+            const need = document.getElementById('need').value;
+            const level = document.getElementById('level').value;
+            const healthNotes = document.getElementById('healthNotes').value;
+            const messageDiv = document.getElementById('message');
+
+            messageDiv.classList.remove('hidden', 'alert-error', 'alert-success', 'alert-warning');
+            messageDiv.innerHTML = '';
+            
+            // Valideren van de ingevoerde gegevens
+            if (!species) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_species, 'alert-error');
+            if (!age) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_age, 'alert-error');
+            if (!need) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_need, 'alert-error');
+            if (!level) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_level, 'alert-error');
+
+            // 1. Zoek naar het Purviso huismerkproduct
+            let recommendedProduct = MASTER_PRODUCT_DATABASE.find(p => 
+                p.isPurviso && 
+                p.species.includes(species) &&
+                p.age.includes(age) &&
+                p.need.includes(need) &&
+                p.level.includes(level)
+            );
+
+            // 2. Zoek naar alternatieve compatibele producten
+            let alternatives = MASTER_PRODUCT_DATABASE.filter(p => 
+                !p.isPurviso && 
+                p.species.includes(species) &&
+                p.age.includes(age) &&
+                p.need.includes(need) &&
+                p.level.includes(level)
+            );
+
+            // Verwijder het aanbevolen product uit de alternatieven als ze identiek zijn (niet nodig hier, maar goede gewoonte)
+            if (recommendedProduct) {
+                 alternatives = alternatives.filter(p => p.id !== recommendedProduct.id);
+            }
+
+            // 3. Toon de resultaten
+            let html = `<strong>${PRODUCT_MESSAGES.recommendation_intro}</strong><br>`;
+            
+            if (recommendedProduct) {
+                html += renderProduct(recommendedProduct, PRODUCT_MESSAGES.purviso_priority);
+            } else if (alternatives.length > 0) {
+                // Als er geen Purviso is, maar wel een alternatief, toon het beste alternatief als 'aanbevolen'
+                recommendedProduct = alternatives.shift(); // Haal het eerste alternatief eruit
+                html += renderProduct(recommendedProduct, PRODUCT_MESSAGES.other_alternative);
+            } else {
+                return displayMessage(messageDiv, PRODUCT_MESSAGES.no_product, 'alert-warning');
+            }
+
+            // Toon resterende alternatieven
+            if (alternatives.length > 0) {
+                html += `<h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">${PRODUCT_MESSAGES.alternative_intro}</h4>`;
+                alternatives.forEach(alt => {
+                    html += renderProduct(alt, PRODUCT_MESSAGES.other_alternative);
+                });
+            }
+            
+            // Voeg notitie over gezondheidsnotities toe indien ingevoerd
+            if (healthNotes.trim() !== '') {
+                html += `<p class="alert-warning p-2 rounded-lg text-sm mt-4">${PRODUCT_MESSAGES.notes_warning}</p>`;
+            }
+
+            displayMessage(messageDiv, html, 'alert-success');
+        }
+
+        // Hulpmiddelen voor weergave
+        function displayMessage(div, message, type) {
+            div.innerHTML = message;
+            div.classList.add(type);
+            div.classList.remove('hidden');
+        }
+
+        function renderProduct(product, tag) {
+            return `
+                <div class="product-item p-4 mt-3 rounded-lg shadow-sm bg-white cursor-pointer hover:bg-gray-50 transition duration-150" onclick="openProductModal(MASTER_PRODUCT_DATABASE.find(p => p.id === '${product.id}'))">
+                    <p class="text-sm text-log-teal font-medium mb-1">${tag}</p>
+                    <h3 class="text-base font-bold text-gray-900">${product.name}</h3>
+                    <p class="text-sm text-gray-600 truncate">${product.objective.substring(0, 100)}...</p>
+                    <div class="flex flex-wrap gap-2 mt-2 text-xs">
+                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${TRANSLATIONS[product.need[0]]}</span>
+                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${TRANSLATIONS[product.level[0]]}</span>
+                        <span class="bg-log-orange text-white px-2 py-1 rounded-full">${product.brand}</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Nieuwe functie om de volledige catalogi per BEHOEFTE te vullen
+        function fillCatalog(containerId, category) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // 1. Haal de producten op voor de specifieke categorie (Supplements of Soins)
+            const filteredProducts = MASTER_PRODUCT_DATABASE.filter(p => p.category === category);
+
+            // 2. Verzamel alle unieke 'need' tags en sorteer ze op basis van de volgorde in de selectielijst
+            const allNeeds = [...new Set(filteredProducts.flatMap(p => p.need))];
+            
+            const orderedNeedKeys = [
+                'articulations', 'digestion', 'skin_care', 'skin_supplement', 'anxiety', 
+                'hygiene_dental', 'hygiene_eyes', 'hygiene_ears', 'wounds', 'urinary', 
+                'liver', 'recovery', 'puppy_kitten'
+            ];
+            
+            const sortedNeeds = orderedNeedKeys.filter(key => allNeeds.includes(key));
+
+
+            let html = '';
+            
+            sortedNeeds.forEach(needKey => {
+                // Groeperen per behoefte
+                const productsForNeed = filteredProducts.filter(p => p.need.includes(needKey));
+                
+                // Overslaan als er geen producten zijn (bijvoorbeeld, 'articulations' in Soins-lijst)
+                if (productsForNeed.length === 0) return;
+
+                const needTitle = TRANSLATIONS[needKey] || needKey;
+                const needId = `${category}-${needKey}`;
+                
+                let productList = productsForNeed.map(p => {
+                    const statusTag = p.isPurviso ? 
+                        '<span class="bg-[#fef4f2] text-log-teal text-xs font-semibold px-2 py-1 rounded-full">Huismerk</span>' :
+                        `<span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded-full">${p.brand}</span>`;
+                        
+                    return `
+                        <div class="flex justify-between items-center product-item p-3 cursor-pointer hover:bg-gray-50 transition duration-150" onclick="openProductModal(MASTER_PRODUCT_DATABASE.find(prod => prod.id === '${p.id}'))">
+                            <div class="flex-1 min-w-0 pr-4">
+                                <p class="text-gray-900 font-medium">${p.name}</p>
+                                <p class="text-xs text-gray-500 truncate">${p.objective}</p>
+                            </div>
+                            ${statusTag}
+                        </div>
+                    `;
+                }).join('');
+
+                html += `
+                    <div>
+                        <div class="accordion-header flex justify-between items-center text-lg font-semibold text-gray-800 border-t" onclick="toggleAccordion('${needId}')">
+                            <span class="flex items-center">
+                                ${needTitle} (${productsForNeed.length} producten)
+                            </span>
+                            <svg class="w-4 h-4 transition-transform duration-300 text-log-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <div id="${needId}" class="accordion-content">
+                            ${productList}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Vul de catalogi bij het laden van de pagina
+        document.addEventListener('DOMContentLoaded', () => {
+            // Vul de supplementen in (gegroepeerd op "need")
+            fillCatalog('full-supplements-accordion', 'Supplements');
+            
+            // Vul de verzorgingsproducten in (gegroepeerd op "need")
+            fillCatalog('full-care-accordion', 'Soins');
+        });
+
+    </script>
+</body>
+</html>
