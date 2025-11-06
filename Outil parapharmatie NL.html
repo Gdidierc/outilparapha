@@ -715,7 +715,8 @@
                     return;
                 }
 
-                const defaultLabels = defaultList.find(entry => entry.value === value)?.labels || {};
+                const defaultEntry = defaultList.find(entry => entry.value === value);
+                const defaultLabels = defaultEntry && defaultEntry.labels ? defaultEntry.labels : {};
                 const labels = (item.labels && typeof item.labels === 'object') ? { ...item.labels } : {};
 
                 if (!labels.nl && defaultLabels.nl) {
@@ -1957,7 +1958,8 @@
 
         function getLocalizedField(product, field) {
             if (!product) return '';
-            const baseValue = product[field] ?? '';
+            const hasField = product && Object.prototype.hasOwnProperty.call(product, field);
+            const baseValue = hasField && product[field] != null ? product[field] : '';
             if (currentLanguage === 'nl') {
                 return baseValue;
             }
@@ -1980,7 +1982,18 @@
         function getCriteriaLabel(type, value) {
             const option = getCriteriaList(type).find(item => item.value === value);
             if (!option) return null;
-            return option.labels?.[currentLanguage] || option.labels?.nl || value;
+            const labels = option.labels && typeof option.labels === 'object' ? option.labels : {};
+            return labels[currentLanguage] || labels.nl || value;
+        }
+
+        function getElementValue(id) {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        }
+
+        function getElementChecked(id) {
+            const element = document.getElementById(id);
+            return element ? element.checked : false;
         }
 
         function configureSelect(selectId, type, placeholderKey) {
@@ -1988,7 +2001,7 @@
             if (!select) return;
             const previousValue = select.value;
             const langData = getLangData();
-            const placeholderText = langData?.texts?.[placeholderKey] || '';
+            const placeholderText = (langData && langData.texts && langData.texts[placeholderKey]) ? langData.texts[placeholderKey] : '';
 
             select.innerHTML = '';
 
@@ -2002,7 +2015,8 @@
             getCriteriaList(type).forEach(option => {
                 const opt = document.createElement('option');
                 opt.value = option.value;
-                opt.textContent = option.labels?.[currentLanguage] || option.labels?.nl || option.value;
+                const labels = option.labels && typeof option.labels === 'object' ? option.labels : {};
+                opt.textContent = labels[currentLanguage] || labels.nl || option.value;
                 select.appendChild(opt);
             });
 
@@ -2312,8 +2326,9 @@
             getCriteriaList(type).forEach(option => {
                 const label = document.createElement('label');
                 label.className = 'backoffice-chip';
-                if (option.labels?.fr) {
-                    label.title = `${option.labels?.nl || option.value} / ${option.labels.fr}`;
+                const optionLabels = option.labels && typeof option.labels === 'object' ? option.labels : {};
+                if (optionLabels.fr) {
+                    label.title = `${optionLabels.nl || option.value} / ${optionLabels.fr}`;
                 }
                 const input = document.createElement('input');
                 input.type = 'checkbox';
@@ -2322,7 +2337,7 @@
                 label.appendChild(input);
 
                 const text = document.createElement('span');
-                text.textContent = option.labels?.nl || option.value;
+                text.textContent = optionLabels.nl || option.value;
                 label.appendChild(text);
 
                 container.appendChild(label);
@@ -2358,36 +2373,38 @@
             const idInput = document.getElementById('bo-product-id');
             if (!idInput) return;
 
-            idInput.value = product?.id || '';
+            const safeProduct = product || {};
+
+            idInput.value = safeProduct.id || '';
             const nameInput = document.getElementById('bo-product-name');
-            if (nameInput) nameInput.value = product?.name || '';
+            if (nameInput) nameInput.value = safeProduct.name || '';
 
             const brandInput = document.getElementById('bo-product-brand');
-            if (brandInput) brandInput.value = product?.brand || '';
+            if (brandInput) brandInput.value = safeProduct.brand || '';
 
             const categorySelect = document.getElementById('bo-product-category');
-            if (categorySelect) categorySelect.value = product?.category || 'Supplements';
+            if (categorySelect) categorySelect.value = safeProduct.category || 'Supplements';
 
             const linkInput = document.getElementById('bo-product-link');
-            if (linkInput) linkInput.value = product?.tomCoUrl || '';
+            if (linkInput) linkInput.value = safeProduct.tomCoUrl || '';
 
             const purvisoCheckbox = document.getElementById('bo-product-purviso');
-            if (purvisoCheckbox) purvisoCheckbox.checked = Boolean(product?.isPurviso);
+            if (purvisoCheckbox) purvisoCheckbox.checked = Boolean(safeProduct.isPurviso);
 
-            buildChipGroup('bo-species-options', 'species', product?.species || []);
-            buildChipGroup('bo-age-options', 'age', product?.age || []);
-            buildChipGroup('bo-need-options', 'need', product?.need || []);
-            buildChipGroup('bo-level-options', 'level', product?.level || []);
+            buildChipGroup('bo-species-options', 'species', safeProduct.species || []);
+            buildChipGroup('bo-age-options', 'age', safeProduct.age || []);
+            buildChipGroup('bo-need-options', 'need', safeProduct.need || []);
+            buildChipGroup('bo-level-options', 'level', safeProduct.level || []);
 
             const nlObjective = document.getElementById('bo-nl-objective');
-            if (nlObjective) nlObjective.value = product?.objective || '';
+            if (nlObjective) nlObjective.value = safeProduct.objective || '';
             const nlAdmin = document.getElementById('bo-nl-admin');
-            if (nlAdmin) nlAdmin.value = product?.admin || '';
+            if (nlAdmin) nlAdmin.value = safeProduct.admin || '';
             const nlWarning = document.getElementById('bo-nl-warning');
-            if (nlWarning) nlWarning.value = product?.warning || '';
+            if (nlWarning) nlWarning.value = safeProduct.warning || '';
 
             const translations = PRODUCT_TRANSLATIONS.fr || {};
-            const frData = product ? (translations[product.id] || {}) : {};
+            const frData = safeProduct.id && translations[safeProduct.id] ? translations[safeProduct.id] : {};
 
             const frObjective = document.getElementById('bo-fr-objective');
             if (frObjective) frObjective.value = frData.objective || '';
@@ -2422,15 +2439,16 @@
         }
 
         function saveBackOfficeProduct() {
-            const id = (document.getElementById('bo-product-id')?.value || '').trim();
-            const name = (document.getElementById('bo-product-name')?.value || '').trim();
-            const brand = (document.getElementById('bo-product-brand')?.value || '').trim();
-            const category = document.getElementById('bo-product-category')?.value || 'Supplements';
-            const link = (document.getElementById('bo-product-link')?.value || '').trim();
-            const objective = (document.getElementById('bo-nl-objective')?.value || '').trim();
-            const admin = (document.getElementById('bo-nl-admin')?.value || '').trim();
-            const warning = (document.getElementById('bo-nl-warning')?.value || '').trim();
-            const isPurviso = Boolean(document.getElementById('bo-product-purviso')?.checked);
+            const id = getElementValue('bo-product-id').trim();
+            const name = getElementValue('bo-product-name').trim();
+            const brand = getElementValue('bo-product-brand').trim();
+            const categoryValue = getElementValue('bo-product-category');
+            const category = categoryValue ? categoryValue : 'Supplements';
+            const link = getElementValue('bo-product-link').trim();
+            const objective = getElementValue('bo-nl-objective').trim();
+            const admin = getElementValue('bo-nl-admin').trim();
+            const warning = getElementValue('bo-nl-warning').trim();
+            const isPurviso = getElementChecked('bo-product-purviso');
             const species = getCheckedValues('bo-species-options');
             const age = getCheckedValues('bo-age-options');
             const need = getCheckedValues('bo-need-options');
@@ -2485,9 +2503,9 @@
 
             selectedProductId = id;
 
-            const frObjective = (document.getElementById('bo-fr-objective')?.value || '').trim();
-            const frAdmin = (document.getElementById('bo-fr-admin')?.value || '').trim();
-            const frWarning = (document.getElementById('bo-fr-warning')?.value || '').trim();
+            const frObjective = getElementValue('bo-fr-objective').trim();
+            const frAdmin = getElementValue('bo-fr-admin').trim();
+            const frWarning = getElementValue('bo-fr-warning').trim();
 
             const translationPayload = {};
             if (frObjective) translationPayload.objective = frObjective;
@@ -2526,7 +2544,7 @@
             saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
             saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
 
-            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+            selectedProductId = MASTER_PRODUCT_DATABASE.length > 0 ? MASTER_PRODUCT_DATABASE[0].id : null;
 
             refreshPublicViews();
             renderBackOfficeProductList();
@@ -2680,9 +2698,12 @@
                     const nlInput = row.querySelector('[data-field="label-nl"]');
                     const frInput = row.querySelector('[data-field="label-fr"]');
 
-                    const value = (valueInput?.value || '').trim();
-                    const nl = (nlInput?.value || '').trim();
-                    const fr = (frInput?.value || '').trim();
+                    const valueField = valueInput ? valueInput.value : '';
+                    const nlField = nlInput ? nlInput.value : '';
+                    const frField = frInput ? frInput.value : '';
+                    const value = valueField.trim();
+                    const nl = nlField.trim();
+                    const fr = frField.trim();
 
                     if (!value) return;
 
@@ -2797,7 +2818,7 @@
                 saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
                 saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
 
-                selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+                selectedProductId = MASTER_PRODUCT_DATABASE.length > 0 ? MASTER_PRODUCT_DATABASE[0].id : null;
 
                 refreshPublicViews();
                 updateBackOfficeTabs();
@@ -2821,7 +2842,7 @@
             }
             SEARCH_CRITERIA = deepClone(DEFAULT_SEARCH_CRITERIA);
 
-            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+            selectedProductId = MASTER_PRODUCT_DATABASE.length > 0 ? MASTER_PRODUCT_DATABASE[0].id : null;
 
             saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
             saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
@@ -3046,7 +3067,15 @@
             const filteredProducts = MASTER_PRODUCT_DATABASE.filter(p => p.category === category);
 
             // 2. Verzamel alle unieke 'need' tags en sorteer ze op basis van de volgorde in de selectielijst
-            const allNeeds = [...new Set(filteredProducts.flatMap(p => p.need))];
+            const allNeeds = [];
+            filteredProducts.forEach(product => {
+                const productNeeds = Array.isArray(product.need) ? product.need : [];
+                productNeeds.forEach(needKey => {
+                    if (!allNeeds.includes(needKey)) {
+                        allNeeds.push(needKey);
+                    }
+                });
+            });
             
             const orderedNeedKeys = getCriteriaList('need').map(option => option.value);
 
