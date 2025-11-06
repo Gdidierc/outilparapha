@@ -64,7 +64,35 @@
         .product-item {
             border: 1px solid #f3f4f6;
         }
-        
+
+        .language-toggle {
+            display: inline-flex;
+            background-color: #ffffff;
+            border-radius: 9999px;
+            padding: 0.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .language-toggle button {
+            border: none;
+            background: transparent;
+            color: #00594E;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .language-toggle button:hover {
+            background-color: rgba(0, 89, 78, 0.1);
+        }
+
+        .language-toggle button.active {
+            background-color: #00594E;
+            color: #ffffff;
+        }
+
         /* Selector-stijlen */
         .selector-bg { background-color: #f7f7f7; }
         .selector-border { border-color: #cccccc; }
@@ -143,6 +171,236 @@
         .modal-body-content strong {
             color: #00594E; /* Teal */
         }
+
+        /* Back-office styles */
+        .backoffice-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .backoffice-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .backoffice-card {
+            width: min(1100px, 96vw);
+            max-height: 92vh;
+            background: #ffffff;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .backoffice-header {
+            background-color: #00594E;
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .backoffice-tabs {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem 2rem 0.5rem;
+            background-color: #f3f4f6;
+            flex-wrap: wrap;
+        }
+
+        .backoffice-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            background-color: transparent;
+            border: 1px solid transparent;
+            font-weight: 600;
+            color: #374151;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .backoffice-tab.active {
+            background-color: #00594E;
+            color: #ffffff;
+            border-color: #00594E;
+        }
+
+        .backoffice-content {
+            padding: 1.5rem 2rem 2rem;
+            overflow-y: auto;
+        }
+
+        .backoffice-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .backoffice-grid.two-columns {
+                grid-template-columns: 320px 1fr;
+            }
+        }
+
+        .backoffice-panel {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .backoffice-panel h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00594E;
+            margin-bottom: 0.75rem;
+        }
+
+        .backoffice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+
+        .backoffice-list button {
+            width: 100%;
+            text-align: left;
+            padding: 0.65rem 0.85rem;
+            border-radius: 0.75rem;
+            border: 1px solid transparent;
+            background-color: #ffffff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .backoffice-list button:hover,
+        .backoffice-list button.active {
+            border-color: #00594E;
+            box-shadow: 0 0 0 2px rgba(0, 89, 78, 0.12);
+        }
+
+        .backoffice-form label {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .backoffice-form input,
+        .backoffice-form textarea,
+        .backoffice-form select {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .backoffice-form textarea {
+            min-height: 120px;
+        }
+
+        .backoffice-chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .backoffice-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #d1d5db;
+            border-radius: 999px;
+            padding: 0.3rem 0.75rem;
+            background-color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .backoffice-chip input {
+            width: auto;
+        }
+
+        .backoffice-chip.missing-criteria {
+            border-style: dashed;
+            border-color: #f59e0b;
+            background-color: #fef3c7;
+        }
+
+        .backoffice-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .backoffice-actions button {
+            border-radius: 999px;
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #00594E;
+            color: #ffffff;
+        }
+
+        .btn-danger {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
+        .backoffice-login-card {
+            background: #ffffff;
+            width: min(420px, 92vw);
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .criteria-row {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            align-items: flex-start;
+        }
+
+        .criteria-row input {
+            width: 100%;
+        }
+
+        .criteria-row button {
+            margin-top: 0.35rem;
+        }
+
+        .backoffice-hint {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .input-error {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+        }
     </style>
 <style>
   /* De zoekbalk dwingen om 100% van de box in te nemen */
@@ -161,15 +419,31 @@
 </style>
 </head>
 <body class="p-4 md:p-8">
-<header class="header-color text-white p-6 rounded-t-xl rounded-b-xl mb-8 shadow-lg">
-<h1 class="text-3xl font-extrabold mb-1">Strategie &amp; Catalogus Paracorner Dierenarts</h1>
-<p class="text-lg font-light opacity-90">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
+<header class="header-color text-white py-16 rounded-b-3xl shadow-lg mb-8">
+    <div class="max-w-5xl mx-auto flex flex-col gap-6">
+        <div class="flex flex-col items-end gap-3 sm:flex-row sm:justify-end sm:items-center">
+            <div class="language-toggle" role="group" aria-label="Taalselectie">
+                <button class="active" data-language-btn="nl" aria-pressed="true">NL</button>
+                <button data-language-btn="fr" aria-pressed="false">FR</button>
+            </div>
+            <button id="open-backoffice" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-2 rounded-full shadow transition" type="button">
+                <span>Back Office</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 12H8m8 0-3-3m3 3-3 3"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="text-center space-y-3">
+            <h1 class="text-4xl font-extrabold tracking-tight" data-i18n="headerTitle">Strategie &amp; Catalogus Paracorner Dierenarts</h1>
+            <p class="text-lg font-light opacity-90" data-i18n="headerSubtitle">Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.</p>
+        </div>
+    </div>
 </header>
 <main class="space-y-12">
 <section class="section-card p-0">
   <div class="accordion-header flex justify-between items-center text-lg font-semibold text-gray-800 rounded-t-xl" onclick="toggleAccordion('selector-content')">
     <span class="flex items-center">
-      <span class="text-2xl mr-3">🔎</span> Zoeken &amp; Aanbeveling (inklapbaar)
+      <span class="text-2xl mr-3">🔎</span> <span data-i18n="searchAccordionTitle">Zoeken &amp; Aanbeveling (inklapbaar)</span>
     </span>
     <svg class="w-5 h-5 transition-transform duration-300 text-log-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -177,73 +451,52 @@
   </div>
   <div id="selector-content" class="accordion-content">
     <div class="p-6">
-      
-  <p class="text-gray-700 mb-4">
+
+  <p class="text-gray-700 mb-4" data-i18n="searchIntro">
     Selecteer de specifieke criteria van het dier. De tool <strong>geeft voorrang aan Purviso‑producten</strong> en toont andere compatibele alternatieven.
   </p>
   <div class="space-y-6 p-4 rounded-lg selector-bg selector-border border" id="selector-form">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2" for="species">A. Soort</label>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="species" data-i18n="speciesLabel">A. Soort</label>
         <select id="species" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
-          <option value="" selected disabled>Soort kiezen</option>
-          <option value="hond">🐶 Hond</option>
-          <option value="kat">🐱 Kat</option>
-          <option value="rongeur">🐰 Knaagdier / Klein Zoogdier</option>
+          <option value="" selected disabled>•••</option>
         </select>
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2" for="age">B. Leeftijdscategorie</label>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="age" data-i18n="ageLabel">B. Leeftijdscategorie</label>
         <select id="age" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
-          <option value="" selected disabled>Leeftijd kiezen</option>
-          <option value="jeune">Jong (Groei / Puppy / Kitten)</option>
-          <option value="adulte">Volwassen (Volledige maturiteit)</option>
-          <option value="senior">Senior (Gevorderde leeftijd)</option>
+          <option value="" selected disabled>•••</option>
         </select>
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2" for="need">C. Wat is de hoofdbehoefte?</label>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="need" data-i18n="needLabel">C. Wat is de hoofdbehoefte?</label>
         <select id="need" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
-          <option value="" selected disabled>Categorie kiezen</option>
-          <option value="articulations">🦴 Gewrichten</option>
-          <option value="digestion">🦠 Spijsvertering &amp; Anaalklieren</option>
-          <option value="skin_care">🧼 Huid &amp; Vacht (Verzorging)</option>
-          <option value="skin_supplement">✨ Huid &amp; Vacht (Supplement)</option>
-          <option value="anxiety">🧘 Angst &amp; Stress</option>
-          <option value="hygiene_dental">🦷 Mondhygiëne</option>
-          <option value="hygiene_eyes">👁️ Ooghygiëne</option>
-          <option value="hygiene_ears">👂 Oorhygiëne</option>
-          <option value="wounds">🩹 Wonden &amp; Pootjes</option>
-          <option value="urinary">💧 Urinaire Weg</option>
-          <option value="liver">🧡 Lever</option>
-          <option value="recovery">⏳ Herstel &amp; Vitaminen</option>
-          <option value="puppy_kitten">🐾 Puppy &amp; Kitten</option>
+          <option value="" selected disabled>•••</option>
         </select>
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2" for="level">D. Wat is de ernst van het probleem?</label>
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="level" data-i18n="levelLabel">D. Wat is de ernst van het probleem?</label>
         <select id="level" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out">
-          <option value="" selected disabled>Ernst kiezen</option>
-          <option value="prevention">Licht / Preventie / Onderhoud</option>
-          <option value="advanced">Gevorderd / Duidelijke symptomen / Intensief</option>
+          <option value="" selected disabled>•••</option>
         </select>
       </div>
     </div>
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2" for="healthNotes">E. Gezondheidsnotities (optioneel)</label>
-      <input id="healthNotes" type="text" placeholder="Bijv.: Diabetes, bekende allergie..." class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out" />
-      <p class="text-xs text-gray-500 mt-1">Als het dier een andere ernstige gezondheidskwestie heeft, <strong>adviseer altijd een dierenartsconsult</strong> vóór de verkoop van een supplement.</p>
+      <label class="block text-sm font-medium text-gray-700 mb-2" for="healthNotes" data-i18n="healthNotesLabel">E. Gezondheidsnotities (optioneel)</label>
+      <input id="healthNotes" type="text" placeholder="Bijv.: Diabetes, bekende allergie..." data-i18n-placeholder="healthNotesPlaceholder" class="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 selector-focus transition duration-150 ease-in-out" />
+      <p class="text-xs text-gray-500 mt-1" data-i18n="healthNotesHint">Als het dier een andere ernstige gezondheidskwestie heeft, <strong>adviseer altijd een dierenartsconsult</strong> vóór de verkoop van een supplement.</p>
     </div>
     <div id="message" role="alert" class="hidden p-3 rounded-lg text-sm font-medium mt-4"></div>
-    <button onclick="findProduct()" class="w-full py-3 mt-4 bg-[#E56A54] hover:bg-[#d35543] text-white font-semibold rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-[#E56A54] focus:ring-opacity-50">
+    <button onclick="findProduct()" class="w-full py-3 mt-4 bg-[#E56A54] hover:bg-[#d35543] text-white font-semibold rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-[#E56A54] focus:ring-opacity-50" data-i18n="analyzeButton">
       Analyse en aanbeveling genereren
     </button>
 <div class="flex gap-3 mt-3">
   <button type="button"
           onclick="resetSelector()"
-          class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm transition duration-150 ease-in-out">
+          class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm transition duration-150 ease-in-out" data-i18n="resetButton">
     Criteria resetten
   </button>
 </div>
@@ -259,9 +512,9 @@
     <svg class="w-6 h-6 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M5 7h14"></path>
     </svg>
-    1. Opleidingscatalogus (Alle Supplementen)
+    <span data-i18n="supplementsHeading">1. Opleidingscatalogus (Alle Supplementen)</span>
   </h2>
-  <p class="text-gray-700 mb-4">Volledige lijst van alle supplementen in het planogram, gegroepeerd per behoefte.</p>
+  <p class="text-gray-700 mb-4" data-i18n="supplementsDescription">Volledige lijst van alle supplementen in het planogram, gegroepeerd per behoefte.</p>
   <div id="full-supplements-accordion" class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
     </div>
 </section>
@@ -271,16 +524,16 @@
     <svg class="w-6 h-6 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4M18 5h-4M21 3v4M10 21v-4m0 4h4m-4 0H6m11-5a5 5 0 01-5-5V6a5 5 0 015-5m-5 5a5 5 0 00-5 5v5a5 5 0 005 5m0-10a5 5 0 015 5"></path>
     </svg>
-    2. Opleidingscatalogus (Alle Verzorgingsproducten)
+    <span data-i18n="careHeading">2. Opleidingscatalogus (Alle Verzorgingsproducten)</span>
   </h2>
-  <p class="text-gray-700 mb-4">Volledige lijst van alle verzorgingsproducten in het planogram, gegroepeerd per behoefte.</p>
+  <p class="text-gray-700 mb-4" data-i18n="careDescription">Volledige lijst van alle verzorgingsproducten in het planogram, gegroepeerd per behoefte.</p>
   <div id="full-care-accordion" class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
     </div>
 </section>
 
 
 </main>
-<footer class="mt-12 p-4 text-center bg-white rounded-xl text-gray-600 text-sm shadow-md">
+<footer class="mt-12 p-4 text-center bg-white rounded-xl text-gray-600 text-sm shadow-md" data-i18n="footerText">
         Intern Strategisch Document - T&amp;C Parafarmacie
     </footer>
 <div class="modal-overlay" id="product-modal" onclick="closeProductModal()">
@@ -291,10 +544,259 @@
 </div>
 </div>
 </div>
+
+<div class="backoffice-overlay" id="backoffice-login">
+    <div class="backoffice-login-card">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Connexion back office</h2>
+            <p class="text-sm text-gray-600">Entrez le code d’accès pour gérer les contenus du programme.</p>
+        </div>
+        <label class="flex flex-col gap-2 text-sm font-semibold text-gray-700">
+            Code d’accès
+            <input type="password" id="backoffice-code" placeholder="••••••" class="rounded-lg border border-gray-300 px-3 py-2" />
+        </label>
+        <p id="backoffice-login-error" class="text-sm text-red-600 hidden">Code incorrect, veuillez réessayer.</p>
+        <div class="flex justify-end gap-3">
+            <button type="button" class="btn-secondary" onclick="closeBackOfficeLogin()">Annuler</button>
+            <button type="button" class="btn-primary" id="backoffice-auth-btn">Se connecter</button>
+        </div>
+        <p class="text-xs text-gray-400">Code requis : Welc0me</p>
+    </div>
+</div>
+
+<div class="backoffice-overlay" id="backoffice-panel">
+    <div class="backoffice-card">
+        <div class="backoffice-header">
+            <div>
+                <h2 class="text-2xl font-bold">Back Office</h2>
+                <p class="text-sm text-white/80">Gérez les produits, traductions et critères de recherche.</p>
+            </div>
+            <button type="button" class="btn-secondary" onclick="closeBackOfficePanel()">Fermer</button>
+        </div>
+        <div class="backoffice-tabs">
+            <button type="button" class="backoffice-tab active" data-tab="products">Produits</button>
+            <button type="button" class="backoffice-tab" data-tab="criteria">Critères</button>
+            <button type="button" class="backoffice-tab" data-tab="settings">Paramètres</button>
+        </div>
+        <div class="backoffice-content" id="backoffice-content">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+</div>
 <script>
+        const STORAGE_KEYS = {
+            products: 'paracorner.backoffice.products',
+            translations: 'paracorner.backoffice.translations',
+            criteria: 'paracorner.backoffice.criteria'
+        };
+
+        const ACCESS_CODE = 'Welc0me';
+
+        function deepClone(value) {
+            if (value === undefined) return undefined;
+            if (value === null) return null;
+            try {
+                return JSON.parse(JSON.stringify(value));
+            } catch (error) {
+                console.warn('Unable to clone value, returning original reference', error);
+                return value;
+            }
+        }
+
+        function loadFromStorage(key, fallback) {
+            try {
+                if (typeof window === 'undefined' || !window.localStorage) {
+                    return deepClone(fallback);
+                }
+                const raw = window.localStorage.getItem(key);
+                if (!raw) {
+                    return deepClone(fallback);
+                }
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(fallback)) {
+                    return Array.isArray(parsed) ? parsed : deepClone(fallback);
+                }
+                if (fallback && typeof fallback === 'object') {
+                    return parsed && typeof parsed === 'object' ? parsed : deepClone(fallback);
+                }
+                return parsed;
+            } catch (error) {
+                console.warn('Unable to load data from storage', error);
+                return deepClone(fallback);
+            }
+        }
+
+        function saveToStorage(key, value) {
+            try {
+                if (typeof window === 'undefined' || !window.localStorage) {
+                    return;
+                }
+                window.localStorage.setItem(key, JSON.stringify(value));
+            } catch (error) {
+                console.warn('Unable to save data in storage', error);
+            }
+        }
+
+        function ensureProductDataStructure(rawProducts, defaults) {
+            if (!Array.isArray(rawProducts) || rawProducts.length === 0) {
+                return { data: deepClone(defaults), changed: true };
+            }
+
+            const isNonEmptyString = value => typeof value === 'string' && value.trim() !== '';
+            const isNonEmptyArrayOfStrings = value => Array.isArray(value) && value.length > 0 && value.every(item => typeof item === 'string' && item.trim() !== '');
+
+            const isValidProduct = product => (
+                product &&
+                isNonEmptyString(product.id) &&
+                isNonEmptyString(product.name) &&
+                isNonEmptyString(product.category) &&
+                isNonEmptyArrayOfStrings(product.need) &&
+                isNonEmptyArrayOfStrings(product.level) &&
+                isNonEmptyArrayOfStrings(product.species)
+            );
+
+            const hasInvalidEntry = rawProducts.some(product => !isValidProduct(product));
+            if (hasInvalidEntry) {
+                return { data: deepClone(defaults), changed: true };
+            }
+
+            return { data: rawProducts, changed: false };
+        }
+
+        function ensureTranslationStructure(rawTranslations, defaultsSource) {
+            const defaults = deepClone(defaultsSource);
+
+            if (!rawTranslations || typeof rawTranslations !== 'object') {
+                return { data: defaults, changed: true };
+            }
+
+            const result = deepClone(rawTranslations);
+            if (!result.fr || typeof result.fr !== 'object') {
+                result.fr = {};
+            }
+
+            let changed = false;
+
+            Object.entries(defaults.fr || {}).forEach(([productId, fields]) => {
+                if (!result.fr[productId] || typeof result.fr[productId] !== 'object') {
+                    result.fr[productId] = fields;
+                    changed = true;
+                    return;
+                }
+
+                Object.entries(fields).forEach(([field, text]) => {
+                    if (typeof result.fr[productId][field] !== 'string' || result.fr[productId][field].trim() === '') {
+                        result.fr[productId][field] = text;
+                        changed = true;
+                    }
+                });
+            });
+
+            return { data: result, changed };
+        }
+
+        function sanitizeCriteriaList(rawList, defaultList) {
+            if (!Array.isArray(rawList) || rawList.length === 0) {
+                return { data: deepClone(defaultList), changed: true };
+            }
+
+            const sanitized = [];
+            let changed = false;
+
+            rawList.forEach(item => {
+                if (!item || typeof item.value !== 'string') {
+                    changed = true;
+                    return;
+                }
+
+                const value = item.value.trim();
+                if (!value) {
+                    changed = true;
+                    return;
+                }
+
+                const defaultLabels = defaultList.find(entry => entry.value === value)?.labels || {};
+                const labels = (item.labels && typeof item.labels === 'object') ? { ...item.labels } : {};
+
+                if (!labels.nl && defaultLabels.nl) {
+                    labels.nl = defaultLabels.nl;
+                    changed = true;
+                }
+                if (!labels.fr && defaultLabels.fr) {
+                    labels.fr = defaultLabels.fr;
+                    changed = true;
+                }
+
+                sanitized.push({ value, labels });
+            });
+
+            if (sanitized.length === 0) {
+                return { data: deepClone(defaultList), changed: true };
+            }
+
+            if (sanitized.length !== rawList.length) {
+                changed = true;
+            }
+
+            return { data: sanitized, changed };
+        }
+
+        function ensureCriteriaStructure(rawCriteria, defaultsSource) {
+            const defaults = deepClone(defaultsSource);
+
+            if (!rawCriteria || typeof rawCriteria !== 'object') {
+                return { data: defaults, changed: true };
+            }
+
+            const result = { ...rawCriteria };
+            let changed = false;
+
+            ['species', 'age', 'need', 'level'].forEach(key => {
+                const { data, changed: listChanged } = sanitizeCriteriaList(result[key], defaults[key]);
+                result[key] = data;
+                if (listChanged) {
+                    changed = true;
+                }
+            });
+
+            return { data: result, changed };
+        }
+
+        const DEFAULT_SEARCH_CRITERIA = {
+            species: [
+                { value: 'hond', labels: { nl: '🐶 Hond', fr: '🐶 Chien' } },
+                { value: 'kat', labels: { nl: '🐱 Kat', fr: '🐱 Chat' } },
+                { value: 'rongeur', labels: { nl: '🐰 Knaagdier / Klein Zoogdier', fr: '🐰 Rongeur / Petit mammifère' } }
+            ],
+            age: [
+                { value: 'jeune', labels: { nl: 'Jong (Groei / Puppy / Kitten)', fr: 'Jeune (Croissance / Chiot / Chaton)' } },
+                { value: 'adulte', labels: { nl: 'Volwassen (Volledige maturiteit)', fr: 'Adulte (Pleine maturité)' } },
+                { value: 'senior', labels: { nl: 'Senior (Gevorderde leeftijd)', fr: 'Senior (Âge avancé)' } }
+            ],
+            need: [
+                { value: 'articulations', labels: { nl: '🦴 Gewrichten', fr: '🦴 Articulations' } },
+                { value: 'digestion', labels: { nl: '🦠 Spijsvertering & Anaalklieren', fr: '🦠 Digestion & Glandes anales' } },
+                { value: 'skin_care', labels: { nl: '🧼 Huid & Vacht (Verzorging)', fr: '🧼 Peau & Pelage (Soin)' } },
+                { value: 'skin_supplement', labels: { nl: '✨ Huid & Vacht (Supplement)', fr: '✨ Peau & Pelage (Complément)' } },
+                { value: 'anxiety', labels: { nl: '🧘 Angst & Stress', fr: '🧘 Anxiété & Stress' } },
+                { value: 'hygiene_dental', labels: { nl: '🦷 Mondhygiëne', fr: '🦷 Hygiène bucco-dentaire' } },
+                { value: 'hygiene_eyes', labels: { nl: '👁️ Ooghygiëne', fr: '👁️ Hygiène oculaire' } },
+                { value: 'hygiene_ears', labels: { nl: '👂 Oorhygiëne', fr: '👂 Hygiène auriculaire' } },
+                { value: 'wounds', labels: { nl: '🩹 Wonden & Pootjes', fr: '🩹 Plaies & Coussinets' } },
+                { value: 'urinary', labels: { nl: '💧 Urinaire Weg', fr: '💧 Voie urinaire' } },
+                { value: 'liver', labels: { nl: '🧡 Lever', fr: '🧡 Foie' } },
+                { value: 'recovery', labels: { nl: '⏳ Herstel & Vitaminen', fr: '⏳ Récupération & Vitamines' } },
+                { value: 'puppy_kitten', labels: { nl: '🐾 Puppy & Kitten', fr: '🐾 Chiot & Chaton' } }
+            ],
+            level: [
+                { value: 'prevention', labels: { nl: 'Licht / Preventie / Onderhoud', fr: 'Léger / Prévention / Entretien' } },
+                { value: 'advanced', labels: { nl: 'Gevorderd / Duidelijke symptomen / Intensief', fr: 'Avancé / Symptômes marqués / Intensif' } }
+            ]
+        };
+
         // --- NIEUWE CENTRALE DATABASE (vervangt ALLE oude gegevens) ---
-        
-        const MASTER_PRODUCT_DATABASE = [
+
+        const DEFAULT_PRODUCT_DATABASE = [
             // --- SUPPLEMENTEN ---
             // Urinaire Weg
             {
@@ -987,50 +1489,1395 @@
             },
         ];
 
-        // --- FUNCITES IN HET NEDERLANDS ---
+        // --- VERTALINGEN EN TAALINSTELLINGEN ---
 
-        const PRODUCT_MESSAGES = {
-            error_species: "Selecteer eerst een <strong>Soort</strong> (A).",
-            error_age: "Selecteer de <strong>Leeftijdscategorie</strong> (B).",
-            error_need: "Selecteer de <strong>Hoofdbehoefte</strong> (C).",
-            error_level: "Selecteer de <strong>Ernst van het probleem</strong> (D).",
-            no_product: "Er is geen product gevonden dat perfect overeenkomt met de geselecteerde criteria.",
-            recommendation_intro: "Op basis van uw selectie wordt het volgende aanbevolen:",
-            alternative_intro: "Andere compatibele alternatieven:",
-            purviso_priority: "<strong>Purviso Huismerk (Prioriteit)</strong>",
-            other_alternative: "<strong>Ander Compatibel Product</strong>",
-            notes_warning: "Opmerking: Het veld 'Gezondheidsnotities' is niet verwerkt door de selector, maar is een herinnering om <strong>altijd een dierenarts te raadplegen</strong> in geval van ernstige klachten.",
-            admin: "<strong>Gebruik/Toediening:</strong>",
-            warning: "<strong>Waarschuwing:</strong>",
-            objective: "<strong>Doel:</strong>"
-        };
-        
-        // Vertalingen voor dropdowns
-        const TRANSLATIONS = {
-            'jeune': 'Jong (Groei / Puppy / Kitten)',
-            'adulte': 'Volwassen (Volledige maturiteit)',
-            'senior': 'Senior (Gevorderde leeftijd)',
-            'articulations': '🦴 Gewrichten',
-            'digestion': '🦠 Spijsvertering & Anaalklieren',
-            'skin_care': '🧼 Huid & Vacht (Verzorging)',
-            'skin_supplement': '✨ Huid & Vacht (Supplement)',
-            'anxiety': '🧘 Angst & Stress',
-            'hygiene_dental': '🦷 Mondhygiëne',
-            'hygiene_eyes': '👁️ Ooghygiëne',
-            'hygiene_ears': '👂 Oorhygiëne',
-            'wounds': '🩹 Wonden & Pootjes',
-            'urinary': '💧 Urinaire Weg',
-            'liver': '🧡 Lever',
-            'recovery': '⏳ Herstel & Vitaminen',
-            'puppy_kitten': '🐾 Puppy & Kitten',
-            'prevention': 'Licht / Preventie / Onderhoud',
-            'advanced': 'Gevorderd / Duidelijke symptomen / Intensief',
-            'hond': 'Hond',
-            'kat': 'Kat',
-            'rongeur': 'Knaagdier / Klein Zoogdier'
+        const DEFAULT_PRODUCT_TRANSLATIONS = {
+            fr: {
+                vetoquinol_calculs: {
+                    objective: "Complément alimentaire pour chiens et chats sujets à la formation de calculs/cristaux urinaires. Aide à dissoudre les calculs urinaires (struvite).",
+                    admin: "<strong>Chiens et chats.</strong> À administrer quotidiennement. Directement dans la bouche ou mélangé à l’aliment/eau de boisson.<br><strong>Chats :</strong> ½ à 1 cuillère à café (3 à 6 g) 2 à 3 fois par jour.<br><strong>Chiens :</strong> ½ à 3 cuillères à café 2 à 3 fois/jour.<br><strong>Durée :</strong> maximum 6 mois.",
+                    warning: "Il est recommandé de consulter un vétérinaire avant utilisation."
+                },
+                dermoscent_uti_zen: {
+                    objective: "Complément alimentaire de soutien des voies urinaires. Contient de l’extrait de cranberry. Peut être administré pendant le traitement et aide à prévenir les récidives.",
+                    admin: "<strong>Chien et chat.</strong> Administrer une fois par jour.<br><strong>0-10 kg :</strong> ½ comprimé/jour.<br><strong>10-20 kg :</strong> 1 comprimé/jour.<br><strong>20-40 kg :</strong> 2 comprimés/jour.",
+                    warning: "Une administration régulière et continue est recommandée pour un résultat optimal."
+                },
+                epato_pate: {
+                    objective: "Protège le foie et restaure la fonction hépatique du chat. Pour les chats souffrant d’une affection hépatique ou suivant un traitement médicamenteux.",
+                    admin: "<strong>Chat.</strong> Une fois par jour, mélangé à l’aliment ou directement dans la bouche.<br><strong>Dosage :</strong> 1 ml par 5 kg de poids corporel.",
+                    warning: "Consultez votre vétérinaire avant utilisation. Une administration quotidienne d’au moins 30 jours est recommandée."
+                },
+                vetoquinol_energie: {
+                    objective: "Apport énergétique supplémentaire. Soutient pendant la convalescence/maladie, l’effort physique intense et la croissance. Aide en cas de perte d’appétit.",
+                    admin: "<strong>Chiens et chats, tout âge.</strong> Quotidien.<br><strong>Chiens (par 10 kg) :</strong> 1 cuillère à soupe (18 g)/jour.<br><strong>Chats (par 3-5 kg) :</strong> 1 cuillère à café (6 g)/jour.",
+                    warning: null
+                },
+                lysine_mp: {
+                    objective: "Complément alimentaire pour chats dont le système immunitaire est affaibli. Soutient pendant les périodes de stress, maladie ou effort. Adapté en cas de herpesvirus.",
+                    admin: "<strong>Chat.</strong><br><strong>Chatons :</strong> 1 à 2 gélules/jour.<br><strong>Chats :</strong> 1 à 2 gélules matin et soir.",
+                    warning: "À administrer directement ou à saupoudrer sur l’aliment."
+                },
+                dermoscent_senior: {
+                    objective: "Spot-on pour soutenir la peau et le pelage des animaux âgés. Contient des antioxydants, hydrate et redonne de la souplesse. Apporte plus de vitalité.",
+                    admin: "<strong>Chat et chien (selon la taille).</strong> 1 pipette par semaine pendant 2 mois, puis 1 pipette toutes les 2 semaines (entretien).",
+                    warning: "Écarter le pelage et appliquer entre les omoplates. Ne pas laver l’animal pendant 48 h."
+                },
+                purviso_relax: {
+                    objective: "Calme et sérénité. Formulé avec α-casozépine et L-théanine. Aide à gérer le stress (voyages, bruits, changements).",
+                    admin: "<strong>Chat et chien adultes à partir de 4 mois.</strong><br><strong>Posologie :</strong> 1 bouchée par 10 kg de poids corporel.",
+                    warning: "Alternative à Zylkène, Sativavet."
+                },
+                zylkene_chew: {
+                    objective: "Comprimés à mâcher pour chiens afin de réduire le stress (feux d’artifice, voyages, visite chez le vétérinaire, anxiété de séparation, etc.). Contient de l’α-casozépine.",
+                    admin: "<strong>Chiens.</strong> Posologie variable selon le poids (voir emballage).<br><strong><10 kg :</strong> <5 kg = 1/jour, 5-10 kg = 2/jour.<br><strong>10-30 kg :</strong> 10-15 kg = 1/jour, 15-30 kg = 2/jour.<br><strong>15-60 kg :</strong> 15-30 kg = 1/jour, 30-60 kg = 2/jour.<br><strong>Remarque :</strong> la posologie officielle correspond à celle indiquée sur l’emballage. Ces valeurs sont des repères généraux.",
+                    warning: "Commencer 1 à 2 jours avant l’événement stressant. Alternative marque propre : Purviso Plus Relax."
+                },
+                anibidiol_nature: {
+                    objective: "Complément à base d’huile de chanvre et de CBD. Favorise le bien-être, le comportement et la relaxation. Soutient le système nerveux et la vitalité.",
+                    admin: "<strong>Chien et chat.</strong> Voie orale, quotidiennement.<br><strong>5 kg :</strong> 1 à 4 capsules/jour.<br><strong>10 kg :</strong> 1 à 8 capsules/jour.<br><strong>15 kg :</strong> 1 à 12 capsules/jour.<br><strong>20 kg :</strong> 2 à 16 capsules/jour.",
+                    warning: "Donner la capsule entière ou son contenu. Cure d’au moins 5 semaines. <0,2 % de THC."
+                },
+                purviso_vitality: {
+                    objective: "Multivitamines complètes. Favorise la santé globale et renforce le système immunitaire. Contient plus de 20 vitamines et minéraux.",
+                    admin: "<strong>Chats et chiens adultes à partir de 4 mois.</strong><br><strong>Posologie :</strong> 1 bouchée par 10 kg de poids corporel.",
+                    warning: "Alternative à Optiform, Viti5."
+                },
+                purviso_mobility_forte: {
+                    objective: "Réparation intensive. Cible l’arthrose avancée. Contient du collagène de type II non dénaturé et de la Boswellia Serrata.",
+                    admin: "<strong>Chien à partir de 4 mois.</strong><br><strong>< 20 kg :</strong> 1 bouchée/jour.<br><strong>> 20 kg :</strong> 2 bouchées/jour.",
+                    warning: "Alternative à Flexadin Advanced, Seraquin Omega."
+                },
+                purviso_mobility_support: {
+                    objective: "Protection et souplesse. Idéal en prévention ou lors des premiers signes d’arthrose. Glucosamine, MSM et acide hyaluronique.",
+                    admin: "<strong>Chien à partir de 4 mois.</strong><br><strong>< 30 kg :</strong> 1 bouchée/jour.<br><strong>> 30 kg :</strong> 2 bouchées/jour.",
+                    warning: "Alternative à Flexadin Plus, Flexadin Adult."
+                },
+                flexadin_advanced_boswellia: {
+                    objective: "Soutient la fonction articulaire des chiens souffrant d’arthrose ou d’ostéoarthrite. Contient UC-II® (collagène de type II).",
+                    admin: "<strong>Chien adulte.</strong> 1 bouchée par jour (quel que soit le poids).",
+                    warning: "Alternative marque propre : Purviso Plus Mobility Forte."
+                },
+                flexadin_adult_dog: {
+                    objective: "Complément pour chiens adultes et seniors (à partir de 2 ans) destiné à soutenir les articulations (prévention).",
+                    admin: "<strong>Chien adulte et senior (dès 2 ans).</strong> 1 bouchée par jour (quel que soit le poids).",
+                    warning: "Alternative marque propre : Purviso Plus Mobility Support."
+                },
+                flexadin_young_maxi: {
+                    objective: "Complément pour chiots et jeunes chiens (6 mois à 2 ans) de grande taille (>10 kg) pour soutenir les articulations.",
+                    admin: "<strong>Chiots et jeunes chiens (6 mois à 2 ans) > 10 kg.</strong><br><strong>10-30 kg :</strong> 1/jour.<br><strong>>30 kg :</strong> 2/jour.",
+                    warning: "Alternative marque propre : Purviso Plus Mobility Support."
+                },
+                flexadin_young_mini: {
+                    objective: "Complément pour chiots et jeunes chiens (6 mois à 2 ans) de petite taille (<10 kg) pour soutenir les articulations.",
+                    admin: "<strong>Chiots et jeunes chiens (6 mois à 2 ans) < 10 kg.</strong><br><strong><6 kg :</strong> 1/jour.<br><strong>6-10 kg :</strong> 2/jour.",
+                    warning: "Alternative marque propre : Purviso Plus Mobility Support."
+                },
+                seraquin_omega_chien: {
+                    objective: "Soutient les articulations des chiens (jeunes en croissance rapide, chiens sportifs, arthrose avérée). Enrichi en curcuma et en oméga-3.",
+                    admin: "<strong>Chien.</strong><br><strong><10 kg :</strong> 1/jour.<br><strong>10-20 kg :</strong> 2/jour.<br><strong>20-40 kg :</strong> 3/jour.<br><strong>>40 kg :</strong> 4/jour.",
+                    warning: "Dose d’entretien = moitié de la dose initiale après 4 à 6 semaines. Alternative marque propre : Purviso Plus Mobility Forte."
+                },
+                flexadin_advanced_chat: {
+                    objective: "Soutient la fonction articulaire des chats souffrant d’arthrose ou d’usure articulaire. Contient du collagène UC-II®.",
+                    admin: "<strong>Chat.</strong> 1 bouchée par jour, quel que soit le poids.",
+                    warning: null
+                },
+                flexadin_cat: {
+                    objective: "Complément alimentaire pour la souplesse articulaire des chats (prévention).",
+                    admin: "<strong>Chat.</strong><br><strong>< 6 kg :</strong> 1/jour.<br><strong>> 6 kg :</strong> 2/jour.",
+                    warning: null
+                },
+                seraquin_omega_chat: {
+                    objective: "Soutient les articulations des chats (en prévention ou arthrose avérée). Enrichi en curcuma et oméga-3.",
+                    admin: "<strong>Chat.</strong><br><strong>Jusqu’à 5 kg :</strong> 2/jour.<br><strong>5-7,5 kg :</strong> 3/jour.<br><strong>7,5-10 kg :</strong> 4/jour.",
+                    warning: "Dose d’entretien = moitié de la dose initiale après 4 à 6 semaines."
+                },
+                purviso_digestive_comfort: {
+                    objective: "Équilibre global du microbiote. Poudre (pré-, pro- et postbiotiques). Aide à réguler le transit et diminue les boules de poils chez le chat.",
+                    admin: "<strong>Chats et chiens adultes à partir de 4 mois.</strong> 1 mesure par 10 kg de poids corporel. Administrer au minimum 14 jours.",
+                    warning: "Alternative à Purina Fortiflora, Canikur Pro."
+                },
+                purviso_pro_flora: {
+                    objective: "Aliment complémentaire pour chiens soutenant la digestion et la flore intestinale. Les pré-, pro- et postbiotiques restaurent la flore. Soutient la digestion. Sans colorants ni arômes artificiels. Alternative à Purina Fortiflora, Canikur Pro.",
+                    admin: "<strong>Chats et chiens adultes à partir de 4 mois.</strong> 1 bouchée par 10 kg de poids corporel. Administrer au minimum 5 jours. Ne nécessite pas d’eau.",
+                    warning: null
+                },
+                purviso_anal_glands: {
+                    objective: "Soutien des glandes anales. Fibres de citrouille, enzymes digestives et prébiotiques. Aide à vider naturellement les glandes anales.",
+                    admin: "<strong>Chien à partir de 4 mois.</strong><br><strong>< 10 kg :</strong> 1/jour.<br><strong>> 10 kg :</strong> 2/jour.",
+                    warning: "Alternative à Glandex, Vet-Comfort Glandes Anal."
+                },
+                fortiflora_chat: {
+                    objective: "Complément probiotique pour chats. Aide à gérer la diarrhée et le stress. Renforce le système immunitaire.",
+                    admin: "<strong>Chat.</strong> 1 sachet par jour. Saupoudrer sur l’aliment.",
+                    warning: "Alternative marque propre : Purviso Plus Digestive Comfort (poudre)."
+                },
+                fortiflora_chien: {
+                    objective: "Complément probiotique pour chiens. Aide à gérer la diarrhée et le stress. Renforce le système immunitaire.",
+                    admin: "<strong>Chien.</strong> 1 sachet par jour. Saupoudrer sur l’aliment.",
+                    warning: "Alternative marque propre : Purviso Plus Digestive Comfort (poudre)."
+                },
+                purviso_skin_hair: {
+                    objective: "Pelage brillant et réduction de la mue. Oméga 3 & 6 concentrés (huile de lin, onagre). Aide en cas de peau sèche et de démangeaisons.",
+                    admin: "<strong>Chats et chiens adultes à partir de 4 mois.</strong><br><strong>Posologie :</strong> 1 bouchée par 10 kg de poids corporel.",
+                    warning: "Alternative à Megaderm, Dermoscent Essential 6."
+                },
+                dermoscent_essential_6: {
+                    objective: "Spot-on hebdomadaire riche en acides gras essentiels. Restaure la barrière cutanée, réduit la chute de poils et lutte contre les mauvaises odeurs.",
+                    admin: "<strong>Chat et chien (selon la taille).</strong> 1 pipette par semaine pendant 2 mois (attaque), puis 1 pipette toutes les 2 semaines (entretien).",
+                    warning: "Ne pas laver l’animal pendant 48 h. Alternative marque propre : Purviso Plus Skin & Hair."
+                },
+                epato_omega: {
+                    objective: "Supplément d’huiles de poisson (oméga 3 & 6) pour soutenir la peau, le pelage et le système immunitaire.",
+                    admin: "<strong>Chat et chien (selon le poids).</strong> Voir le dosage indiqué sur l’emballage.",
+                    warning: null
+                },
+                kitty_stim: {
+                    objective: "Pâte de croissance pour chatons (dès 2 jours). Stimule l’appétit, la vitalité et les défenses. Pour chatons faibles ou en difficulté.",
+                    admin: "<strong>Chaton (dès 2 jours).</strong> 0,1 ml par jour pendant 5 jours, puis 0,1 ml par semaine jusqu’à 6 semaines.",
+                    warning: "Consultez votre vétérinaire en cas de faiblesse prolongée."
+                },
+                puppy_stim: {
+                    objective: "Pâte de croissance pour chiots (dès 2 jours). Stimule l’appétit, la vitalité et les défenses. Pour chiots faibles ou en difficulté.",
+                    admin: "<strong>Chiot (dès 2 jours).</strong> 0,1 ml par jour pendant 5 jours, puis 0,1 ml par semaine jusqu’à 6 semaines.",
+                    warning: "Consultez votre vétérinaire en cas de faiblesse prolongée."
+                },
+                purviso_dental_spray: {
+                    objective: "Haleine fraîche et anti-plaque. Neutralise la mauvaise haleine et prévient le tartre. Contient menthe et persil.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong>",
+                    warning: "Alternative à Vet-Aquadent, Proden Plaque Off."
+                },
+                virbac_logic: {
+                    objective: "Poudre dentaire quotidienne à mélanger à l’aliment. Réduit le tartre, lutte contre la plaque et rafraîchit l’haleine.",
+                    admin: "<strong>Chien et chat (selon la taille).</strong> 1 à 4 mesures par jour.",
+                    warning: null
+                },
+                plaqtiv_wipes: {
+                    objective: "Lingettes dentaires pour un nettoyage facile des dents et des gencives. Aide à prévenir la gingivite. Élimine la plaque dentaire.",
+                    admin: "<strong>Chiens et chats.</strong> Frotter quotidiennement les dents et les gencives. Utiliser une lingette propre chaque jour.",
+                    warning: null
+                },
+                plaqtiv_spray: {
+                    objective: "Spray d’hygiène buccale pour chiens. Réduit la plaque et rafraîchit l’haleine. Bon complément quand le brossage est impossible.",
+                    admin: "<strong>Chien.</strong> Pulvériser chaque jour (2 fois de chaque côté) directement sur les dents et les gencives.",
+                    warning: null
+                },
+                orozyme_dentifrice: {
+                    objective: "Dentifrice appétent (hypoallergénique) pour des dents et des gencives saines. Complexe enzymatique qui prévient plaque, tartre et mauvaise haleine.",
+                    admin: "<strong>Chiens et chats.</strong> Brosser les dents quotidiennement.<br><strong><20 kg et chats :</strong> 1 cm de pâte.<br><strong>> 20 kg :</strong> 2 cm de pâte.",
+                    warning: "Peut être avalé en toute sécurité. Ne pas rincer."
+                },
+                ocryl_oplossing: {
+                    objective: "Solution nettoyante douce (pH identique aux larmes) pour les yeux et les paupières. Élimine poussières, croûtes et traces de larmes.",
+                    admin: "<strong>Chiens, chats, chevaux, rongeurs, reptiles.</strong> Appliquer directement dans l’œil ou sur une compresse.",
+                    warning: "Permet de préparer l’œil avant l’instillation de gouttes."
+                },
+                otostan_oplossing: {
+                    objective: "Solution douce pour le nettoyage régulier des oreilles et la dissolution du cérumen. Aide à prévenir l’otite.",
+                    admin: "<strong>Chien et chat.</strong> Appliquer 1 à 2 fois par semaine. Masser la base de l’oreille. Peut préparer la peau à un traitement local.",
+                    warning: null
+                },
+                epi_otic_solution: {
+                    objective: "Solution puissante pour nettoyer le conduit auditif. Aide en cas d’otite. Élimine cérumen, croûtes, débris et odeurs.",
+                    admin: "<strong>Chien et chat.</strong> Appliquer 1 à 2 fois par jour pendant 2 semaines. Entretien : 1 fois par semaine. Après 1 minute de massage, essuyer avec une compresse. Éviter le contact avec les yeux.",
+                    warning: null
+                },
+                purviso_ear_cleanser: {
+                    objective: "Nettoyant auriculaire doux. Solution pour le nettoyage régulier des oreilles et la dissolution du cérumen. Aide à prévenir l’otite.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Appliquer 1 à 2 fois par semaine.",
+                    warning: "Alternative à Otostan, Virbac Epi-Otic."
+                },
+                purviso_eye_cleanser: {
+                    objective: "Nettoyant oculaire doux. Solution pour les yeux et les paupières. Élimine poussière et traces de larmes. Formule douce (pH neutre).",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Appliquer sur une compresse. Peut être utilisé quotidiennement.",
+                    warning: "Alternative à Ocryl."
+                },
+                purviso_calm_shampoo: {
+                    objective: "Shampooing apaisant doux. Aide en cas de peau sèche, rougeurs et irritations. Contient avoine et aloe vera. Hydrate et apaise.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Masser et laisser agir 5 minutes. Rincer abondamment.",
+                    warning: "Alternative à Allermyl, Sebocalm."
+                },
+                purviso_universal_shampoo: {
+                    objective: "Shampooing doux quotidien. Pour lavages fréquents et pelage brillant. Contient huile d’argan et provitamine B5. Pour un pelage doux et brillant.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Masser puis rincer immédiatement. Peut être utilisé régulièrement.",
+                    warning: "Alternative à Virbac Allermyl, Dermoscent Atop 7."
+                },
+                dermoscent_pipi_stop: {
+                    objective: "Nettoyant/désodorisant pour les urines d’animaux. Élimine les odeurs et évite les marquages répétés au même endroit. (Ne pas utiliser sur l’animal.)",
+                    admin: "<strong>Chien et chat.</strong> Vaporiser sur la zone à traiter. Laisser sécher. Essuyer si nécessaire.",
+                    warning: null
+                },
+                purviso_wound_gel: {
+                    objective: "Gel cicatrisant. Aide à la guérison des plaies superficielles. Protège des bactéries. Contient acide hyaluronique et zinc.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Appliquer 2 fois par jour sur la plaie nettoyée.",
+                    warning: "Alternative à Flamigel, Dermiel."
+                },
+                purviso_paw_cream: {
+                    objective: "Crème protectrice pour coussinets. Hydrate et protège contre la chaleur, la glace ou le sel. Aide à réparer les crevasses.",
+                    admin: "<strong>Chien et chat à partir de 3 mois.</strong> Masser sur les coussinets avant la promenade ou en cas d’irritation.",
+                    warning: "Alternative à Dermoscent Podo-Care."
+                }
+            }
         };
 
-        
+        let MASTER_PRODUCT_DATABASE = [];
+        let PRODUCT_TRANSLATIONS = {};
+        let SEARCH_CRITERIA = {};
+
+        function initializeDataStores() {
+            const loadedProducts = loadFromStorage(STORAGE_KEYS.products, DEFAULT_PRODUCT_DATABASE);
+            const loadedTranslations = loadFromStorage(STORAGE_KEYS.translations, DEFAULT_PRODUCT_TRANSLATIONS);
+            const loadedCriteria = loadFromStorage(STORAGE_KEYS.criteria, DEFAULT_SEARCH_CRITERIA);
+
+            const { data: products, changed: productsChanged } = ensureProductDataStructure(loadedProducts, DEFAULT_PRODUCT_DATABASE);
+            const { data: translations, changed: translationsChanged } = ensureTranslationStructure(loadedTranslations, DEFAULT_PRODUCT_TRANSLATIONS);
+            const { data: criteria, changed: criteriaChanged } = ensureCriteriaStructure(loadedCriteria, DEFAULT_SEARCH_CRITERIA);
+
+            MASTER_PRODUCT_DATABASE = products;
+            PRODUCT_TRANSLATIONS = translations;
+            if (!PRODUCT_TRANSLATIONS.fr) {
+                PRODUCT_TRANSLATIONS.fr = {};
+            }
+            SEARCH_CRITERIA = criteria;
+
+            if (productsChanged) {
+                saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            }
+            if (translationsChanged) {
+                saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+            }
+            if (criteriaChanged) {
+                saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+            }
+        }
+
+        initializeDataStores();
+
+        const LANGUAGE_DATA = {
+            nl: {
+                htmlLang: 'nl',
+                pageTitle: 'Strategie & Catalogus Paracorner Dierenarts',
+                texts: {
+                    headerTitle: 'Strategie & Catalogus Paracorner Dierenarts',
+                    headerSubtitle: 'Versterk de veterinaire expertise en het onderscheid met het huismerk Purviso.',
+                    searchAccordionTitle: 'Zoeken & Aanbeveling (inklapbaar)',
+                    searchIntro: 'Selecteer de specifieke criteria van het dier. De tool <strong>geeft voorrang aan Purviso‑producten</strong> en toont andere compatibele alternatieven.',
+                    speciesLabel: 'A. Soort',
+                    speciesPlaceholder: 'Soort kiezen',
+                    speciesOptionDog: '🐶 Hond',
+                    speciesOptionCat: '🐱 Kat',
+                    speciesOptionRodent: '🐰 Knaagdier / Klein Zoogdier',
+                    ageLabel: 'B. Leeftijdscategorie',
+                    agePlaceholder: 'Leeftijd kiezen',
+                    ageOptionYoung: 'Jong (Groei / Puppy / Kitten)',
+                    ageOptionAdult: 'Volwassen (Volledige maturiteit)',
+                    ageOptionSenior: 'Senior (Gevorderde leeftijd)',
+                    needLabel: 'C. Wat is de hoofdbehoefte?',
+                    needPlaceholder: 'Categorie kiezen',
+                    needOptionArticulations: '🦴 Gewrichten',
+                    needOptionDigestion: '🦠 Spijsvertering & Anaalklieren',
+                    needOptionSkinCare: '🧼 Huid & Vacht (Verzorging)',
+                    needOptionSkinSupplement: '✨ Huid & Vacht (Supplement)',
+                    needOptionAnxiety: '🧘 Angst & Stress',
+                    needOptionDental: '🦷 Mondhygiëne',
+                    needOptionEyes: '👁️ Ooghygiëne',
+                    needOptionEars: '👂 Oorhygiëne',
+                    needOptionWounds: '🩹 Wonden & Pootjes',
+                    needOptionUrinary: '💧 Urinaire Weg',
+                    needOptionLiver: '🧡 Lever',
+                    needOptionRecovery: '⏳ Herstel & Vitaminen',
+                    needOptionPuppyKitten: '🐾 Puppy & Kitten',
+                    levelLabel: 'D. Wat is de ernst van het probleem?',
+                    levelPlaceholder: 'Ernst kiezen',
+                    levelOptionPrevention: 'Licht / Preventie / Onderhoud',
+                    levelOptionAdvanced: 'Gevorderd / Duidelijke symptomen / Intensief',
+                    healthNotesLabel: 'E. Gezondheidsnotities (optioneel)',
+                    healthNotesPlaceholder: 'Bijv.: Diabetes, bekende allergie...',
+                    healthNotesHint: 'Als het dier een andere ernstige gezondheidskwestie heeft, <strong>adviseer altijd een dierenartsconsult</strong> vóór de verkoop van een supplement.',
+                    analyzeButton: 'Analyse en aanbeveling genereren',
+                    resetButton: 'Criteria resetten',
+                    supplementsHeading: '1. Opleidingscatalogus (Alle Supplementen)',
+                    supplementsDescription: 'Volledige lijst van alle supplementen in het planogram, gegroepeerd per behoefte.',
+                    careHeading: '2. Opleidingscatalogus (Alle Verzorgingsproducten)',
+                    careDescription: 'Volledige lijst van alle verzorgingsproducten in het planogram, gegroepeerd per behoefte.',
+                    footerText: 'Intern Strategisch Document - T&C Parafarmacie'
+                },
+                productMessages: {
+                    error_species: 'Selecteer eerst een <strong>Soort</strong> (A).',
+                    error_age: 'Selecteer de <strong>Leeftijdscategorie</strong> (B).',
+                    error_need: 'Selecteer de <strong>Hoofdbehoefte</strong> (C).',
+                    error_level: 'Selecteer de <strong>Ernst van het probleem</strong> (D).',
+                    no_product: 'Er is geen product gevonden dat perfect overeenkomt met de geselecteerde criteria.',
+                    recommendation_intro: 'Op basis van uw selectie wordt het volgende aanbevolen:',
+                    alternative_intro: 'Andere compatibele alternatieven:',
+                    purviso_priority: '<strong>Purviso Huismerk (Prioriteit)</strong>',
+                    other_alternative: '<strong>Ander Compatibel Product</strong>',
+                    notes_warning: 'Opmerking: Het veld \'Gezondheidsnotities\' is niet verwerkt door de selector, maar is een herinnering om <strong>altijd een dierenarts te raadplegen</strong> in geval van ernstige klachten.',
+                    admin: 'Gebruik/Toediening:',
+                    warning: 'Waarschuwing:',
+                    objective: 'Doel:'
+                },
+                tagLabels: {
+                    articulations: '🦴 Gewrichten',
+                    digestion: '🦠 Spijsvertering & Anaalklieren',
+                    skin_care: '🧼 Huid & Vacht (Verzorging)',
+                    skin_supplement: '✨ Huid & Vacht (Supplement)',
+                    anxiety: '🧘 Angst & Stress',
+                    hygiene_dental: '🦷 Mondhygiëne',
+                    hygiene_eyes: '👁️ Ooghygiëne',
+                    hygiene_ears: '👂 Oorhygiëne',
+                    wounds: '🩹 Wonden & Pootjes',
+                    urinary: '💧 Urinaire Weg',
+                    liver: '🧡 Lever',
+                    recovery: '⏳ Herstel & Vitaminen',
+                    puppy_kitten: '🐾 Puppy & Kitten',
+                    prevention: 'Licht / Preventie / Onderhoud',
+                    advanced: 'Gevorderd / Duidelijke symptomen / Intensief'
+                },
+                catalog: {
+                    groupCount: count => `${count} producten`,
+                    purvisoTag: 'Huismerk'
+                },
+                modal: {
+                    brand: 'Merk',
+                    category: 'Categorie',
+                    priority: 'Prioriteit',
+                    categories: {
+                        Supplements: 'Supplement',
+                        Soins: 'Verzorging'
+                    },
+                    purviso: 'Huismerk (Prioriteit)',
+                    external: 'Extern Merk'
+                }
+            },
+            fr: {
+                htmlLang: 'fr',
+                pageTitle: 'Stratégie & Catalogue Paracorner Vétérinaire',
+                texts: {
+                    headerTitle: 'Stratégie & Catalogue Paracorner Vétérinaire',
+                    headerSubtitle: 'Renforcez l’expertise vétérinaire et la différenciation avec la marque propre Purviso.',
+                    searchAccordionTitle: 'Recherche & Recommandation (repliable)',
+                    searchIntro: 'Sélectionnez les critères spécifiques de l’animal. L’outil <strong>priorise les produits Purviso</strong> et affiche d’autres alternatives compatibles.',
+                    speciesLabel: 'A. Espèce',
+                    speciesPlaceholder: 'Choisir une espèce',
+                    speciesOptionDog: '🐶 Chien',
+                    speciesOptionCat: '🐱 Chat',
+                    speciesOptionRodent: '🐰 Rongeur / Petit mammifère',
+                    ageLabel: 'B. Tranche d’âge',
+                    agePlaceholder: 'Choisir l’âge',
+                    ageOptionYoung: 'Jeune (Croissance / Chiot / Chaton)',
+                    ageOptionAdult: 'Adulte (Maturité complète)',
+                    ageOptionSenior: 'Senior (Âge avancé)',
+                    needLabel: 'C. Besoin principal ?',
+                    needPlaceholder: 'Choisir une catégorie',
+                    needOptionArticulations: '🦴 Articulations',
+                    needOptionDigestion: '🦠 Digestion & Glandes anales',
+                    needOptionSkinCare: '🧼 Peau & Pelage (Soin)',
+                    needOptionSkinSupplement: '✨ Peau & Pelage (Complément)',
+                    needOptionAnxiety: '🧘 Anxiété & Stress',
+                    needOptionDental: '🦷 Hygiène bucco-dentaire',
+                    needOptionEyes: '👁️ Hygiène oculaire',
+                    needOptionEars: '👂 Hygiène auriculaire',
+                    needOptionWounds: '🩹 Plaies & Coussinets',
+                    needOptionUrinary: '💧 Voie urinaire',
+                    needOptionLiver: '🧡 Foie',
+                    needOptionRecovery: '⏳ Récupération & Vitamines',
+                    needOptionPuppyKitten: '🐾 Chiot & Chaton',
+                    levelLabel: 'D. Gravité du problème ?',
+                    levelPlaceholder: 'Choisir la gravité',
+                    levelOptionPrevention: 'Léger / Prévention / Entretien',
+                    levelOptionAdvanced: 'Avancé / Symptômes marqués / Intensif',
+                    healthNotesLabel: 'E. Notes de santé (optionnel)',
+                    healthNotesPlaceholder: 'Ex. : Diabète, allergie connue...',
+                    healthNotesHint: 'Si l’animal présente un autre problème de santé sérieux, <strong>recommandez toujours une consultation vétérinaire</strong> avant la vente d’un complément.',
+                    analyzeButton: 'Générer l’analyse et la recommandation',
+                    resetButton: 'Réinitialiser les critères',
+                    supplementsHeading: '1. Catalogue de formation (Tous les compléments)',
+                    supplementsDescription: 'Liste complète de tous les compléments du planogramme, regroupés par besoin.',
+                    careHeading: '2. Catalogue de formation (Tous les produits de soin)',
+                    careDescription: 'Liste complète de tous les produits de soin du planogramme, regroupés par besoin.',
+                    footerText: 'Document stratégique interne – T&C Parapharmacie'
+                },
+                productMessages: {
+                    error_species: 'Sélectionnez d’abord une <strong>Espèce</strong> (A).',
+                    error_age: 'Sélectionnez la <strong>Tranche d’âge</strong> (B).',
+                    error_need: 'Sélectionnez le <strong>Besoin principal</strong> (C).',
+                    error_level: 'Sélectionnez la <strong>Gravité du problème</strong> (D).',
+                    no_product: 'Aucun produit ne correspond exactement aux critères sélectionnés.',
+                    recommendation_intro: 'Sur la base de votre sélection, nous recommandons :',
+                    alternative_intro: 'Autres alternatives compatibles :',
+                    purviso_priority: '<strong>Purviso Marque Propre (Priorité)</strong>',
+                    other_alternative: '<strong>Autre produit compatible</strong>',
+                    notes_warning: 'Remarque : le champ « Notes de santé » n’est pas pris en compte par le sélecteur. Il rappelle de <strong>toujours recommander une consultation vétérinaire</strong> en cas de problème sérieux.',
+                    admin: 'Utilisation / Posologie :',
+                    warning: 'Avertissement :',
+                    objective: 'Objectif :'
+                },
+                tagLabels: {
+                    articulations: '🦴 Articulations',
+                    digestion: '🦠 Digestion & Glandes anales',
+                    skin_care: '🧼 Peau & Pelage (Soin)',
+                    skin_supplement: '✨ Peau & Pelage (Complément)',
+                    anxiety: '🧘 Anxiété & Stress',
+                    hygiene_dental: '🦷 Hygiène bucco-dentaire',
+                    hygiene_eyes: '👁️ Hygiène oculaire',
+                    hygiene_ears: '👂 Hygiène auriculaire',
+                    wounds: '🩹 Plaies & Coussinets',
+                    urinary: '💧 Voie urinaire',
+                    liver: '🧡 Foie',
+                    recovery: '⏳ Récupération & Vitamines',
+                    puppy_kitten: '🐾 Chiot & Chaton',
+                    prevention: 'Léger / Prévention / Entretien',
+                    advanced: 'Avancé / Symptômes marqués / Intensif'
+                },
+                catalog: {
+                    groupCount: count => `${count} produits`,
+                    purvisoTag: 'Marque propre'
+                },
+                modal: {
+                    brand: 'Marque',
+                    category: 'Catégorie',
+                    priority: 'Priorité',
+                    categories: {
+                        Supplements: 'Complément',
+                        Soins: 'Soin'
+                    },
+                    purviso: 'Purviso (marque propre)',
+                    external: 'Marque partenaire'
+                }
+            }
+        };
+
+        let currentLanguage = 'nl';
+
+        function getLangData() {
+            return LANGUAGE_DATA[currentLanguage];
+        }
+
+        function getLocalizedField(product, field) {
+            if (!product) return '';
+            const baseValue = product[field] ?? '';
+            if (currentLanguage === 'nl') {
+                return baseValue;
+            }
+
+            const langTranslations = PRODUCT_TRANSLATIONS[currentLanguage] || {};
+            const translationForProduct = langTranslations[product.id] || {};
+
+            if (Object.prototype.hasOwnProperty.call(translationForProduct, field)) {
+                return translationForProduct[field];
+            }
+
+            return baseValue;
+        }
+
+        function getCriteriaList(type) {
+            const list = SEARCH_CRITERIA[type];
+            return Array.isArray(list) ? list : [];
+        }
+
+        function getCriteriaLabel(type, value) {
+            const option = getCriteriaList(type).find(item => item.value === value);
+            if (!option) return null;
+            return option.labels?.[currentLanguage] || option.labels?.nl || value;
+        }
+
+        function configureSelect(selectId, type, placeholderKey) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            const previousValue = select.value;
+            const langData = getLangData();
+            const placeholderText = langData?.texts?.[placeholderKey] || '';
+
+            select.innerHTML = '';
+
+            const placeholderOption = document.createElement('option');
+            placeholderOption.value = '';
+            placeholderOption.disabled = true;
+            placeholderOption.selected = true;
+            placeholderOption.textContent = placeholderText;
+            select.appendChild(placeholderOption);
+
+            getCriteriaList(type).forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option.value;
+                opt.textContent = option.labels?.[currentLanguage] || option.labels?.nl || option.value;
+                select.appendChild(opt);
+            });
+
+            if (previousValue) {
+                select.value = previousValue;
+                if (select.value !== previousValue) {
+                    select.selectedIndex = 0;
+                }
+            }
+        }
+
+        function renderSearchCriteria() {
+            configureSelect('species', 'species', 'speciesPlaceholder');
+            configureSelect('age', 'age', 'agePlaceholder');
+            configureSelect('need', 'need', 'needPlaceholder');
+            configureSelect('level', 'level', 'levelPlaceholder');
+        }
+
+        function refreshPublicViews() {
+            fillCatalog('full-supplements-accordion', 'Supplements');
+            fillCatalog('full-care-accordion', 'Soins');
+            renderSearchCriteria();
+
+            const messageDiv = document.getElementById('message');
+            if (messageDiv && !messageDiv.classList.contains('hidden') && messageDiv.innerHTML.trim() !== '') {
+                findProduct();
+            }
+        }
+
+        let isBackOfficeAuthenticated = false;
+        let activeBackOfficeTab = 'products';
+        let selectedProductId = null;
+        let productFeedbackTimer = null;
+        let criteriaFeedbackTimer = null;
+        let settingsFeedbackTimer = null;
+
+        function openBackOfficeLogin() {
+            const overlay = document.getElementById('backoffice-login');
+            if (!overlay) return;
+            overlay.classList.add('open');
+
+            const input = document.getElementById('backoffice-code');
+            const errorLabel = document.getElementById('backoffice-login-error');
+            if (input) {
+                input.classList.remove('input-error');
+                input.value = '';
+                setTimeout(() => input.focus(), 50);
+            }
+            if (errorLabel) {
+                errorLabel.classList.add('hidden');
+            }
+        }
+
+        function closeBackOfficeLogin() {
+            const overlay = document.getElementById('backoffice-login');
+            if (!overlay) return;
+            overlay.classList.remove('open');
+        }
+
+        function handleBackOfficeAuth() {
+            const input = document.getElementById('backoffice-code');
+            const errorLabel = document.getElementById('backoffice-login-error');
+            if (!input) return;
+
+            const value = (input.value || '').trim();
+            if (value === ACCESS_CODE) {
+                isBackOfficeAuthenticated = true;
+                input.value = '';
+                input.classList.remove('input-error');
+                if (errorLabel) {
+                    errorLabel.classList.add('hidden');
+                }
+                closeBackOfficeLogin();
+                openBackOfficePanel(activeBackOfficeTab);
+            } else {
+                input.value = '';
+                input.classList.add('input-error');
+                if (errorLabel) {
+                    errorLabel.classList.remove('hidden');
+                }
+            }
+        }
+
+        function openBackOfficePanel(tab = 'products') {
+            activeBackOfficeTab = tab;
+            const overlay = document.getElementById('backoffice-panel');
+            if (!overlay) return;
+            overlay.classList.add('open');
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+        }
+
+        function closeBackOfficePanel() {
+            const overlay = document.getElementById('backoffice-panel');
+            if (!overlay) return;
+            overlay.classList.remove('open');
+        }
+
+        function updateBackOfficeTabs() {
+            document.querySelectorAll('#backoffice-panel .backoffice-tab').forEach(button => {
+                const tab = button.getAttribute('data-tab');
+                button.classList.toggle('active', tab === activeBackOfficeTab);
+            });
+        }
+
+        function switchBackOfficeTab(tab) {
+            if (activeBackOfficeTab === tab) return;
+            activeBackOfficeTab = tab;
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+        }
+
+        function renderBackOfficeContent() {
+            const container = document.getElementById('backoffice-content');
+            if (!container) return;
+
+            if (activeBackOfficeTab === 'criteria') {
+                renderCriteriaTab(container);
+            } else if (activeBackOfficeTab === 'settings') {
+                renderSettingsTab(container);
+            } else {
+                renderProductsTab(container);
+            }
+        }
+
+        function renderProductsTab(container) {
+            container.innerHTML = `
+                <div class="backoffice-grid two-columns">
+                    <div class="backoffice-panel" id="bo-product-list-panel">
+                        <h3>Catalogue produits</h3>
+                        <input type="search" id="bo-product-search" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Rechercher par nom, marque ou besoin..." />
+                        <p class="backoffice-hint mt-2">Astuce : tapez un mot-clé pour filtrer la liste.</p>
+                        <div class="backoffice-list mt-4" id="bo-product-list"></div>
+                        <button type="button" class="btn-secondary w-full mt-4" id="bo-new-product">Nouveau produit</button>
+                    </div>
+                    <div class="backoffice-panel backoffice-form" id="bo-product-form-panel">
+                        <h3>Détails produit</h3>
+                        <div class="grid gap-4 md:grid-cols-2">
+                            <label>Identifiant unique
+                                <input type="text" id="bo-product-id" placeholder="ex : purviso_vitality" />
+                            </label>
+                            <label>Nom (NL)
+                                <input type="text" id="bo-product-name" placeholder="Nom NL affiché" />
+                            </label>
+                        </div>
+                        <div class="grid gap-4 md:grid-cols-3 mt-4">
+                            <label>Marque
+                                <input type="text" id="bo-product-brand" placeholder="Purviso, Virbac..." />
+                            </label>
+                            <label>Catégorie
+                                <select id="bo-product-category">
+                                    <option value="Supplements">Supplements</option>
+                                    <option value="Soins">Soins</option>
+                                </select>
+                            </label>
+                            <label>Lien Tom&Co (optionnel)
+                                <input type="text" id="bo-product-link" placeholder="URL produit" />
+                            </label>
+                        </div>
+                        <label class="inline-flex items-center gap-2 mt-4">
+                            <input type="checkbox" id="bo-product-purviso" />
+                            <span>Produit Purviso (prioritaire)</span>
+                        </label>
+                        <div class="grid gap-4 md:grid-cols-2 mt-4">
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Espèces concernées</p>
+                                <div class="backoffice-chip-group" id="bo-species-options"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Tranches d’âge</p>
+                                <div class="backoffice-chip-group" id="bo-age-options"></div>
+                            </div>
+                        </div>
+                        <div class="grid gap-4 md:grid-cols-2 mt-4">
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Besoins ciblés</p>
+                                <div class="backoffice-chip-group" id="bo-need-options"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-gray-700 mb-2">Niveaux / gravité</p>
+                                <div class="backoffice-chip-group" id="bo-level-options"></div>
+                            </div>
+                        </div>
+                        <div class="grid gap-4 lg:grid-cols-2 mt-6">
+                            <div class="space-y-3">
+                                <p class="font-semibold text-sm text-gray-700 uppercase tracking-wide">Contenu NL</p>
+                                <label>Objectif (NL)
+                                    <textarea id="bo-nl-objective" placeholder="Objectif en néerlandais"></textarea>
+                                </label>
+                                <label>Utilisation / Posologie (NL)
+                                    <textarea id="bo-nl-admin" placeholder="Instructions NL"></textarea>
+                                </label>
+                                <label>Avertissement (NL)
+                                    <textarea id="bo-nl-warning" placeholder="Avertissement NL (optionnel)"></textarea>
+                                </label>
+                            </div>
+                            <div class="space-y-3">
+                                <p class="font-semibold text-sm text-gray-700 uppercase tracking-wide">Contenu FR</p>
+                                <label>Objectif (FR)
+                                    <textarea id="bo-fr-objective" placeholder="Objectif en français"></textarea>
+                                </label>
+                                <label>Utilisation / Posologie (FR)
+                                    <textarea id="bo-fr-admin" placeholder="Instructions FR"></textarea>
+                                </label>
+                                <label>Avertissement (FR)
+                                    <textarea id="bo-fr-warning" placeholder="Avertissement FR (optionnel)"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="bo-product-feedback" class="mt-4 text-sm"></div>
+                        <div class="backoffice-actions">
+                            <button type="button" class="btn-danger hidden" id="bo-delete-product">Supprimer</button>
+                            <button type="button" class="btn-primary" id="bo-save-product">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const searchInput = document.getElementById('bo-product-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => renderBackOfficeProductList());
+            }
+
+            const newButton = document.getElementById('bo-new-product');
+            if (newButton) {
+                newButton.addEventListener('click', () => {
+                    selectedProductId = null;
+                    renderBackOfficeProductList();
+                    clearProductForm();
+                    const idInput = document.getElementById('bo-product-id');
+                    if (idInput) {
+                        idInput.focus();
+                    }
+                });
+            }
+
+            const saveButton = document.getElementById('bo-save-product');
+            if (saveButton) {
+                saveButton.addEventListener('click', saveBackOfficeProduct);
+            }
+
+            const deleteButton = document.getElementById('bo-delete-product');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', deleteBackOfficeProduct);
+            }
+
+            renderBackOfficeProductList();
+
+            if (selectedProductId && MASTER_PRODUCT_DATABASE.some(p => p.id === selectedProductId)) {
+                const product = MASTER_PRODUCT_DATABASE.find(p => p.id === selectedProductId);
+                populateProductForm(product);
+            } else if (MASTER_PRODUCT_DATABASE.length > 0) {
+                selectedProductId = MASTER_PRODUCT_DATABASE[0].id;
+                populateProductForm(MASTER_PRODUCT_DATABASE[0]);
+                renderBackOfficeProductList();
+            } else {
+                clearProductForm();
+            }
+        }
+
+        function renderBackOfficeProductList(filter) {
+            const listEl = document.getElementById('bo-product-list');
+            if (!listEl) return;
+            const searchInput = document.getElementById('bo-product-search');
+            const searchValue = typeof filter === 'string' ? filter : (searchInput ? searchInput.value : '');
+            const normalized = searchValue.trim().toLowerCase();
+
+            let products = [...MASTER_PRODUCT_DATABASE];
+            products.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'fr'));
+
+            if (normalized) {
+                products = products.filter(product => {
+                    const haystack = [product.name, product.brand, ...(product.need || []), ...(product.species || [])];
+                    return haystack.some(value => (value || '').toLowerCase().includes(normalized));
+                });
+            }
+
+            if (products.length === 0) {
+                listEl.innerHTML = '<p class="text-sm text-gray-500">Aucun produit ne correspond à la recherche.</p>';
+                return;
+            }
+
+            listEl.innerHTML = '';
+            products.forEach(product => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.setAttribute('data-product-id', product.id);
+                button.innerHTML = `<p class="font-semibold text-gray-900">${product.name}</p><p class="text-xs text-gray-500">${product.brand || '—'} • ${product.id}</p>`;
+                if (product.id === selectedProductId) {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    selectedProductId = product.id;
+                    populateProductForm(product);
+                    renderBackOfficeProductList();
+                });
+                listEl.appendChild(button);
+            });
+        }
+
+        function buildChipGroup(containerId, type, selectedValues = []) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const selectedSet = new Set(selectedValues);
+            getCriteriaList(type).forEach(option => {
+                const label = document.createElement('label');
+                label.className = 'backoffice-chip';
+                if (option.labels?.fr) {
+                    label.title = `${option.labels?.nl || option.value} / ${option.labels.fr}`;
+                }
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.value = option.value;
+                input.checked = selectedSet.has(option.value);
+                label.appendChild(input);
+
+                const text = document.createElement('span');
+                text.textContent = option.labels?.nl || option.value;
+                label.appendChild(text);
+
+                container.appendChild(label);
+            });
+
+            selectedValues.forEach(value => {
+                if (!getCriteriaList(type).some(option => option.value === value)) {
+                    const label = document.createElement('label');
+                    label.className = 'backoffice-chip missing-criteria';
+
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.value = value;
+                    input.checked = true;
+                    label.appendChild(input);
+
+                    const text = document.createElement('span');
+                    text.textContent = `${value} (hors critères)`;
+                    label.appendChild(text);
+
+                    container.appendChild(label);
+                }
+            });
+        }
+
+        function getCheckedValues(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return [];
+            return Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map(input => input.value);
+        }
+
+        function populateProductForm(product) {
+            const idInput = document.getElementById('bo-product-id');
+            if (!idInput) return;
+
+            idInput.value = product?.id || '';
+            const nameInput = document.getElementById('bo-product-name');
+            if (nameInput) nameInput.value = product?.name || '';
+
+            const brandInput = document.getElementById('bo-product-brand');
+            if (brandInput) brandInput.value = product?.brand || '';
+
+            const categorySelect = document.getElementById('bo-product-category');
+            if (categorySelect) categorySelect.value = product?.category || 'Supplements';
+
+            const linkInput = document.getElementById('bo-product-link');
+            if (linkInput) linkInput.value = product?.tomCoUrl || '';
+
+            const purvisoCheckbox = document.getElementById('bo-product-purviso');
+            if (purvisoCheckbox) purvisoCheckbox.checked = Boolean(product?.isPurviso);
+
+            buildChipGroup('bo-species-options', 'species', product?.species || []);
+            buildChipGroup('bo-age-options', 'age', product?.age || []);
+            buildChipGroup('bo-need-options', 'need', product?.need || []);
+            buildChipGroup('bo-level-options', 'level', product?.level || []);
+
+            const nlObjective = document.getElementById('bo-nl-objective');
+            if (nlObjective) nlObjective.value = product?.objective || '';
+            const nlAdmin = document.getElementById('bo-nl-admin');
+            if (nlAdmin) nlAdmin.value = product?.admin || '';
+            const nlWarning = document.getElementById('bo-nl-warning');
+            if (nlWarning) nlWarning.value = product?.warning || '';
+
+            const translations = PRODUCT_TRANSLATIONS.fr || {};
+            const frData = product ? (translations[product.id] || {}) : {};
+
+            const frObjective = document.getElementById('bo-fr-objective');
+            if (frObjective) frObjective.value = frData.objective || '';
+            const frAdmin = document.getElementById('bo-fr-admin');
+            if (frAdmin) frAdmin.value = frData.admin || '';
+            const frWarning = document.getElementById('bo-fr-warning');
+            if (frWarning) frWarning.value = frData.warning || '';
+
+            const deleteButton = document.getElementById('bo-delete-product');
+            if (deleteButton) {
+                const canDelete = Boolean(product && product.id && MASTER_PRODUCT_DATABASE.some(p => p.id === product.id));
+                deleteButton.classList.toggle('hidden', !canDelete);
+            }
+        }
+
+        function clearProductForm() {
+            populateProductForm(null);
+        }
+
+        function showProductFeedback(message, isError = false) {
+            const feedback = document.getElementById('bo-product-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `mt-4 text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (productFeedbackTimer) {
+                clearTimeout(productFeedbackTimer);
+            }
+            productFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'mt-4 text-sm';
+            }, 3500);
+        }
+
+        function saveBackOfficeProduct() {
+            const id = (document.getElementById('bo-product-id')?.value || '').trim();
+            const name = (document.getElementById('bo-product-name')?.value || '').trim();
+            const brand = (document.getElementById('bo-product-brand')?.value || '').trim();
+            const category = document.getElementById('bo-product-category')?.value || 'Supplements';
+            const link = (document.getElementById('bo-product-link')?.value || '').trim();
+            const objective = (document.getElementById('bo-nl-objective')?.value || '').trim();
+            const admin = (document.getElementById('bo-nl-admin')?.value || '').trim();
+            const warning = (document.getElementById('bo-nl-warning')?.value || '').trim();
+            const isPurviso = Boolean(document.getElementById('bo-product-purviso')?.checked);
+            const species = getCheckedValues('bo-species-options');
+            const age = getCheckedValues('bo-age-options');
+            const need = getCheckedValues('bo-need-options');
+            const level = getCheckedValues('bo-level-options');
+
+            if (!id) {
+                showProductFeedback('L’identifiant est obligatoire.', true);
+                return;
+            }
+
+            if (!name) {
+                showProductFeedback('Le nom du produit est obligatoire.', true);
+                return;
+            }
+
+            const idExists = MASTER_PRODUCT_DATABASE.some(p => p.id === id && p.id !== selectedProductId);
+            if (idExists) {
+                showProductFeedback('Cet identifiant est déjà utilisé par un autre produit.', true);
+                return;
+            }
+
+            const productData = {
+                id,
+                name,
+                brand,
+                category,
+                isPurviso,
+                species,
+                age,
+                need,
+                level,
+                objective,
+                admin,
+                warning: warning || null,
+                tomCoUrl: link || null
+            };
+
+            const existingIndex = MASTER_PRODUCT_DATABASE.findIndex(p => p.id === selectedProductId);
+
+            if (existingIndex !== -1) {
+                MASTER_PRODUCT_DATABASE.splice(existingIndex, 1, productData);
+                if (selectedProductId && selectedProductId !== id) {
+                    const frEntries = PRODUCT_TRANSLATIONS.fr || {};
+                    if (frEntries[selectedProductId]) {
+                        frEntries[id] = frEntries[selectedProductId];
+                        delete frEntries[selectedProductId];
+                    }
+                }
+            } else {
+                MASTER_PRODUCT_DATABASE.push(productData);
+            }
+
+            selectedProductId = id;
+
+            const frObjective = (document.getElementById('bo-fr-objective')?.value || '').trim();
+            const frAdmin = (document.getElementById('bo-fr-admin')?.value || '').trim();
+            const frWarning = (document.getElementById('bo-fr-warning')?.value || '').trim();
+
+            const translationPayload = {};
+            if (frObjective) translationPayload.objective = frObjective;
+            if (frAdmin) translationPayload.admin = frAdmin;
+            if (frWarning) translationPayload.warning = frWarning;
+
+            if (Object.keys(translationPayload).length > 0) {
+                PRODUCT_TRANSLATIONS.fr[id] = translationPayload;
+            } else {
+                delete PRODUCT_TRANSLATIONS.fr[id];
+            }
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+
+            refreshPublicViews();
+            renderBackOfficeProductList();
+            populateProductForm(productData);
+            showProductFeedback('Produit enregistré avec succès.', false);
+        }
+
+        function deleteBackOfficeProduct() {
+            if (!selectedProductId) {
+                showProductFeedback('Aucun produit sélectionné.', true);
+                return;
+            }
+
+            const confirmed = window.confirm('Supprimer ce produit du catalogue ?');
+            if (!confirmed) return;
+
+            MASTER_PRODUCT_DATABASE = MASTER_PRODUCT_DATABASE.filter(p => p.id !== selectedProductId);
+            if (PRODUCT_TRANSLATIONS.fr) {
+                delete PRODUCT_TRANSLATIONS.fr[selectedProductId];
+            }
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+
+            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+            refreshPublicViews();
+            renderBackOfficeProductList();
+
+            if (selectedProductId) {
+                populateProductForm(MASTER_PRODUCT_DATABASE.find(p => p.id === selectedProductId));
+            } else {
+                clearProductForm();
+            }
+
+            showProductFeedback('Produit supprimé.', false);
+        }
+
+        function renderCriteriaTab(container) {
+            const sections = [
+                { type: 'species', title: 'Espèces disponibles', hint: 'Valeurs proposées dans le sélecteur principal.' },
+                { type: 'age', title: 'Tranches d’âge', hint: 'Ordre affiché dans la liste déroulante.' },
+                { type: 'need', title: 'Besoins principaux', hint: 'Détermine également l’ordre des sections de catalogue.' },
+                { type: 'level', title: 'Niveaux / Gravité', hint: 'Utilisé pour filtrer les recommandations.' }
+            ];
+
+            container.innerHTML = `
+                <div class="backoffice-grid">
+                    ${sections.map(section => `
+                        <div class="backoffice-panel" data-criteria="${section.type}">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h3>${section.title}</h3>
+                                <button type="button" class="btn-secondary text-sm px-3 py-2" data-add-criteria="${section.type}">Ajouter</button>
+                            </div>
+                            <div class="space-y-3" id="criteria-list-${section.type}"></div>
+                            <p class="backoffice-hint mt-2">${section.hint}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div id="criteria-feedback" class="mt-4 text-sm"></div>
+                <div class="backoffice-actions">
+                    <button type="button" class="btn-secondary" id="criteria-reset">Réinitialiser</button>
+                    <button type="button" class="btn-primary" id="criteria-save">Enregistrer</button>
+                </div>
+            `;
+
+            sections.forEach(section => renderCriteriaRows(section.type));
+
+            container.querySelectorAll('[data-add-criteria]').forEach(button => {
+                const type = button.getAttribute('data-add-criteria');
+                button.addEventListener('click', () => addCriteriaRow(type));
+            });
+
+            const saveButton = document.getElementById('criteria-save');
+            if (saveButton) {
+                saveButton.addEventListener('click', saveCriteriaChanges);
+            }
+
+            const resetButton = document.getElementById('criteria-reset');
+            if (resetButton) {
+                resetButton.addEventListener('click', resetCriteriaDefaults);
+            }
+        }
+
+        function renderCriteriaRows(type) {
+            const container = document.getElementById(`criteria-list-${type}`);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const entries = getCriteriaList(type);
+            if (!entries.length) {
+                addCriteriaRow(type);
+                return;
+            }
+
+            entries.forEach(entry => addCriteriaRow(type, entry.value, entry.labels || {}));
+        }
+
+        function addCriteriaRow(type, value = '', labels = {}) {
+            const container = document.getElementById(`criteria-list-${type}`);
+            if (!container) return;
+
+            const row = document.createElement('div');
+            row.className = 'criteria-row';
+
+            const valueLabel = document.createElement('label');
+            valueLabel.textContent = 'Valeur technique';
+            const valueInput = document.createElement('input');
+            valueInput.type = 'text';
+            valueInput.setAttribute('data-field', 'value');
+            valueInput.value = value;
+            valueInput.placeholder = 'ex : hond';
+            valueLabel.appendChild(valueInput);
+
+            const nlLabel = document.createElement('label');
+            nlLabel.textContent = 'Libellé NL';
+            const nlInput = document.createElement('input');
+            nlInput.type = 'text';
+            nlInput.setAttribute('data-field', 'label-nl');
+            nlInput.value = labels.nl || '';
+            nlInput.placeholder = 'Texte NL';
+            nlLabel.appendChild(nlInput);
+
+            const frLabel = document.createElement('label');
+            frLabel.textContent = 'Libellé FR';
+            const frInput = document.createElement('input');
+            frInput.type = 'text';
+            frInput.setAttribute('data-field', 'label-fr');
+            frInput.value = labels.fr || '';
+            frInput.placeholder = 'Texte FR';
+            frLabel.appendChild(frInput);
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.className = 'btn-danger text-sm px-3 py-2';
+            removeButton.textContent = 'Supprimer';
+            removeButton.addEventListener('click', () => {
+                row.remove();
+            });
+
+            row.appendChild(valueLabel);
+            row.appendChild(nlLabel);
+            row.appendChild(frLabel);
+            row.appendChild(removeButton);
+
+            container.appendChild(row);
+        }
+
+        function showCriteriaFeedback(message, isError = false) {
+            const feedback = document.getElementById('criteria-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `mt-4 text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (criteriaFeedbackTimer) {
+                clearTimeout(criteriaFeedbackTimer);
+            }
+            criteriaFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'mt-4 text-sm';
+            }, 3500);
+        }
+
+        function saveCriteriaChanges() {
+            const types = ['species', 'age', 'need', 'level'];
+            const updated = {};
+
+            types.forEach(type => {
+                const container = document.getElementById(`criteria-list-${type}`);
+                if (!container) return;
+
+                const rows = Array.from(container.querySelectorAll('.criteria-row'));
+                const values = [];
+
+                rows.forEach(row => {
+                    const valueInput = row.querySelector('[data-field="value"]');
+                    const nlInput = row.querySelector('[data-field="label-nl"]');
+                    const frInput = row.querySelector('[data-field="label-fr"]');
+
+                    const value = (valueInput?.value || '').trim();
+                    const nl = (nlInput?.value || '').trim();
+                    const fr = (frInput?.value || '').trim();
+
+                    if (!value) return;
+
+                    const entry = { value, labels: {} };
+                    if (nl) entry.labels.nl = nl;
+                    if (fr) entry.labels.fr = fr;
+                    values.push(entry);
+                });
+
+                updated[type] = values;
+            });
+
+            SEARCH_CRITERIA = updated;
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+            types.forEach(renderCriteriaRows);
+            refreshPublicViews();
+
+            showCriteriaFeedback('Critères mis à jour.', false);
+        }
+
+        function resetCriteriaDefaults() {
+            SEARCH_CRITERIA = deepClone(DEFAULT_SEARCH_CRITERIA);
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+            ['species', 'age', 'need', 'level'].forEach(renderCriteriaRows);
+            refreshPublicViews();
+            showCriteriaFeedback('Critères réinitialisés aux valeurs par défaut.', false);
+        }
+
+        function renderSettingsTab(container) {
+            container.innerHTML = `
+                <div class="backoffice-panel space-y-4">
+                    <h3>Export &amp; import</h3>
+                    <p class="backoffice-hint">Générez un export JSON, importez une sauvegarde ou réinitialisez complètement la base.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button type="button" class="btn-secondary" id="settings-export">Exporter</button>
+                        <button type="button" class="btn-primary" id="settings-import">Importer</button>
+                        <button type="button" class="btn-danger" id="settings-reset">Réinitialiser</button>
+                    </div>
+                    <textarea id="settings-json" class="w-full border border-gray-300 rounded-lg p-3" rows="10" placeholder="Collez ici un JSON compatible puis cliquez sur “Importer”."></textarea>
+                    <div id="settings-feedback" class="text-sm"></div>
+                </div>
+            `;
+
+            const exportButton = document.getElementById('settings-export');
+            if (exportButton) {
+                exportButton.addEventListener('click', () => {
+                    const payload = {
+                        products: MASTER_PRODUCT_DATABASE,
+                        translations: PRODUCT_TRANSLATIONS,
+                        criteria: SEARCH_CRITERIA
+                    };
+                    const textarea = document.getElementById('settings-json');
+                    if (textarea) {
+                        textarea.value = JSON.stringify(payload, null, 2);
+                        textarea.focus();
+                        textarea.select();
+                    }
+                    showSettingsFeedback('Export généré. Copiez ou téléchargez le JSON affiché.', false);
+                });
+            }
+
+            const importButton = document.getElementById('settings-import');
+            if (importButton) {
+                importButton.addEventListener('click', importBackOfficeData);
+            }
+
+            const resetButton = document.getElementById('settings-reset');
+            if (resetButton) {
+                resetButton.addEventListener('click', resetAllBackOfficeData);
+            }
+        }
+
+        function showSettingsFeedback(message, isError = false) {
+            const feedback = document.getElementById('settings-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.className = `text-sm ${isError ? 'text-red-600' : 'text-green-600'}`;
+            if (settingsFeedbackTimer) {
+                clearTimeout(settingsFeedbackTimer);
+            }
+            settingsFeedbackTimer = setTimeout(() => {
+                feedback.textContent = '';
+                feedback.className = 'text-sm';
+            }, 4000);
+        }
+
+        function importBackOfficeData() {
+            const textarea = document.getElementById('settings-json');
+            if (!textarea) return;
+
+            try {
+                const parsed = JSON.parse(textarea.value || '');
+                if (!parsed || typeof parsed !== 'object') {
+                    throw new Error('Invalid data');
+                }
+
+                if (Array.isArray(parsed.products)) {
+                    MASTER_PRODUCT_DATABASE = parsed.products;
+                }
+                if (parsed.translations && typeof parsed.translations === 'object') {
+                    PRODUCT_TRANSLATIONS = parsed.translations;
+                    if (!PRODUCT_TRANSLATIONS.fr) {
+                        PRODUCT_TRANSLATIONS.fr = {};
+                    }
+                }
+                if (parsed.criteria && typeof parsed.criteria === 'object') {
+                    SEARCH_CRITERIA = parsed.criteria;
+                }
+
+                saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+                saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+                saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+                selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+                refreshPublicViews();
+                updateBackOfficeTabs();
+                renderBackOfficeContent();
+
+                showSettingsFeedback('Import réalisé avec succès.', false);
+            } catch (error) {
+                console.error('Import error', error);
+                showSettingsFeedback('Import impossible : vérifiez le JSON fourni.', true);
+            }
+        }
+
+        function resetAllBackOfficeData() {
+            const confirmed = window.confirm('Réinitialiser toutes les données (produits, traductions, critères) ?');
+            if (!confirmed) return;
+
+            MASTER_PRODUCT_DATABASE = deepClone(DEFAULT_PRODUCT_DATABASE);
+            PRODUCT_TRANSLATIONS = deepClone(DEFAULT_PRODUCT_TRANSLATIONS);
+            if (!PRODUCT_TRANSLATIONS.fr) {
+                PRODUCT_TRANSLATIONS.fr = {};
+            }
+            SEARCH_CRITERIA = deepClone(DEFAULT_SEARCH_CRITERIA);
+
+            selectedProductId = MASTER_PRODUCT_DATABASE[0]?.id || null;
+
+            saveToStorage(STORAGE_KEYS.products, MASTER_PRODUCT_DATABASE);
+            saveToStorage(STORAGE_KEYS.translations, PRODUCT_TRANSLATIONS);
+            saveToStorage(STORAGE_KEYS.criteria, SEARCH_CRITERIA);
+
+            refreshPublicViews();
+            updateBackOfficeTabs();
+            renderBackOfficeContent();
+
+            showSettingsFeedback('Toutes les données ont été réinitialisées.', false);
+        }
+
+        function applyLanguage() {
+            const langData = getLangData();
+            document.title = langData.pageTitle;
+            document.documentElement.lang = langData.htmlLang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = langData.texts[key];
+                if (translation !== undefined) {
+                    element.innerHTML = translation;
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                const translation = langData.texts[key];
+                if (translation !== undefined) {
+                    element.setAttribute('placeholder', translation);
+                }
+            });
+
+            renderSearchCriteria();
+        }
+
+        function setLanguage(lang) {
+            if (!LANGUAGE_DATA[lang]) return;
+            currentLanguage = lang;
+
+            applyLanguage();
+            fillCatalog('full-supplements-accordion', 'Supplements');
+            fillCatalog('full-care-accordion', 'Soins');
+
+            document.querySelectorAll('[data-language-btn]').forEach(button => {
+                const isActive = button.getAttribute('data-language-btn') === lang;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-pressed', isActive);
+            });
+
+            const messageDiv = document.getElementById('message');
+            if (!messageDiv.classList.contains('hidden') && messageDiv.innerHTML.trim() !== '') {
+                findProduct();
+            }
+        }
+
         // Functie voor de accordion
         function toggleAccordion(id) {
             const content = document.getElementById(id);
@@ -1068,15 +2915,23 @@
             const body = document.getElementById('modal-body');
             body.innerHTML = ''; // Leeg de inhoud
 
-            // Doel
-            let objective = `<p><strong>${PRODUCT_MESSAGES.objective}</strong> ${product.objective}</p>`;
+            const langData = getLangData();
+            const messages = langData.productMessages;
+            const objectiveText = getLocalizedField(product, 'objective') || '';
+            const adminText = getLocalizedField(product, 'admin') || '';
+            const warningText = getLocalizedField(product, 'warning');
+
+            // Doel / Objectif
+            let objective = `<p><strong>${messages.objective}</strong> ${objectiveText}</p>`;
             // Gebruik/Toediening
-            let admin = `<p><strong>${PRODUCT_MESSAGES.admin}</strong> ${product.admin}</p>`;
+            let admin = `<p><strong>${messages.admin}</strong> ${adminText}</p>`;
             // Waarschuwing
-            let warning = product.warning ? `<p class="alert-warning p-2 rounded-lg mt-3"><strong>${PRODUCT_MESSAGES.warning}</strong> ${product.warning}</p>` : '';
+            let warning = warningText ? `<p class="alert-warning p-2 rounded-lg mt-3"><strong>${messages.warning}</strong> ${warningText}</p>` : '';
             // Merk/Status
-            let status = `<p class="mt-4 text-sm text-gray-500">Merk: <strong>${product.brand}</strong> | Categorie: ${product.category} | ${product.isPurviso ? 'Huismerk (Prioriteit)' : 'Extern Merk'}</p>`;
-            
+            const categoryLabel = langData.modal.categories[product.category] || product.category;
+            const priorityLabel = product.isPurviso ? langData.modal.purviso : langData.modal.external;
+            let status = `<p class="mt-4 text-sm text-gray-500">${langData.modal.brand}: <strong>${product.brand}</strong> | ${langData.modal.category}: ${categoryLabel} | ${langData.modal.priority}: ${priorityLabel}</p>`;
+
             body.innerHTML = objective + admin + warning + status;
 
             document.getElementById('product-modal').classList.add('open');
@@ -1090,15 +2945,16 @@
             const level = document.getElementById('level').value;
             const healthNotes = document.getElementById('healthNotes').value;
             const messageDiv = document.getElementById('message');
+            const messages = getLangData().productMessages;
 
             messageDiv.classList.remove('hidden', 'alert-error', 'alert-success', 'alert-warning');
             messageDiv.innerHTML = '';
-            
+
             // Valideren van de ingevoerde gegevens
-            if (!species) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_species, 'alert-error');
-            if (!age) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_age, 'alert-error');
-            if (!need) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_need, 'alert-error');
-            if (!level) return displayMessage(messageDiv, PRODUCT_MESSAGES.error_level, 'alert-error');
+            if (!species) return displayMessage(messageDiv, messages.error_species, 'alert-error');
+            if (!age) return displayMessage(messageDiv, messages.error_age, 'alert-error');
+            if (!need) return displayMessage(messageDiv, messages.error_need, 'alert-error');
+            if (!level) return displayMessage(messageDiv, messages.error_level, 'alert-error');
 
             // 1. Zoek naar het Purviso huismerkproduct
             let recommendedProduct = MASTER_PRODUCT_DATABASE.find(p => 
@@ -1124,29 +2980,29 @@
             }
 
             // 3. Toon de resultaten
-            let html = `<strong>${PRODUCT_MESSAGES.recommendation_intro}</strong><br>`;
-            
+            let html = `<strong>${messages.recommendation_intro}</strong><br>`;
+
             if (recommendedProduct) {
-                html += renderProduct(recommendedProduct, PRODUCT_MESSAGES.purviso_priority);
+                html += renderProduct(recommendedProduct, messages.purviso_priority);
             } else if (alternatives.length > 0) {
                 // Als er geen Purviso is, maar wel een alternatief, toon het beste alternatief als 'aanbevolen'
                 recommendedProduct = alternatives.shift(); // Haal het eerste alternatief eruit
-                html += renderProduct(recommendedProduct, PRODUCT_MESSAGES.other_alternative);
+                html += renderProduct(recommendedProduct, messages.other_alternative);
             } else {
-                return displayMessage(messageDiv, PRODUCT_MESSAGES.no_product, 'alert-warning');
+                return displayMessage(messageDiv, messages.no_product, 'alert-warning');
             }
 
             // Toon resterende alternatieven
             if (alternatives.length > 0) {
-                html += `<h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">${PRODUCT_MESSAGES.alternative_intro}</h4>`;
+                html += `<h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">${messages.alternative_intro}</h4>`;
                 alternatives.forEach(alt => {
-                    html += renderProduct(alt, PRODUCT_MESSAGES.other_alternative);
+                    html += renderProduct(alt, messages.other_alternative);
                 });
             }
-            
+
             // Voeg notitie over gezondheidsnotities toe indien ingevoerd
             if (healthNotes.trim() !== '') {
-                html += `<p class="alert-warning p-2 rounded-lg text-sm mt-4">${PRODUCT_MESSAGES.notes_warning}</p>`;
+                html += `<p class="alert-warning p-2 rounded-lg text-sm mt-4">${messages.notes_warning}</p>`;
             }
 
             displayMessage(messageDiv, html, 'alert-success');
@@ -1160,14 +3016,20 @@
         }
 
         function renderProduct(product, tag) {
+            const langData = getLangData();
+            const objectiveText = getLocalizedField(product, 'objective') || '';
+            const truncatedObjective = objectiveText.length > 100 ? `${objectiveText.substring(0, 100)}...` : objectiveText;
+            const needLabel = getCriteriaLabel('need', product.need[0]) || langData.tagLabels[product.need[0]] || product.need[0];
+            const levelLabel = getCriteriaLabel('level', product.level[0]) || langData.tagLabels[product.level[0]] || product.level[0];
+
             return `
                 <div class="product-item p-4 mt-3 rounded-lg shadow-sm bg-white cursor-pointer hover:bg-gray-50 transition duration-150" onclick="openProductModal(MASTER_PRODUCT_DATABASE.find(p => p.id === '${product.id}'))">
                     <p class="text-sm text-log-teal font-medium mb-1">${tag}</p>
                     <h3 class="text-base font-bold text-gray-900">${product.name}</h3>
-                    <p class="text-sm text-gray-600 truncate">${product.objective.substring(0, 100)}...</p>
+                    <p class="text-sm text-gray-600 truncate">${truncatedObjective}</p>
                     <div class="flex flex-wrap gap-2 mt-2 text-xs">
-                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${TRANSLATIONS[product.need[0]]}</span>
-                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${TRANSLATIONS[product.level[0]]}</span>
+                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${needLabel}</span>
+                        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">${levelLabel}</span>
                         <span class="bg-log-orange text-white px-2 py-1 rounded-full">${product.brand}</span>
                     </div>
                 </div>
@@ -1178,6 +3040,7 @@
         function fillCatalog(containerId, category) {
             const container = document.getElementById(containerId);
             if (!container) return;
+            const langData = getLangData();
 
             // 1. Haal de producten op voor de specifieke categorie (Supplements of Soins)
             const filteredProducts = MASTER_PRODUCT_DATABASE.filter(p => p.category === category);
@@ -1185,13 +3048,11 @@
             // 2. Verzamel alle unieke 'need' tags en sorteer ze op basis van de volgorde in de selectielijst
             const allNeeds = [...new Set(filteredProducts.flatMap(p => p.need))];
             
-            const orderedNeedKeys = [
-                'articulations', 'digestion', 'skin_care', 'skin_supplement', 'anxiety', 
-                'hygiene_dental', 'hygiene_eyes', 'hygiene_ears', 'wounds', 'urinary', 
-                'liver', 'recovery', 'puppy_kitten'
-            ];
-            
-            const sortedNeeds = orderedNeedKeys.filter(key => allNeeds.includes(key));
+            const orderedNeedKeys = getCriteriaList('need').map(option => option.value);
+
+            const sortedNeeds = orderedNeedKeys.filter(key => allNeeds.includes(key)).concat(
+                allNeeds.filter(key => !orderedNeedKeys.includes(key))
+            );
 
 
             let html = '';
@@ -1203,19 +3064,20 @@
                 // Overslaan als er geen producten zijn (bijvoorbeeld, 'articulations' in Soins-lijst)
                 if (productsForNeed.length === 0) return;
 
-                const needTitle = TRANSLATIONS[needKey] || needKey;
+                const needTitle = getCriteriaLabel('need', needKey) || langData.tagLabels[needKey] || needKey;
                 const needId = `${category}-${needKey}`;
-                
+
                 let productList = productsForNeed.map(p => {
-                    const statusTag = p.isPurviso ? 
-                        '<span class="bg-[#fef4f2] text-log-teal text-xs font-semibold px-2 py-1 rounded-full">Huismerk</span>' :
+                    const statusTag = p.isPurviso ?
+                        `<span class="bg-[#fef4f2] text-log-teal text-xs font-semibold px-2 py-1 rounded-full">${langData.catalog.purvisoTag}</span>` :
                         `<span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded-full">${p.brand}</span>`;
-                        
+                    const objectiveText = getLocalizedField(p, 'objective') || '';
+
                     return `
                         <div class="flex justify-between items-center product-item p-3 cursor-pointer hover:bg-gray-50 transition duration-150" onclick="openProductModal(MASTER_PRODUCT_DATABASE.find(prod => prod.id === '${p.id}'))">
                             <div class="flex-1 min-w-0 pr-4">
                                 <p class="text-gray-900 font-medium">${p.name}</p>
-                                <p class="text-xs text-gray-500 truncate">${p.objective}</p>
+                                <p class="text-xs text-gray-500 truncate">${objectiveText}</p>
                             </div>
                             ${statusTag}
                         </div>
@@ -1226,7 +3088,7 @@
                     <div>
                         <div class="accordion-header flex justify-between items-center text-lg font-semibold text-gray-800 border-t" onclick="toggleAccordion('${needId}')">
                             <span class="flex items-center">
-                                ${needTitle} (${productsForNeed.length} producten)
+                                ${needTitle} (${langData.catalog.groupCount(productsForNeed.length)})
                             </span>
                             <svg class="w-4 h-4 transition-transform duration-300 text-log-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1242,13 +3104,64 @@
             container.innerHTML = html;
         }
 
-        // Vul de catalogi bij het laden van de pagina
+        // Vul de catalogi bij het laden van de pagina en activeer de taalselector
         document.addEventListener('DOMContentLoaded', () => {
-            // Vul de supplementen in (gegroepeerd op "need")
-            fillCatalog('full-supplements-accordion', 'Supplements');
-            
-            // Vul de verzorgingsproducten in (gegroepeerd op "need")
-            fillCatalog('full-care-accordion', 'Soins');
+            document.querySelectorAll('[data-language-btn]').forEach(button => {
+                button.addEventListener('click', () => setLanguage(button.getAttribute('data-language-btn')));
+            });
+
+            const openBackofficeButton = document.getElementById('open-backoffice');
+            if (openBackofficeButton) {
+                openBackofficeButton.addEventListener('click', () => {
+                    if (isBackOfficeAuthenticated) {
+                        openBackOfficePanel(activeBackOfficeTab);
+                    } else {
+                        openBackOfficeLogin();
+                    }
+                });
+            }
+
+            const authButton = document.getElementById('backoffice-auth-btn');
+            if (authButton) {
+                authButton.addEventListener('click', handleBackOfficeAuth);
+            }
+
+            const codeInput = document.getElementById('backoffice-code');
+            if (codeInput) {
+                codeInput.addEventListener('keydown', event => {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        handleBackOfficeAuth();
+                    }
+                });
+            }
+
+            document.querySelectorAll('.backoffice-overlay').forEach(overlay => {
+                overlay.addEventListener('click', event => {
+                    if (event.target !== overlay) return;
+                    if (overlay.id === 'backoffice-login') {
+                        closeBackOfficeLogin();
+                    } else if (overlay.id === 'backoffice-panel') {
+                        closeBackOfficePanel();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') {
+                    closeBackOfficeLogin();
+                    closeBackOfficePanel();
+                }
+            });
+
+            document.querySelectorAll('#backoffice-panel .backoffice-tab').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.getAttribute('data-tab');
+                    switchBackOfficeTab(tab);
+                });
+            });
+
+            setLanguage(currentLanguage);
         });
 
     </script>
